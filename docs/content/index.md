@@ -1,8 +1,8 @@
 # Welcome to the mdCollab 2 Documentation
 
 <!-- markdownlint-disable no-inline-html line-length -->
-<img alt="mdCollab Logo" title="mdCollab Logo" width="398" height="100" class="light-mode-only" src="images/mdcollab_logo_black.svg">
-<img alt="mdCollab Logo" title="mdCollab Logo" width="398" height="100" class="dark-mode-only" src="images/mdcollab_logo_white.svg">
+<img alt="mdCollab banner" title="mdCollab banner" width="398" height="100" class="light-mode-only" src="images/banner_black.svg">
+<img alt="mdCollab banner" title="mdCollab banner" width="398" height="100" class="dark-mode-only" src="images/banner_white.svg">
 <!-- markdownlint-enable  no-inline-html line-length -->
 
 !!! danger "🚧⚠️🚧 **mdCollab 2.0 is still in development!**"

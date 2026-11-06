@@ -5,7 +5,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
 <p align="center">
-  <img alt="mdCollab Logo" src="docs/content/images/mdcollab_logo_white.svg" width="398" height="100">
+  <img alt="mdCollab banner" src="docs/content/images/banner.svg" width="398" height="100">
 </p>
 
 # mdCollab
@@ -44,4 +44,7 @@ only. See [LICENSE](LICENSE) and [`LICENSES/`](LICENSES/) for details.
 mdCollab is a separate project and is not affiliated with or endorsed by the HedgeDoc project.
 “HedgeDoc” and the HedgeDoc logo are trademarks of their respective owners.
 See [TRADEMARKS.md](TRADEMARKS.md) for the mdCollab trademark policy.
+
+The mdCollab logo and icon assets in this repository are released under
+CC0-1.0 unless noted otherwise.
 

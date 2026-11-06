@@ -56,18 +56,6 @@ SPDX-FileCopyrightText = "2021 The HedgeDoc developers (see AUTHORS file)"
 SPDX-License-Identifier = "CC-BY-SA-4.0"
 
 [[annotations]]
-path = "docs/content/images/logo.svg"
-precedence = "aggregate"
-SPDX-FileCopyrightText = "2026 mdCollab contributors"
-SPDX-License-Identifier = "CC0-1.0"
-
-[[annotations]]
-path = "docs/content/images/mdcollab_logo_**.svg"
-precedence = "aggregate"
-SPDX-FileCopyrightText = "2026 mdCollab contributors"
-SPDX-License-Identifier = "CC0-1.0"
-
-[[annotations]]
 path = "docs/content/theme/styles/Roboto/**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2011 Christian Robertson"

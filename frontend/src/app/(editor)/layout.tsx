@@ -35,7 +35,7 @@ export default async function RootLayout({ children, appBar }: RootLayoutProps) 
   return (
     <html lang='en'>
       <head>
-        <link color='#b51f08' href='/icons/safari-pinned-tab.svg' rel='mask-icon' />
+        <link color='#3662AD' href='/icons/safari-pinned-tab.svg' rel='mask-icon' />
       </head>
       <body>
         <ExpectedOriginBoundary expectedOrigin={baseUrls.editor}>
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#2563eb',
+  themeColor: '#3662AD',
   width: 'device-width',
   initialScale: 1
 }

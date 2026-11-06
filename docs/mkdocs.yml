@@ -68,7 +68,7 @@ theme:
   name: 'material'
   language: en
   favicon: images/favicon.png
-  logo: images/logo.svg
+  logo: images/logo.png
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: light

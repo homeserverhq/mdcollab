@@ -17,8 +17,7 @@ mdCollab is not affiliated with or endorsed by the HedgeDoc project. This
 project does not use the HedgeDoc logo or other HedgeDoc brand assets.
 
 The mdCollab name and logo identify this project and its official releases.
-The logo placeholders in this repository are released under CC0-1.0 and are
-intended to be replaced with the final project artwork.
+The mdCollab logo in this repository is released under CC0-1.0.
 
 ## License
 

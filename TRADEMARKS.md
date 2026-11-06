@@ -18,8 +18,7 @@ assets.
 ## mdCollab
 
 The mdCollab name and logo are used to identify this project and its official
-releases. The logo placeholders in this repository are released under CC0-1.0
-and are intended to be replaced with the final project artwork.
+releases. The mdCollab logo in this repository is released under CC0-1.0.
 
 Do not use the mdCollab name or logo in a way that suggests endorsement or
 affiliation without permission from the mdCollab maintainers.

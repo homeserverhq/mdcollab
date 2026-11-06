@@ -23,12 +23,11 @@ export const MdCollabLogoVertical: React.FC<MdCollabLogoVerticalProps> = ({
       xmlns='http://www.w3.org/2000/svg'
       role='img'
       aria-label='mdCollab'>
-      <rect x='48' y='16' width='104' height='104' rx='24' fill='#2563eb' />
-      <path d='M74 50h52v32h-32l-12 12V82h-8z' fill='#fff' />
+      <image href='/logo.png' x='48' y='16' width='104' height='104' preserveAspectRatio='xMidYMid meet' />
       <text
         x='100'
         y='170'
-        fill={autoTextColor ? 'currentColor' : '#2563eb'}
+        fill={autoTextColor ? 'currentColor' : '#3662AD'}
         fontFamily='Arial, Helvetica, sans-serif'
         fontSize='28'
         fontWeight='700'

@@ -15,7 +15,7 @@ See LICENSE and LICENSES/AGPL-3.0-only.txt for the full license text.
 
 Modifications in this fork include, among other things:
 - Rebranding from HedgeDoc to mdCollab.
-- Replacement of HedgeDoc logo and icon assets with mdCollab placeholders.
+- Replacement of HedgeDoc logo and icon assets with mdCollab logo and icon assets.
 - Renaming of environment variables from HD_* to MDCOLLAB_*.
 - Renaming of the note API header and session cookie.
 - Removal of upstream community, documentation-site, and registry URLs.

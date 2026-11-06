@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="360" height="80" viewBox="0 0 360 80" role="img" aria-label="mdCollab">
-  <rect x="4" y="8" width="64" height="64" rx="16" fill="#2563eb"/>
-  <path d="M20 30h32v20H32l-8 8v-8h-4z" fill="#fff"/>
-  <text x="86" y="54" fill="#2563eb" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">mdCollab</text>
-</svg>
