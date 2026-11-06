@@ -16,8 +16,7 @@ This repository is an independent fork of
 [HedgeDoc 2](https://github.com/hedgedoc/hedgedoc), originally developed by
 The HedgeDoc developers. See [AUTHORS](AUTHORS) and [LICENSE](LICENSE) for the
 upstream copyright and license information. mdCollab is a separate project and
-is not affiliated with or endorsed by the HedgeDoc project. HedgeDoc and the
-HedgeDoc logo are trademarks of their respective owners.
+is not affiliated with or endorsed by the HedgeDoc project.
 
 ## Getting started
 
@@ -42,10 +41,7 @@ See [SECURITY.md](SECURITY.md).
 The source code is licensed under the GNU Affero General Public License v3.0
 only. See [LICENSE](LICENSE) and [`LICENSES/`](LICENSES/) for details.
 
-mdCollab is a fork of HedgeDoc. “HedgeDoc” and the HedgeDoc logo are trademarks
-of their respective owners. mdCollab does not use the HedgeDoc logo. See
-[TRADEMARKS.md](TRADEMARKS.md) for the mdCollab trademark policy.
+mdCollab is a separate project and is not affiliated with or endorsed by the HedgeDoc project.
+“HedgeDoc” and the HedgeDoc logo are trademarks of their respective owners.
+See [TRADEMARKS.md](TRADEMARKS.md) for the mdCollab trademark policy.
 
-The mdCollab logo and icon placeholders in this repository are released under
-CC0-1.0 unless noted otherwise. Replace them with the final project artwork
-before publishing a release.
