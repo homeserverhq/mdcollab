@@ -18,7 +18,9 @@ import type { RevealOptions } from 'reveal.js'
 import { EventEmitter2 } from 'eventemitter2'
 import React, { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react'
 import { setPrintMode } from '../../redux/print-mode/methods'
-import { usePrintKeyboardShortcut } from '../editor-page/hooks/use-print-keyboard-shortcut'
+import { usePrintSelfKeyboardShortcut } from '../editor-page/hooks/use-print-keyboard-shortcut'
+import { useApplicationState } from '../../hooks/common/use-application-state'
+import { useOnHtmlExportRequest } from './hooks/use-on-html-export-request'
 
 /**
  * Wraps the markdown rendering in an iframe.
@@ -33,6 +35,9 @@ export const RenderPageContent: React.FC = () => {
   const sendScrolling = useRef<boolean>(false)
   const [newLinesAreBreaks, setNewLinesAreBreaks] = useState<boolean>(true)
   const [slideOptions, setSlideOptions] = useState<RevealOptions>()
+  const printMode = useApplicationState((state) => state.printMode)
+
+  const resetPrintMode = useCallback(() => setPrintMode(false), [])
 
   useRendererReceiveHandler(
     CommunicationMessageType.SET_SLIDE_OPTIONS,
@@ -80,6 +85,8 @@ export const RenderPageContent: React.FC = () => {
     }, [communicator])
   )
 
+  useOnHtmlExportRequest(communicator)
+
   useRendererReceiveHandler(
     CommunicationMessageType.SET_PRINT_MODE,
     useCallback(({ printMode }) => {
@@ -95,15 +102,19 @@ export const RenderPageContent: React.FC = () => {
         const scrollToElement = (): boolean => {
           const targetElement = document.getElementById(elementId)
           const scrollElement = document.querySelector('[data-scroll-element]')
-          if (targetElement && scrollElement) {
-            sendScrolling.current = true
-            communicator.sendMessageToOtherSide({
-              type: CommunicationMessageType.ENABLE_RENDERER_SCROLL_SOURCE
-            })
-            scrollElement.scrollTo({ behavior: 'smooth', top: targetElement.offsetTop })
-            return true
+          if (!targetElement || !scrollElement) {
+            return false
           }
-          return false
+          sendScrolling.current = true
+          let top = targetElement.offsetTop
+          if (targetElement.parentElement?.className === 'footnote-ref') {
+            top = targetElement.parentElement.offsetTop
+          }
+          communicator.sendMessageToOtherSide({
+            type: CommunicationMessageType.ENABLE_RENDERER_SCROLL_SOURCE
+          })
+          scrollElement.scrollTo({ behavior: 'smooth', top: top })
+          return true
         }
 
         // On initial page load on slower computers, the markdown might not have rendered yet.
@@ -123,7 +134,7 @@ export const RenderPageContent: React.FC = () => {
     )
   )
 
-  usePrintKeyboardShortcut()
+  usePrintSelfKeyboardShortcut()
 
   const onMakeScrollSource = useCallback(() => {
     sendScrolling.current = true
@@ -185,6 +196,8 @@ export const RenderPageContent: React.FC = () => {
             newLinesAreBreaks={newLinesAreBreaks}
             scrollState={scrollState}
             slideOptions={slideOptions}
+            printMode={printMode}
+            onPrintModeConsumed={resetPrintMode}
           />
         )
       case RendererType.SIMPLE:
@@ -206,6 +219,8 @@ export const RenderPageContent: React.FC = () => {
     onHeightChange,
     onMakeScrollSource,
     onScroll,
+    printMode,
+    resetPrintMode,
     scrollState,
     slideOptions
   ])

@@ -24,7 +24,9 @@ export const fetchMotd = async (baseUrl: string): Promise<MotdApiResponse | unde
   }
   const motdUrl = `${baseUrl}public/motd.md`
   const response = await fetch(motdUrl, {
-    ...defaultConfig
+    ...defaultConfig,
+    cache: undefined,
+    next: { revalidate: 60 }
   })
 
   if (response.status !== 200) {

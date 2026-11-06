@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { describe, it, expect, beforeEach, afterEach, jest } from '@jest/globals';
-import type { SpyInstance } from 'jest-mock';
 import mockedEnv from 'mocked-env';
 
 import * as utilsModule from './utils';
@@ -102,7 +101,7 @@ describe('authConfig', () => {
     });
 
     describe('fails to be parsed', () => {
-      let spyConsoleError: SpyInstance;
+      let spyConsoleError: jest.Spied<typeof console.error>;
       let spyProcessExit: jest.Mock;
       let originalProcess: typeof process;
 
@@ -134,7 +133,7 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: Number must be less than or equal to 4',
+          'HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: Too big: expected number to be <=4',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
@@ -152,7 +151,7 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: Number must be greater than or equal to 0',
+          'HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: Too small: expected number to be >=0',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
@@ -194,7 +193,7 @@ describe('authConfig', () => {
     });
 
     describe('fails to be parsed', () => {
-      let spyConsoleError: SpyInstance;
+      let spyConsoleError: jest.Spied<typeof console.error>;
       let spyProcessExit: jest.Mock;
       let originalProcess: typeof process;
 
@@ -221,7 +220,9 @@ describe('authConfig', () => {
           },
         );
         authConfig();
-        expect(spyConsoleError.mock.calls[0][0]).toContain('HD_AUTH_SESSION_SECRET: Required');
+        expect(spyConsoleError.mock.calls[0][0]).toContain(
+          'HD_AUTH_SESSION_SECRET: Invalid input: expected string, received undefined',
+        );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
       });
@@ -238,7 +239,7 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_SESSION_SECRET: String must contain at least 32 character(s)',
+          'HD_AUTH_SESSION_SECRET: Too small: expected string to have >=32 characters',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
@@ -556,7 +557,7 @@ describe('authConfig', () => {
       });
     });
     describe('throws error', () => {
-      let spyConsoleError: SpyInstance;
+      let spyConsoleError: jest.Spied<typeof console.error>;
       let spyProcessExit: jest.Mock;
       let originalProcess: typeof process;
 
@@ -587,7 +588,9 @@ describe('authConfig', () => {
           },
         );
         authConfig();
-        expect(spyConsoleError.mock.calls[0][0]).toContain('HD_AUTH_LDAP_FUTURAMA_URL: Required');
+        expect(spyConsoleError.mock.calls[0][0]).toContain(
+          'HD_AUTH_LDAP_FUTURAMA_URL: Invalid input: expected string, received undefined',
+        );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
       });
@@ -604,7 +607,7 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_LDAP_FUTURAMA_SEARCH_BASE: Required',
+          'HD_AUTH_LDAP_FUTURAMA_SEARCH_BASE: Invalid input: expected string, received undefined',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
@@ -1070,7 +1073,7 @@ describe('authConfig', () => {
       });
     });
     describe('throws error', () => {
-      let spyConsoleError: SpyInstance;
+      let spyConsoleError: jest.Spied<typeof console.error>;
       let spyProcessExit: jest.Mock;
       let originalProcess: typeof process;
 
@@ -1101,7 +1104,9 @@ describe('authConfig', () => {
           },
         );
         authConfig();
-        expect(spyConsoleError.mock.calls[0][0]).toContain('HD_AUTH_OIDC_GITLAB_ISSUER: Required');
+        expect(spyConsoleError.mock.calls[0][0]).toContain(
+          'HD_AUTH_OIDC_GITLAB_ISSUER: Invalid input: expected string, received undefined',
+        );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
       });
@@ -1118,7 +1123,7 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_OIDC_GITLAB_CLIENT_ID: Required',
+          'HD_AUTH_OIDC_GITLAB_CLIENT_ID: Invalid input: expected string, received undefined',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
@@ -1136,7 +1141,7 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_OIDC_GITLAB_CLIENT_SECRET: Required',
+          'HD_AUTH_OIDC_GITLAB_CLIENT_SECRET: Invalid input: expected string, received undefined',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
@@ -1154,7 +1159,7 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          "HD_AUTH_OIDC_GITLAB_THEME: Invalid enum value. Expected 'google' | 'github' | 'gitlab' | 'facebook' | 'discord' | 'mastodon' | 'azure', received 'something else'",
+          'HD_AUTH_OIDC_GITLAB_THEME: Invalid option: expected one of "google"|"github"|"gitlab"|"facebook"|"discord"|"mastodon"|"azure"',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();

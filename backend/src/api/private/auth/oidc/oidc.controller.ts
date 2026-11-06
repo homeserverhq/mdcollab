@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: 2025 The HedgeDoc developers (see AUTHORS file)
+ * SPDX-FileCopyrightText: 2026 The HedgeDoc developers (see AUTHORS file)
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { AuthProviderType } from '@hedgedoc/commons';
+import { AuthProviderType, AuthErrorCodes } from '@hedgedoc/commons';
 import { FieldNameIdentity } from '@hedgedoc/database';
 import {
   BadRequestException,
@@ -11,7 +11,6 @@ import {
   Controller,
   Get,
   HttpCode,
-  InternalServerErrorException,
   Param,
   Post,
   Redirect,
@@ -20,6 +19,7 @@ import {
 } from '@nestjs/common';
 import { HttpException } from '@nestjs/common/exceptions/http.exception';
 import { ApiTags } from '@nestjs/swagger';
+import { errors as oidcErrors } from 'openid-client';
 
 import { IdentityService } from '../../../../auth/identity.service';
 import { OidcService } from '../../../../auth/oidc/oidc.service';
@@ -42,13 +42,28 @@ export class OidcController {
     this.logger.setContext(OidcController.name);
   }
 
+  // These GET endpoints have side effects (session mutation), so reject
+  // anything that isn't a real navigation - avoids double-firing from
+  // client-side link prefetching. Only rejects on a positive mismatch.
+  private assertTopLevelNavigation(request: RequestWithSession): void {
+    const mode = request.headers['sec-fetch-mode'];
+    const dest = request.headers['sec-fetch-dest'];
+    if (
+      (mode !== undefined && mode !== 'navigate') ||
+      (dest !== undefined && dest !== 'document')
+    ) {
+      throw new BadRequestException('This endpoint must be reached via a real browser navigation');
+    }
+  }
+
   @Get(':oidcIdentifier')
   @Redirect()
   @OpenApi(201, 400, 401, 429)
-  loginWithOpenIdConnect(
+  async loginWithOpenIdConnect(
     @Req() request: RequestWithSession,
     @Param('oidcIdentifier') oidcIdentifier: string,
-  ): { url: string } {
+  ): Promise<{ url: string }> {
+    this.assertTopLevelNavigation(request);
     const code = this.oidcService.generateCode();
     const state = this.oidcService.generateState();
     request.session.oidc = {
@@ -62,6 +77,9 @@ export class OidcController {
       authProviderIdentifier: oidcIdentifier,
     };
     const authorizationUrl = this.oidcService.getAuthorizationUrl(oidcIdentifier, code, state);
+    // Persist before redirecting - the async onSend save otherwise races
+    // @Redirect()'s response and can crash with ERR_HTTP_HEADERS_SENT.
+    await request.session.save();
     return { url: authorizationUrl };
   }
 
@@ -72,6 +90,7 @@ export class OidcController {
     @Param('oidcIdentifier') oidcIdentifier: string,
     @Req() request: RequestWithSession,
   ): Promise<{ url: string }> {
+    this.assertTopLevelNavigation(request);
     try {
       const userInfo = await this.oidcService.extractUserInfoFromCallback(oidcIdentifier, request);
       const oidcUserIdentifier = request.session.pendingUser?.providerUserId;
@@ -86,6 +105,8 @@ export class OidcController {
       const mayUpdate = this.identityService.mayUpdateIdentity(oidcIdentifier);
 
       if (identity === null) {
+        // See loginWithOpenIdConnect() above.
+        await request.session.save();
         return { url: '/new-user' };
       }
 
@@ -103,13 +124,43 @@ export class OidcController {
       request.session.loginAuthProviderType = AuthProviderType.OIDC;
       request.session.loginAuthProviderIdentifier = oidcIdentifier;
       request.session.pendingUser = null;
+      await request.session.save();
       return { url: '/' };
     } catch (error) {
-      if (error instanceof HttpException) {
-        throw error;
+      const errorParams = new URLSearchParams();
+      if (error instanceof oidcErrors.OPError) {
+        errorParams.set('error', AuthErrorCodes.PROVIDER);
+        if (error.error) {
+          errorParams.set('providerError', error.error);
+        }
+        if (error.error_description) {
+          errorParams.set('providerDescription', error.error_description);
+        }
+      } else if (error instanceof oidcErrors.RPError || error instanceof HttpException) {
+        errorParams.set('error', AuthErrorCodes.INVALID_RESPONSE);
+      } else {
+        errorParams.set('error', AuthErrorCodes.INTERNAL);
       }
-      this.logger.log('Error during OIDC callback: ' + String(error), 'callback');
-      throw new InternalServerErrorException();
+
+      this.logger.error(
+        'Error during OIDC callback: ' + String(error),
+        error instanceof Error ? error.stack : undefined,
+        'callback',
+      );
+      request.session.pendingUser = null;
+      // The callback may fail before extractUserInfoFromCallback assigns
+      // session.oidc (e.g. state mismatch on a session that never ran
+      // loginWithOpenIdConnect), so reset the whole object like
+      // AuthController.deletePendingUserData does instead of touching a
+      // possibly-undefined property.
+      request.session.oidc = {
+        idToken: null,
+        sid: null,
+        loginCode: null,
+        loginState: null,
+      };
+      await request.session.save();
+      return { url: `/login?${errorParams.toString()}` };
     }
   }
 

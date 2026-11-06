@@ -28,7 +28,7 @@ jobs:
     if: "(github.event_name == 'pull_request_target') == github.event.pull_request.head.repo.fork"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
       - name: Setup node
@@ -37,7 +37,7 @@ jobs:
           NODEJS_VERSION: ${{ env.NODEJS_VERSION }}
 
       - name: Run e2e tests
-        run: yarn test:e2e:ci --filter=@hedgedoc/backend
+        run: pnpm run test:e2e:ci --filter=@hedgedoc/backend
         shell: bash
         env:
           HEDGEDOC_TEST_DB_TYPE: sqlite
@@ -46,7 +46,7 @@ jobs:
           TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
       - name: Upload coverage
-        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           directory: backend/coverage-e2e
           flags: backend, e2e-tests, backend-e2e-tests
@@ -57,7 +57,7 @@ jobs:
     services:
       mariadb:
         # renovate: datasource=docker depName=mariadb
-        image: mariadb:11.8.6@sha256:8164f184d16c30e2f159e30518113667b796306dff0fe558876ab1ff521a682f
+        image: mariadb:12.3.3@sha256:dd9b303aed4f4890ed09f766d8ca9ddfd176c0c6f6267feff53b3192ec65a979
         env:
           MARIADB_USER: hedgedoc
           MARIADB_PASSWORD: hedgedoc
@@ -69,7 +69,7 @@ jobs:
         ports:
           - 3306:3306
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
       - name: Setup node
@@ -78,7 +78,7 @@ jobs:
           NODEJS_VERSION: ${{ env.NODEJS_VERSION }}
 
       - name: Run e2e tests
-        run: yarn test:e2e:ci --filter=@hedgedoc/backend
+        run: pnpm run test:e2e:ci --filter=@hedgedoc/backend
         shell: bash
         env:
           HEDGEDOC_TEST_DB_TYPE: mariadb
@@ -92,7 +92,7 @@ jobs:
     services:
       postgres:
         # renovate: datasource=docker depName=postgres
-        image: postgres:16.13@sha256:78df81b1442dcc764c1104154da7162635e40cfffe67579c42a1c1b96dfc209c
+        image: postgres:18.6@sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280
         env:
           POSTGRES_PASSWORD: hedgedoc
           POSTGRES_USER: hedgedoc
@@ -100,7 +100,7 @@ jobs:
         ports:
           - 5432:5432
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
       - name: Setup node
@@ -109,7 +109,7 @@ jobs:
           NODEJS_VERSION: ${{ env.NODEJS_VERSION }}
 
       - name: Run e2e tests
-        run: yarn test:e2e:ci --filter=@hedgedoc/backend
+        run: pnpm run test:e2e:ci --filter=@hedgedoc/backend
         shell: bash
         env:
           HEDGEDOC_TEST_DB_TYPE: postgres
@@ -133,7 +133,7 @@ jobs:
 #          NODEJS_VERSION: ${{ env.NODEJS_VERSION }}
 #
 #      - name: Build test production build
-#        run: yarn build:test --filter=@hedgedoc/frontend
+#        run: pnpm run build:test --filter=@hedgedoc/frontend
 #        shell: bash
 #        env:
 #          NODEJS_VERSION: ${{ env.NODEJS_VERSION }}
@@ -172,7 +172,7 @@ jobs:
 #          NODEJS_VERSION: ${{ env.NODEJS_VERSION }}
 #
 #      - name: Show cypress info
-#        run: yarn cypress info
+#        run: pnpm exec cypress info
 #        working-directory: frontend/
 #        env:
 #          CYPRESS_CACHE_FOLDER: /home/runner/.cache/cypress
@@ -189,7 +189,7 @@ jobs:
 #
 #      - name: Run server
 #        working-directory: frontend/
-#        run: screen -dmS server -L yarn start
+#        run: screen -dmS server -L pnpm run start
 #        env:
 #          NODE_ENV: test
 #          HOSTNAME: "127.0.0.1"
@@ -200,7 +200,7 @@ jobs:
 #        run: "sleep 3 && curl -L --max-time 120 http://127.0.0.1:3001/"
 #
 #      - name: Run cypress
-#        run: yarn test:e2e:ci --filter=@hedgedoc/frontend
+#        run: pnpm run test:e2e:ci --filter=@hedgedoc/frontend
 #        shell: bash
 #        env:
 #          CYPRESS_CACHE_FOLDER: /home/runner/.cache/cypress

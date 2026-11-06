@@ -32,13 +32,14 @@ export const PasswordAgainField: React.FC<PasswordAgainFieldProps> = ({
   const placeholderText = useTranslatedText('login.register.passwordAgain')
 
   return (
-    <Form.Group>
+    <Form.Group className={'my-2'}>
       <Form.Label>
         <Trans i18nKey='login.register.passwordAgain' />
       </Form.Label>
       <Form.Control
         type='password'
         size='sm'
+        value={value}
         isInvalid={isInvalid}
         isValid={isValid}
         onChange={onChange}

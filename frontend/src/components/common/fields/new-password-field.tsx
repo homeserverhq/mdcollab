@@ -24,11 +24,12 @@ export const NewPasswordField: React.FC<CommonFieldProps> = ({ onChange, value, 
   return (
     <Form.Group>
       <Form.Label>
-        <Trans i18nKey='profile.changePassword.new' />
+        <Trans i18nKey='preferences.account.changePassword.new' />
       </Form.Label>
       <Form.Control
         type='password'
         size='sm'
+        value={value}
         isValid={isValid}
         isInvalid={hasError}
         onChange={onChange}
@@ -37,7 +38,7 @@ export const NewPasswordField: React.FC<CommonFieldProps> = ({ onChange, value, 
         required
       />
       <Form.Text>
-        <Trans i18nKey='login.register.passwordInfo' />
+        <Trans i18nKey='preferences.account.changePassword.info' />
       </Form.Text>
     </Form.Group>
   )

@@ -1,10 +1,9 @@
 /*
- * SPDX-FileCopyrightText: 2025 The HedgeDoc developers (see AUTHORS file)
+ * SPDX-FileCopyrightText: 2026 The HedgeDoc developers (see AUTHORS file)
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { describe, it, expect, beforeEach, afterEach, jest } from '@jest/globals';
-import type { SpyInstance } from 'jest-mock';
 import mockedEnv from 'mocked-env';
 
 import customizationConfig from './customization.config';
@@ -23,13 +22,11 @@ describe('customizationConfig', () => {
   it('correctly parses valid config', () => {
     const restore = mockedEnv(
       {
-        /* oxlint-disable @typescript-eslint/naming-convention */
         HD_BRANDING_CUSTOM_NAME: customName,
         HD_BRANDING_CUSTOM_LOGO: customLogo,
         HD_URLS_PRIVACY: privacyUrl,
         HD_URLS_TERMS_OF_USE: termsOfUseUrl,
         HD_URLS_IMPRINT: imprintUrl,
-        /* oxlint-enable @typescript-eslint/naming-convention */
       },
       {
         clear: true,
@@ -45,7 +42,7 @@ describe('customizationConfig', () => {
   });
 
   describe('throws error', () => {
-    let spyConsoleError: SpyInstance;
+    let spyConsoleError: jest.Spied<typeof console.error>;
     let spyProcessExit: jest.Mock;
     let originalProcess: typeof process;
 
@@ -67,23 +64,21 @@ describe('customizationConfig', () => {
     it('when anything is wrongly configured', () => {
       const restore = mockedEnv(
         {
-          /* oxlint-disable @typescript-eslint/naming-convention */
           HD_BRANDING_CUSTOM_NAME: customName,
           HD_BRANDING_CUSTOM_LOGO: invalidCustomLogo,
           HD_URLS_PRIVACY: invalidPrivacyUrl,
           HD_URLS_TERMS_OF_USE: invalidTermsOfUseUrl,
           HD_URLS_IMPRINT: invalidImprintUrl,
-          /* oxlint-enable @typescript-eslint/naming-convention */
         },
         {
           clear: true,
         },
       );
       customizationConfig();
-      expect(spyConsoleError.mock.calls[0][0]).toContain('- HD_BRANDING_CUSTOM_LOGO: Invalid url');
-      expect(spyConsoleError.mock.calls[0][0]).toContain('- HD_URLS_PRIVACY: Invalid url');
-      expect(spyConsoleError.mock.calls[0][0]).toContain('- HD_URLS_TERMS_OF_USE: Invalid url');
-      expect(spyConsoleError.mock.calls[0][0]).toContain('- HD_URLS_IMPRINT: Invalid url');
+      expect(spyConsoleError.mock.calls[0][0]).toContain('- HD_BRANDING_CUSTOM_LOGO: Invalid URL');
+      expect(spyConsoleError.mock.calls[0][0]).toContain('- HD_URLS_PRIVACY: Invalid URL');
+      expect(spyConsoleError.mock.calls[0][0]).toContain('- HD_URLS_TERMS_OF_USE: Invalid URL');
+      expect(spyConsoleError.mock.calls[0][0]).toContain('- HD_URLS_IMPRINT: Invalid URL');
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
     });

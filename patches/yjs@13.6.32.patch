@@ -1,0 +1,33 @@
+# This warning should indicate that you mix cjs and mjs imports.
+# While this is a nice feature it has a weird side effect:
+# Jest triggers this check and floods the console every time a test imports yjs.
+# This happens between all test suites and every time you call jest.resetModules().
+# Nothing breaks here. Jest does what it should.
+# Therefore this commit suppresses this warning in test mode.
+
+diff --git a/dist/yjs.cjs b/dist/yjs.cjs
+index 81a465d..4dde332 100644
+--- a/dist/yjs.cjs
++++ b/dist/yjs.cjs
+@@ -10313,7 +10313,7 @@ const glo = /** @type {any} */ (typeof globalThis !== 'undefined'
+ 
+ const importIdentifier = '__ $YJS$ __';
+ 
+-if (glo[importIdentifier] === true) {
++if (glo[importIdentifier] === true && process.env.NODE_ENV !== 'test') {
+   /**
+    * Dear reader of this message. Please take this seriously.
+    *
+diff --git a/dist/yjs.mjs b/dist/yjs.mjs
+index 513519b..a38a7f0 100644
+--- a/dist/yjs.mjs
++++ b/dist/yjs.mjs
+@@ -10276,7 +10276,7 @@ const glo = /** @type {any} */ (typeof globalThis !== 'undefined'
+ 
+ const importIdentifier = '__ $YJS$ __';
+ 
+-if (glo[importIdentifier] === true) {
++if (glo[importIdentifier] === true && process.env.NODE_ENV !== 'test') {
+   /**
+    * Dear reader of this message. Please take this seriously.
+    *

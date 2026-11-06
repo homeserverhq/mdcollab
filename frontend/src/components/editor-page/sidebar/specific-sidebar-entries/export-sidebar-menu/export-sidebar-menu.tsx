@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2024 The HedgeDoc developers (see AUTHORS file)
+ * SPDX-FileCopyrightText: 2026 The HedgeDoc developers (see AUTHORS file)
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
@@ -10,17 +10,14 @@ import type { SpecificSidebarMenuProps } from '../../types'
 import { DocumentSidebarMenuSelection } from '../../types'
 import { ExportMarkdownSidebarEntry } from './entries/export-markdown-sidebar-entry'
 import React, { Fragment, useCallback } from 'react'
-import {
-  ArrowLeft as IconArrowLeft,
-  CloudDownload as IconCloudDownload,
-  FileCode as IconFileCode
-} from 'react-bootstrap-icons'
+import { ArrowLeft as IconArrowLeft, CloudDownload as IconCloudDownload } from 'react-bootstrap-icons'
 import { Trans, useTranslation } from 'react-i18next'
 import { concatCssClasses } from '../../../../../utils/concat-css-classes'
 import styles from '../../sidebar-button/sidebar-button.module.scss'
 import { ExportGistSidebarEntry } from './entries/export-gist-sidebar-entry/export-gist-sidebar-entry'
 import { ExportGitlabSnippetSidebarEntry } from './entries/export-gitlab-snippet-sidebar-entry/export-gitlab-snippet-sidebar-entry'
 import { ExportPrintSidebarEntry } from './entries/export-print-sidebar-entry'
+import { ExportHtmlSidebarEntries } from './entries/export-html-sidebar-entries/export-html-sidebar-entries'
 
 /**
  * Renders the export menu for the sidebar.
@@ -51,21 +48,14 @@ export const ExportSidebarMenu: React.FC<SpecificSidebarMenuProps> = ({
         icon={expand ? IconArrowLeft : IconCloudDownload}
         className={concatCssClasses(className, { [styles.main]: expand })}
         onClick={onClickHandler}>
-        <Trans i18nKey={'editor.documentBar.export'} />
+        <Trans i18nKey={'editor.importExport.export.button'} />
       </SidebarButton>
       <SidebarMenu expand={expand}>
         <ExportPrintSidebarEntry />
         <ExportMarkdownSidebarEntry />
-        <SidebarButton icon={IconFileCode} disabled={true}>
-          HTML
-        </SidebarButton>
-
+        <ExportHtmlSidebarEntries />
         <ExportGistSidebarEntry />
         <ExportGitlabSnippetSidebarEntry />
-
-        <SidebarButton icon={IconFileCode} disabled={true}>
-          <Trans i18nKey='editor.export.rawHtml' />
-        </SidebarButton>
       </SidebarMenu>
     </Fragment>
   )
