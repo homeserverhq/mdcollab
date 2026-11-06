@@ -1,2 +1,1 @@
-This is the test motd text
-:smile:
+No announcements, have a good day! :smile:
