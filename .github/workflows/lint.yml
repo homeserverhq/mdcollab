@@ -35,9 +35,7 @@ jobs:
       - name: Run Oxlint
         run: pnpm run lint
         shell: bash
-        env:
 
       - name: Run Oxfmt
         run: pnpm run format
         shell: bash
-        env:
