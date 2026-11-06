@@ -18,7 +18,9 @@ export type ExternalServicesConfig = z.infer<typeof schema>;
 
 export default registerAs('externalServicesConfig', () => {
   if (process.env.MDCOLLAB_IMAGE_PROXY !== undefined) {
-    throw new Error("MDCOLLAB_IMAGE_PROXY is currently not yet supported. Please don't configure it");
+    throw new Error(
+      "MDCOLLAB_IMAGE_PROXY is currently not yet supported. Please don't configure it",
+    );
   }
   const externalConfig = schema.safeParse({
     plantumlServer: process.env.MDCOLLAB_PLANTUML_SERVER ?? null,

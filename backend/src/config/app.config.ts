@@ -60,7 +60,13 @@ const schema = z
       .superRefine(validateUrl)
       .default('')
       .describe('MDCOLLAB_RENDERER_BASE_URL'),
-    backendPort: z.number().positive().int().max(65535).default(3000).describe('MDCOLLAB_BACKEND_PORT'),
+    backendPort: z
+      .number()
+      .positive()
+      .int()
+      .max(65535)
+      .default(3000)
+      .describe('MDCOLLAB_BACKEND_PORT'),
     backendBindIp: z
       .union([z.ipv4(), z.ipv6()])
       .default('127.0.0.1')

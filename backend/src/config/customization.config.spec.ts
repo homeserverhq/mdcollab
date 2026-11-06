@@ -75,9 +75,13 @@ describe('customizationConfig', () => {
         },
       );
       customizationConfig();
-      expect(spyConsoleError.mock.calls[0][0]).toContain('- MDCOLLAB_BRANDING_CUSTOM_LOGO: Invalid URL');
+      expect(spyConsoleError.mock.calls[0][0]).toContain(
+        '- MDCOLLAB_BRANDING_CUSTOM_LOGO: Invalid URL',
+      );
       expect(spyConsoleError.mock.calls[0][0]).toContain('- MDCOLLAB_URLS_PRIVACY: Invalid URL');
-      expect(spyConsoleError.mock.calls[0][0]).toContain('- MDCOLLAB_URLS_TERMS_OF_USE: Invalid URL');
+      expect(spyConsoleError.mock.calls[0][0]).toContain(
+        '- MDCOLLAB_URLS_TERMS_OF_USE: Invalid URL',
+      );
       expect(spyConsoleError.mock.calls[0][0]).toContain('- MDCOLLAB_URLS_IMPRINT: Invalid URL');
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();

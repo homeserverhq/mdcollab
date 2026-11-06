@@ -38,7 +38,10 @@ const dbTlsSchema = z
     caPath: z.string().optional().describe('MDCOLLAB_DATABASE_TLS_CA_PATH'),
     certPath: z.string().optional().describe('MDCOLLAB_DATABASE_TLS_CERT_PATH'),
     keyPath: z.string().optional().describe('MDCOLLAB_DATABASE_TLS_KEY_PATH'),
-    rejectUnauthorized: z.boolean().default(true).describe('MDCOLLAB_DATABASE_TLS_REJECT_UNAUTHORIZED'),
+    rejectUnauthorized: z
+      .boolean()
+      .default(true)
+      .describe('MDCOLLAB_DATABASE_TLS_REJECT_UNAUTHORIZED'),
     ciphers: z.string().optional().describe('MDCOLLAB_DATABASE_TLS_CIPHERS'),
     minVersion: tlsVersionEnum.optional().describe('MDCOLLAB_DATABASE_TLS_MIN_VERSION'),
     maxVersion: tlsVersionEnum.optional().describe('MDCOLLAB_DATABASE_TLS_MAX_VERSION'),
@@ -101,7 +104,9 @@ export default registerAs('databaseConfig', () => {
       caPath: process.env.MDCOLLAB_DATABASE_TLS_CA_PATH,
       certPath: process.env.MDCOLLAB_DATABASE_TLS_CERT_PATH,
       keyPath: process.env.MDCOLLAB_DATABASE_TLS_KEY_PATH,
-      rejectUnauthorized: parseOptionalBoolean(process.env.MDCOLLAB_DATABASE_TLS_REJECT_UNAUTHORIZED),
+      rejectUnauthorized: parseOptionalBoolean(
+        process.env.MDCOLLAB_DATABASE_TLS_REJECT_UNAUTHORIZED,
+      ),
       ciphers: process.env.MDCOLLAB_DATABASE_TLS_CIPHERS,
       minVersion: process.env.MDCOLLAB_DATABASE_TLS_MIN_VERSION,
       maxVersion: process.env.MDCOLLAB_DATABASE_TLS_MAX_VERSION,

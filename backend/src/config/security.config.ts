@@ -54,7 +54,12 @@ const securityConfigSchema = z.object({
         .describe('MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_WINDOW'),
     }),
     auth: z.object({
-      max: z.number().int().nonnegative().default(40).describe('MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_MAX'),
+      max: z
+        .number()
+        .int()
+        .nonnegative()
+        .default(40)
+        .describe('MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_MAX'),
       window: z
         .number()
         .int()
@@ -85,7 +90,9 @@ export default registerAs('securityConfig', () => {
       },
       unauthenticated: {
         max: parseOptionalNumber(process.env.MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_MAX),
-        window: parseOptionalNumber(process.env.MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_WINDOW),
+        window: parseOptionalNumber(
+          process.env.MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_WINDOW,
+        ),
       },
       auth: {
         max: parseOptionalNumber(process.env.MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_MAX),

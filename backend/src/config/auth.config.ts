@@ -25,8 +25,14 @@ const ldapSchema = z
     bindDn: z.string().optional().describe('MDCOLLAB_AUTH_LDAP_*_BIND_DN'),
     bindCredentials: z.string().optional().describe('MDCOLLAB_AUTH_LDAP_*_BIND_CREDENTIALS'),
     searchBase: z.string().describe('MDCOLLAB_AUTH_LDAP_*_SEARCH_BASE'),
-    searchFilter: z.string().default('(uid={{username}})').describe('MDCOLLAB_AUTH_LDAP_*_SEARCH_FILTER'),
-    searchAttributes: z.array(z.string()).optional().describe('MDCOLLAB_AUTH_LDAP_*_SEARCH_ATTRIBUTES'),
+    searchFilter: z
+      .string()
+      .default('(uid={{username}})')
+      .describe('MDCOLLAB_AUTH_LDAP_*_SEARCH_FILTER'),
+    searchAttributes: z
+      .array(z.string())
+      .optional()
+      .describe('MDCOLLAB_AUTH_LDAP_*_SEARCH_ATTRIBUTES'),
     userIdField: z.string().default('uid').describe('MDCOLLAB_AUTH_LDAP_*_USER_ID_FIELD'),
     displayNameField: z
       .string()
@@ -94,7 +100,10 @@ const oidcSchema = z.object({
   userinfoUrl: z.url().optional().describe('MDCOLLAB_AUTH_OIDC_*_USERINFO_URL'),
   endSessionUrl: z.url().optional().describe('MDCOLLAB_AUTH_OIDC_*_END_SESSION_URL'),
   scope: z.string().default('openid profile email').describe('MDCOLLAB_AUTH_OIDC_*_SCOPE'),
-  usernameField: z.string().default('preferred_username').describe('MDCOLLAB_AUTH_OIDC_*_USERNAME_FIELD'),
+  usernameField: z
+    .string()
+    .default('preferred_username')
+    .describe('MDCOLLAB_AUTH_OIDC_*_USERNAME_FIELD'),
   userIdField: z.string().default('sub').describe('MDCOLLAB_AUTH_OIDC_*_USER_ID_FIELD'),
   displayNameField: z.string().default('name').describe('MDCOLLAB_AUTH_OIDC_*_DISPLAY_NAME_FIELD'),
   profilePictureField: z
@@ -102,7 +111,10 @@ const oidcSchema = z.object({
     .default('picture')
     .describe('MDCOLLAB_AUTH_OIDC_*_PROFILE_PICTURE_FIELD'),
   emailField: z.string().default('email').describe('MDCOLLAB_AUTH_OIDC_*_EMAIL_FIELD'),
-  enableRegistration: z.boolean().default(true).describe('MDCOLLAB_AUTH_OIDC_*_ENABLE_REGISTRATION'),
+  enableRegistration: z
+    .boolean()
+    .default(true)
+    .describe('MDCOLLAB_AUTH_OIDC_*_ENABLE_REGISTRATION'),
 });
 
 const schema = z.object({
@@ -173,7 +185,9 @@ export default registerAs('authConfig', () => {
       tlsMinVersion: process.env[`MDCOLLAB_AUTH_LDAP_${name}_TLS_MIN_VERSION`] as
         | 'TLSv1' // This typecast is required since zod validates the input later but TypeScript already expects valid input
         | undefined,
-      tlsMaxVersion: process.env[`MDCOLLAB_AUTH_LDAP_${name}_TLS_MAX_VERSION`] as 'TLSv1' | undefined,
+      tlsMaxVersion: process.env[`MDCOLLAB_AUTH_LDAP_${name}_TLS_MAX_VERSION`] as
+        | 'TLSv1'
+        | undefined,
     };
   });
 

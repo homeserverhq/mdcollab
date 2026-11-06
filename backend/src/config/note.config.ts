@@ -108,8 +108,8 @@ export type NoteConfig = z.infer<typeof schema>;
 
 export default registerAs('noteConfig', () => {
   const noteConfig = schema.safeParse({
-    forbiddenAliases: toArrayConfig(process.env.MDCOLLAB_NOTE_FORBIDDEN_ALIASES, ',')?.map((alias) =>
-      alias.toLowerCase(),
+    forbiddenAliases: toArrayConfig(process.env.MDCOLLAB_NOTE_FORBIDDEN_ALIASES, ',')?.map(
+      (alias) => alias.toLowerCase(),
     ),
     maxLength: parseOptionalNumber(process.env.MDCOLLAB_NOTE_MAX_LENGTH),
     permissions: {

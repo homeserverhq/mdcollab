@@ -18,7 +18,10 @@ const cspSchema = z.object({
 export type CspConfig = z.infer<typeof cspSchema>;
 
 export default registerAs('cspConfig', () => {
-  if (process.env.MDCOLLAB_CSP_ENABLE !== undefined || process.env.MDCOLLAB_CSP_REPORT_URI !== undefined) {
+  if (
+    process.env.MDCOLLAB_CSP_ENABLE !== undefined ||
+    process.env.MDCOLLAB_CSP_REPORT_URI !== undefined
+  ) {
     throw new Error("CSP config is currently not yet supported. Please don't configure it");
   }
 
