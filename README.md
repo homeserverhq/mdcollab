@@ -15,18 +15,15 @@ mdCollab lets you create real-time collaborative markdown notes.
 This repository is an independent fork of
 [HedgeDoc 2](https://github.com/hedgedoc/hedgedoc), originally developed by
 The HedgeDoc developers. See [AUTHORS](AUTHORS) and [LICENSE](LICENSE) for the
-upstream copyright and license information.
+upstream copyright and license information. mdCollab is a separate project and
+is not affiliated with or endorsed by the HedgeDoc project. HedgeDoc and the
+HedgeDoc logo are trademarks of their respective owners.
 
 ## Getting started
 
 - Install mdCollab using the documentation in [`docs/`](docs/).
 - Read the configuration reference in [`docs/content/references/config/`](docs/content/references/config/).
 - Report bugs or feature requests in the [mdCollab repository](https://github.com/your-org/mdcollab/issues).
-
-## State of the project
-
-mdCollab is based on the HedgeDoc 2 codebase. It is a separate project and is
-not affiliated with or endorsed by the HedgeDoc project.
 
 ## Development
 
