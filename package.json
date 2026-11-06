@@ -33,10 +33,10 @@
   "description": "Real-time collaborative markdown notes",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/mdcollab.git"
+    "url": "https://github.com/homeserverhq/mdcollab.git"
   },
-  "homepage": "https://github.com/your-org/mdcollab",
+  "homepage": "https://github.com/homeserverhq/mdcollab",
   "bugs": {
-    "url": "https://github.com/your-org/mdcollab/issues"
+    "url": "https://github.com/homeserverhq/mdcollab/issues"
   }
 }

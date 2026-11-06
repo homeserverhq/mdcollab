@@ -18,7 +18,7 @@ export class ForkAwesomeHtmlTagAppExtension extends AppExtension {
     return [
       new SingleLineRegexLinter(
         forkAwesomeRegex,
-        t('editor.linter.fork-awesome', { link: 'https://github.com/your-org/mdcollab' })
+        t('editor.linter.fork-awesome', { link: 'https://github.com/homeserverhq/mdcollab' })
       )
     ]
   }

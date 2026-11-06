@@ -50,7 +50,7 @@ There are different ways how you can participate in the mdCollab project:
 [config-reference]: references/config/index.md
 
 [faq]: faq/index.md
-[issue-tracker]: https://github.com/your-org/mdcollab/issues/new/choose
+[issue-tracker]: https://github.com/homeserverhq/mdcollab/issues/new/choose
 
 [tutorials]: tutorials/index.md
 [how-to]: how-to/index.md

@@ -24,7 +24,7 @@ We will use [Docker][docker-docs] to accomplish this.
 5. Download these files:
 
    ```shell
-   BASE_URL=https://raw.githubusercontent.com/your-org/mdcollab/develop/docs/content/files/setup-docker
+   BASE_URL=https://raw.githubusercontent.com/homeserverhq/mdcollab/develop/docs/content/files/setup-docker
    curl -o .env "$BASE_URL/config.env"
    curl -o Caddyfile "$BASE_URL/Caddyfile"
    curl -o docker-compose.yml "$BASE_URL/docker-compose.yml"

@@ -119,9 +119,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/mdcollab.git"
+    "url": "https://github.com/homeserverhq/mdcollab.git"
   },
   "bugs": {
-    "url": "https://github.com/your-org/mdcollab/issues"
+    "url": "https://github.com/homeserverhq/mdcollab/issues"
   }
 }

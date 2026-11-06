@@ -14,7 +14,7 @@ resources to maintain multiple versions.
 ## Reporting a Vulnerability
 
 Please use the private security advisory feature of the
-[mdCollab repository](https://github.com/your-org/mdcollab/security/advisories/new).
+[mdCollab repository](https://github.com/homeserverhq/mdcollab/security/advisories/new).
 This allows you to get in direct, but private contact with the maintainers.
 
 Please provide as much information as possible so that the maintainers can

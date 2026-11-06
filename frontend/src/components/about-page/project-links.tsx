@@ -23,7 +23,7 @@ export const ProjectLinks = () => {
         </Card.Title>
         <ListGroup>
           <ListGroup.Item>
-            <ExternalLink text={t('about.project.github')} icon={IconGithub} href={links.githubOrg} />
+            <ExternalLink text={t('about.project.github')} icon={IconGithub} href={links.sourceCode} />
           </ListGroup.Item>
           <ListGroup.Item>
             <ExternalLink text={t('about.project.reportIssue')} icon={IconTag} href={links.issues} />

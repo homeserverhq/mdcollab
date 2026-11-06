@@ -5,7 +5,7 @@
 version = 1
 SPDX-PackageName = "mdcollab"
 SPDX-PackageSupplier = "mdCollab contributors"
-SPDX-PackageDownloadLocation = "https://github.com/your-org/mdcollab"
+SPDX-PackageDownloadLocation = "https://github.com/homeserverhq/mdcollab"
 
 [[annotations]]
 path = ".idea/**"

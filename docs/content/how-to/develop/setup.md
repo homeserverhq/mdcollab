@@ -20,7 +20,7 @@ and the provided configuration.
 
    <!-- markdownlint-disable proper-names -->
    ```shell
-   git clone https://github.com/your-org/mdcollab.git
+   git clone https://github.com/homeserverhq/mdcollab.git
    cd mdcollab
    ```
    <!-- markdownlint-enable proper-names -->
@@ -52,7 +52,7 @@ If you want to run mdCollab in dev mode some preconditions have to be met.
    See `.nvmrc` for the version we develop against.
 2. Make sure that [pnpm][pnpm] is installed.
    <!-- markdownlint-disable proper-names -->
-3. Clone this repo (e.g. `git clone https://github.com/your-org/mdcollab.git mdcollab`)
+3. Clone this repo (e.g. `git clone https://github.com/homeserverhq/mdcollab.git mdcollab`)
    <!-- markdownlint-enable proper-names -->
 4. Go into the cloned directory
 
@@ -172,7 +172,7 @@ To do so, you need to set the `MDCOLLAB_BASE_URL` environment variable according
 Furthermore, for Caddy to work with a domain name (possibly creating TLS certificates),
 set `CADDY_HOST` to your domain (for example `CADDY_HOST=http://my-mdcollab.home:9000`).
 
-[mdcollab-repo]: https://github.com/your-org/mdcollab
+[mdcollab-repo]: https://github.com/homeserverhq/mdcollab
 [pnpm]: https://pnpm.io/installation
 [caddy]: https://caddyserver.com/
 [config-docs]: ../../references/config/index.md

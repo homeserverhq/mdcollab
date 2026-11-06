@@ -61,7 +61,7 @@ export class PermissionsGuard implements CanActivate {
         return await this.permissionsService.checkIfUserMayCreateNote(userId);
       } else {
         this.logger.error(
-          'Could not find noteId for permission check. This should never happen. If you see this, please open an issue at https://github.com/your-org/mdcollab/issues',
+          'Could not find noteId for permission check. This should never happen. If you see this, please open an issue at https://github.com/homeserverhq/mdcollab/issues',
         );
         return false;
       }
@@ -86,7 +86,7 @@ export class PermissionsGuard implements CanActivate {
     // If no requiredPermission are set this is probably an error and this guard should not let the request pass
     if (requiredPermission === undefined) {
       const message =
-        'Could not find requiredPermission metadata. This should never happen. If you see this, please open an issue at https://github.com/your-org/mdcollab/issues';
+        'Could not find requiredPermission metadata. This should never happen. If you see this, please open an issue at https://github.com/homeserverhq/mdcollab/issues';
       this.logger.error(message);
       throw new Error(message);
     }

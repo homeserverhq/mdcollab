@@ -136,6 +136,6 @@ You are welcome to add a `(by [@your_username](https://github.com/your_username)
 - When refactoring something, take care to not include any functional changes into the same commit. Mixing refactoring
   and functional changes makes it hard to find the cause of regressions.
 
-[issues]: https://github.com/your-org/mdcollab/issues
+[issues]: https://github.com/homeserverhq/mdcollab/issues
 
-[new_issue]: https://github.com/your-org/mdcollab/issues/new/choose
+[new_issue]: https://github.com/homeserverhq/mdcollab/issues/new/choose

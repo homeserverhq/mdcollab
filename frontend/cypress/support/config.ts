@@ -5,7 +5,6 @@
  */
 import { AuthProviderType } from '@hedgedoc/commons'
 import { HttpMethod } from '../../src/handler-utils/respond-to-matching-request'
-import { IGNORE_MOTD, MOTD_LOCAL_STORAGE_KEY } from '../../src/components/global-dialogs/motd-modal/local-storage-keys'
 
 declare namespace Cypress {
   interface Chainable {
@@ -74,14 +73,5 @@ Cypress.Commands.add('logOut', () => {
 
 beforeEach(() => {
   cy.loadConfig()
-  window.localStorage.setItem(MOTD_LOCAL_STORAGE_KEY, IGNORE_MOTD)
   cy.logIn()
-
-  cy.intercept('GET', '/public/motd.md', {
-    body: '404 Not Found!',
-    statusCode: 404
-  })
-  cy.intercept('HEAD', '/public/motd.md', {
-    statusCode: 404
-  })
 })

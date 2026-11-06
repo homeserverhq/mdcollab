@@ -19,7 +19,6 @@ import React from 'react'
 import { getConfig } from '../../api/config'
 import { MotdProvider } from '../../components/motd/motd-context'
 import { fetchMotd } from '../../components/global-dialogs/motd-modal/fetch-motd'
-import { CachedMotdModal } from '../../components/global-dialogs/motd-modal/cached-motd-modal'
 
 configureLuxon()
 
@@ -45,7 +44,6 @@ export default async function RootLayout({ children, appBar }: RootLayoutProps) 
                 <StoreProvider>
                   <ApplicationLoader>
                     <DarkMode />
-                    <CachedMotdModal />
                     <UiNotificationBoundary>
                       <div className={'d-flex flex-column vh-100'}>
                         {appBar}

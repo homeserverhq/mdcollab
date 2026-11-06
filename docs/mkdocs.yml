@@ -1,9 +1,9 @@
 site_name: mdCollab 2 Docs
-repo_url: https://github.com/your-org/mdcollab
+repo_url: https://github.com/homeserverhq/mdcollab
 site_description: 'mdCollab Documentation'
 site_author: 'mdCollab contributors'
 docs_dir: content
-edit_uri: https://github.com/your-org/mdcollab/edit/develop/docs/content/
+edit_uri: https://github.com/homeserverhq/mdcollab/edit/develop/docs/content/
 nav:
   - Home: index.md
   - 'About this fork': about-fork.md

@@ -12,7 +12,7 @@ This PR fixes/adds/improves/...
 - [ ] Added / updated tests
 - [ ] Added / updated documentation
 - [ ] Added changelog snippet
-- [ ] I read the [contribution documentation](https://github.com/your-org/mdcollab/blob/develop/CONTRIBUTING.md) and
+- [ ] I read the [contribution documentation](https://github.com/homeserverhq/mdcollab/blob/develop/CONTRIBUTING.md) and
   made sure that:
   - My commits are signed-off to accept the DCO.
   - This PR targets the `develop` branch.

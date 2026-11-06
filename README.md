@@ -22,7 +22,7 @@ is not affiliated with or endorsed by the HedgeDoc project.
 
 - Install mdCollab using the documentation in [`docs/`](docs/).
 - Read the configuration reference in [`docs/content/references/config/`](docs/content/references/config/).
-- Report bugs or feature requests in the [mdCollab repository](https://github.com/your-org/mdcollab/issues).
+- Report bugs or feature requests in the [mdCollab repository](https://github.com/homeserverhq/mdcollab/issues).
 
 ## Development
 
