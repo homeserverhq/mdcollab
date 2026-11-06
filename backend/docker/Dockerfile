@@ -61,10 +61,10 @@ RUN --mount=type=cache,sharing=locked,uid=1000,gid=1000,target=/tmp/.pnpm-store 
 ## Stage 3: Final image, only production dependencies
 FROM base AS prod
 
-LABEL org.opencontainers.image.title='HedgeDoc production backend image'
-LABEL org.opencontainers.image.url='https://hedgedoc.org'
-LABEL org.opencontainers.image.source='https://github.com/hedgedoc/hedgedoc'
-LABEL org.opencontainers.image.documentation='https://github.com/hedgedoc/hedgedoc/blob/develop/docs/content/how-to/develop/docker.md'
+LABEL org.opencontainers.image.title='mdCollab production backend image'
+LABEL org.opencontainers.image.url='https://github.com/your-org/mdcollab'
+LABEL org.opencontainers.image.source='https://github.com/your-org/mdcollab'
+LABEL org.opencontainers.image.documentation='https://github.com/your-org/mdcollab/blob/develop/docs/content/how-to/develop/docker.md'
 LABEL org.opencontainers.image.licenses='AGPL-3.0'
 
 USER node

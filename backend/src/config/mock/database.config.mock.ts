@@ -11,12 +11,12 @@ import { DatabaseConfig } from '../database.config';
 
 export function createDefaultMockDatabaseConfig(): DatabaseConfig {
   return {
-    type: (process.env.HEDGEDOC_TEST_DB_TYPE || DatabaseType.SQLITE) as DatabaseType,
-    name: 'hedgedoc',
-    password: 'hedgedoc',
+    type: (process.env.MDCOLLAB_TEST_DB_TYPE || DatabaseType.SQLITE) as DatabaseType,
+    name: 'mdcollab',
+    password: 'mdcollab',
     host: 'localhost',
     port: 0,
-    username: 'hedgedoc',
+    username: 'mdcollab',
     tls: {
       enabled: false,
       rejectUnauthorized: true,

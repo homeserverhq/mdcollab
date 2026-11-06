@@ -52,7 +52,7 @@ export const NoteFrontmatterSchema = z
       .describe('OpenGraph meta tags'),
     slideOptions: slideOptionsSchema.describe('Reveal.js options for slides'),
   })
-  .describe('Frontmatter options parsed by HedgeDoc, others are ignored')
+  .describe('Frontmatter options parsed by mdCollab, others are ignored')
   .passthrough()
 
 export type NoteFrontmatter = z.infer<typeof NoteFrontmatterSchema>

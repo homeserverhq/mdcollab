@@ -9,7 +9,7 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 
 /**
- * Renders a list of shortcuts usable in HedgeDoc.
+ * Renders a list of shortcuts usable in mdCollab.
  */
 export const ShortcutsContent: React.FC = () => {
   return (

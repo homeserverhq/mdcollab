@@ -8,13 +8,13 @@ import { z } from 'zod'
 
 export const BrandingSchema = z
   .object({
-    name: z.string().nullable().describe('The name to be displayed next to the HedgeDoc logo'),
+    name: z.string().nullable().describe('The name to be displayed next to the mdCollab logo'),
     logo: z
       .string()
       .url()
       .nullable()
-      .describe('URL to the logo to be displayed next to the HedgeDoc logo'),
+      .describe('URL to the logo to be displayed next to the mdCollab logo'),
   })
-  .describe('The configuration for branding of the HedgeDoc instance.')
+  .describe('The configuration for branding of the mdCollab instance.')
 
 export type BrandingInterface = z.infer<typeof BrandingSchema>

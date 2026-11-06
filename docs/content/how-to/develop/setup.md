@@ -1,8 +1,8 @@
 # Development Setup
 
-To run HedgeDoc 2.0 you need three components: the backend, the frontend and the reverse proxy.
+To run mdCollab 2.0 you need three components: the backend, the frontend and the reverse proxy.
 
-Backend and Frontend are included in the [HedgeDoc repo][hedgedoc-repo].
+Backend and Frontend are included in the [mdCollab repo][mdcollab-repo].
 The reverse proxy can be chosen by preference. For development, we recommend caddy
 and the provided configuration.
 
@@ -10,18 +10,18 @@ and the provided configuration.
 
 This describes the easiest way to start a local development environment. For other deployments
 follow the description below.
-To run HedgeDoc 2.0 you need three components: the backend, the frontend and the reverse proxy.
+To run mdCollab 2.0 you need three components: the backend, the frontend and the reverse proxy.
 
-Backend and Frontend are included in the [HegdeDoc repo][hedgedoc-repo].
+Backend and Frontend are included in the [mdCollab repo][mdcollab-repo].
 The reverse proxy can be chosen by preference. For development, we recommend caddy
 and the provided configuration.
 
-1. Clone [our repository][hedgedoc-repo] and go into its directory
+1. Clone [our repository][mdcollab-repo] and go into its directory
 
    <!-- markdownlint-disable proper-names -->
    ```shell
-   git clone https://github.com/hedgedoc/hedgedoc.git
-   cd hedgedoc
+   git clone https://github.com/your-org/mdcollab.git
+   cd mdcollab
    ```
    <!-- markdownlint-enable proper-names -->
 
@@ -46,13 +46,13 @@ The following sections describe a more detailed setup of all components.
 
 ## Preconditions
 
-If you want to run HedgeDoc in dev mode some preconditions have to be met.
+If you want to run mdCollab in dev mode some preconditions have to be met.
 
 1. Make sure that Node.js is installed. You need at least Node 24.
    See `.nvmrc` for the version we develop against.
 2. Make sure that [pnpm][pnpm] is installed.
    <!-- markdownlint-disable proper-names -->
-3. Clone this repo (e.g. `git clone https://github.com/hedgedoc/hedgedoc.git hedgedoc`)
+3. Clone this repo (e.g. `git clone https://github.com/your-org/mdcollab.git mdcollab`)
    <!-- markdownlint-enable proper-names -->
 4. Go into the cloned directory
 
@@ -78,18 +78,18 @@ copy the top-level `node_modules`, it has to copy the workspace-local ones as we
 
 ## Create the configuration
 
-HedgeDoc 2 is configured using environment variables.
+mdCollab 2 is configured using environment variables.
 For development, we recommend creating an `.env` file.
 
 1. Create an `.env` file. We recommend to use the example file by running `cp .env.example .env`
    You can modify this file according to the [configuration documentation][config-docs].
-2. Make sure that you've set `HD_AUTH_SESSION_SECRET` in your `.env` file, with a value that is at
-   least 32 characters long. Otherwise, the backend won't start.
+2. Make sure that you've set `MDCOLLAB_AUTH_SESSION_SECRET` in your `.env` file, with a value
+   that is at least 32 characters long. Otherwise, the backend won't start.
    > In dev mode you don't need a secure secret, but it must still be at least 32 characters long.
-   > If you want to generate a secure session secret you can use
-   > e.g. `openssl rand -hex 16 | sed -E 's/(.*)/HD_AUTH_SESSION_SECRET=\1/' >> .env`.
-3. Make sure that `HD_BASE_URL` in `.env` is set to the base url where HedgeDoc should be available.
-   In local dev environment this is most likely `http://localhost:8080`.
+   > If you want to generate a secure session secret, use a command such as
+   > `openssl rand -hex 16` and add it to `.env` as `MDCOLLAB_AUTH_SESSION_SECRET`.
+3. Make sure that `MDCOLLAB_BASE_URL` in `.env` is set to the base url where mdCollab should be
+   available. In local dev environment this is most likely `http://localhost:8080`.
 
 ## Build the `commons` package
 
@@ -128,8 +128,8 @@ run `pnpm run start:dev:mock`. The app should run now and be available under
 
 ### With local backend
 
-To start the development mode with an actual HedgeDoc backend use `pnpm run start:dev` instead.
-This task will automatically set `HD_BASE_URL` to `http://localhost:8080`.
+To start the development mode with an actual mdCollab backend use `pnpm run start:dev` instead.
+This task will automatically set `MDCOLLAB_BASE_URL` to `http://localhost:8080`.
 
 ### Production mode
 
@@ -138,18 +138,17 @@ The production build is minimized and optimized for best performance. Don't edit
 files in the `.next` folder in any way!
 
 You can run the production build using the built-in server with `pnpm run start`.
-You MUST provide the environment variable `HD_BASE_URL` with protocol, domain and (if needed)
+You MUST provide the environment variable `MDCOLLAB_BASE_URL` with protocol, domain and (if needed)
 subdirectory path (e.g. `http://localhost:3001/`) so the app knows under which URL the frontend
 is available in the browser.
 
-If you use the production build then make sure that you set the environment variable `HD_BASE_URL`
-to the same value as `HD_BASE_URL` in the backend.
+If you use the production build then make sure that you set the environment variable
+`MDCOLLAB_BASE_URL` to the same value as `MDCOLLAB_BASE_URL` in the backend.
 
 ### Production mock build
 
 It is also possible to create a production build that uses the emulated backend by using
-`pnpm run build:mock`. This is usually not needed except for demonstration purposes like
-`https://hedgedoc.dev`.
+`pnpm run build:mock`. This is usually not needed except for demonstration purposes.
 
 ## Running backend and frontend together
 
@@ -169,11 +168,11 @@ We recommend to use our pre-configured [Caddy][caddy] configuration.
 3. Open your browser on <http://localhost:8080>
 
 It is also possible to use another domain and port other than `localhost:8080`.
-To do so, you need to set the `HD_BASE_URL` environment variable accordingly.
+To do so, you need to set the `MDCOLLAB_BASE_URL` environment variable accordingly.
 Furthermore, for Caddy to work with a domain name (possibly creating TLS certificates),
-set `CADDY_HOST` to your domain (for example `CADDY_HOST=http://my-hedgedoc.home:9000`).
+set `CADDY_HOST` to your domain (for example `CADDY_HOST=http://my-mdcollab.home:9000`).
 
-[hedgedoc-repo]: https://github.com/hedgedoc/hedgedoc
+[mdcollab-repo]: https://github.com/your-org/mdcollab
 [pnpm]: https://pnpm.io/installation
 [caddy]: https://caddyserver.com/
 [config-docs]: ../../references/config/index.md

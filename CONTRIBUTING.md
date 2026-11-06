@@ -4,22 +4,19 @@ SPDX-FileCopyrightText: 2021 The HedgeDoc developers (see AUTHORS file)
 SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
-# Contributing to HedgeDoc
+# Contributing to mdCollab
 
-Thanks for your help in improving the HedgeDoc project!
-
-Please note we have a [code of conduct][code-of-conduct], please follow it in all your interactions with the project.
+Thanks for your help in improving the mdCollab project!
 
 ## Ways of contributing
 
 ### Do you have questions about the project?
 
-* Feel free to post your question on our [community forum][community-forum] or join
-  our [matrix community chat][matrix-support].
+* Open a discussion or issue in the [mdCollab repository][issues].
 
 ### Did you find a bug?
 
-* **Ensure the bug wasn't already reported** by searching on GitHub under [Issues][issues].
+* **Ensure the bug wasn't already reported** by searching the issues in the [mdCollab repository][issues].
 
 * If you're unable to find an open issue addressing the problem, [open a new one][new_issue]. Be sure to use one of the
   templates we provide if your request applies to them.
@@ -32,12 +29,8 @@ Please note we have a [code of conduct][code-of-conduct], please follow it in al
 * Ensure the PR description is precise about the problem and your solution. Just fill out our template. That should
   cover the most important information.
 
-* Please note that we only accept PRs for the 1.x releases if they fix critical issues. If you are unsure if your fix is
-  critical, it's best to ask us before you start coding.
-
 * **Choose the correct base branch:**  
-  The code for 1.x lives in the `master` branch. docs.hedgedoc.org is also deployed from there until 2.0 is released.  
-  HedgeDoc 2.x is developed in the `develop` branch.
+  mdCollab 2.x is developed in the `develop` branch.
 
 ### Do you intend to add a new feature or change an existing one?
 
@@ -47,9 +40,9 @@ Please note we have a [code of conduct][code-of-conduct], please follow it in al
 
 ### Do you want to work on translations?
 
-* If you want to improve a translation or add a new translation altogether, we handle those via [POEditor][poeditor].
+* Translation updates are handled in the repository alongside the source code.
 
-HedgeDoc is a volunteer effort. We encourage you to pitch in and help us to make this project even better.
+mdCollab is a volunteer effort. We encourage you to pitch in and help us to make this project even better.
 
 ## Certificate of Origin
 
@@ -94,12 +87,12 @@ The last commit on any given branch can be amended to include the sign-off messa
 git commit --amend --signoff
 ```
 
-#### Amend a sign-off to multiple commits 
+#### Amend a sign-off to multiple commits
 
-Assuming you have the upstream hedgedoc repo as `upstream`:
+Assuming you have the mdCollab repository as `upstream`:
 
 Run `git fetch upstream` to get the latest content from the upstream repository
-and then use `git rebase --signoff upstream/master` or `git rebase --signoff upstream/develop`
+and then use `git rebase --signoff upstream/develop`
 to rebase all commits in your current branch, that are different from upstream you try to merge with, and sign them off.
 
 If you've already pushed these commits to GitHub, you'll need to force push your branch after this with `git push --force-with-lease`.
@@ -119,7 +112,7 @@ You are welcome to add a `(by [@your_username](https://github.com/your_username)
 1. Submit an issue describing your proposed change. We will try to respond to your issue promptly.
 2. Fork this repo, develop and test your code changes. Ensure you follow the commit guidelines (see below)
    and signed all your commits (see above for details).
-3. Submit a pull request against this repo's `develop` branch for 2.x or the `master` branch for 1.x.
+3. Submit a pull request against this repo's `develop` branch.
 4. Your branch may be merged once all configured checks pass.
 
 ### Commit guidelines
@@ -143,14 +136,6 @@ You are welcome to add a `(by [@your_username](https://github.com/your_username)
 - When refactoring something, take care to not include any functional changes into the same commit. Mixing refactoring
   and functional changes makes it hard to find the cause of regressions.
 
-[code-of-conduct]: ./CODE_OF_CONDUCT.md
+[issues]: https://github.com/your-org/mdcollab/issues
 
-[community-forum]: https://community.hedgedoc.org
-
-[matrix-support]: https://matrix.to/#/#hedgedoc:matrix.org
-
-[issues]: https://github.com/hedgedoc/hedgedoc/issues
-
-[new_issue]: https://github.com/hedgedoc/hedgedoc/issues/new/choose
-
-[poeditor]: https://translate.hedgedoc.org
+[new_issue]: https://github.com/your-org/mdcollab/issues/new/choose

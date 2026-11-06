@@ -1,5 +1,5 @@
 {
-  "name": "hedgedoc",
+  "name": "mdcollab",
   "version": "2.0.0-alpha.3",
   "private": true,
   "scripts": {
@@ -29,5 +29,14 @@
     "oxlint-tsgolint": "7.0.2001",
     "turbo": "2.10.12",
     "typescript": "5.9.3"
+  },
+  "description": "Real-time collaborative markdown notes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/mdcollab.git"
+  },
+  "homepage": "https://github.com/your-org/mdcollab",
+  "bugs": {
+    "url": "https://github.com/your-org/mdcollab/issues"
   }
 }

@@ -10,7 +10,7 @@ import { NoteService } from '../../../notes/note.service';
 import { CompleteRequest } from '../request.type';
 
 /**
- * Saves the note identified by the `HedgeDoc-Note` header
+ * Saves the note identified by the `MDCOLLAB-Note` header
  * under the `note` property of the request object.
  */
 @Injectable()
@@ -19,7 +19,7 @@ export class NoteHeaderInterceptor implements NestInterceptor {
 
   async intercept<T>(context: ExecutionContext, next: CallHandler): Promise<Observable<T>> {
     const request: CompleteRequest = context.switchToHttp().getRequest();
-    const noteId: string = request.headers['hedgedoc-note'] as string;
+    const noteId: string = request.headers['mdcollab-note'] as string;
     request.noteId = await this.noteService.getNoteIdByAlias(noteId);
     return next.handle();
   }

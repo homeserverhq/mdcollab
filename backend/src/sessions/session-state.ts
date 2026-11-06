@@ -30,7 +30,7 @@ interface PendingUserSessionState {
   /** The pending user auth provider identifier */
   authProviderIdentifier?: string;
 
-  /** The pending user id as provided from the external auth provider, required for matching to a HedgeDoc identity */
+  /** The pending user id as provided from the external auth provider, required for matching to a mdCollab identity */
   providerUserId?: string;
 }
 

@@ -44,7 +44,7 @@ const EditorPage: NextPage<PageParams> = ({ params }) => {
  }
  const note = await getNote(params.noteId, getBaseUrls().editor)
  return {
- title: `HedgeDoc - ${ note.metadata.title }`
+ title: `mdCollab - ${ note.metadata.title }`
  description: note.metadata.description
  }
  }

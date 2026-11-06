@@ -9,7 +9,7 @@ import {
   MockedBackendTransportAdapter,
   YDocSyncServerAdapter,
 } from '@hedgedoc/commons';
-import * as HedgeDocCommonsModule from '@hedgedoc/commons';
+import * as MdCollabCommonsModule from '@hedgedoc/commons';
 import { FieldNameUser, User } from '@hedgedoc/database';
 import { Mock } from 'ts-mockery';
 
@@ -156,7 +156,7 @@ describe('websocket connection', () => {
   it.each([true, false])('creates a sync adapter with acceptEdits %s', (acceptEdits) => {
     const yDocSyncServerAdapter = Mock.of<YDocSyncServerAdapter>({});
     jest
-      .spyOn(HedgeDocCommonsModule, 'YDocSyncServerAdapter')
+      .spyOn(MdCollabCommonsModule, 'YDocSyncServerAdapter')
       .mockImplementation((messageTransporter, doc, acceptEditsProvider) => {
         expect(messageTransporter).toBe(mockedMessageTransporter);
         expect(acceptEditsProvider()).toBe(acceptEdits);

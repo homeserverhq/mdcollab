@@ -100,7 +100,7 @@
     "image size",
     "task lists"
   ],
-  "author": "The HedgeDoc developers",
+  "author": "The mdCollab developers",
   "license": "MIT",
   "peerDependencies": {
     "markdown-it": ">=12"
@@ -119,9 +119,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hedgedoc/hedgedoc.git"
+    "url": "https://github.com/your-org/mdcollab.git"
   },
   "bugs": {
-    "url": "https://github.com/hedgedoc/hedgedoc/issues"
+    "url": "https://github.com/your-org/mdcollab/issues"
   }
 }

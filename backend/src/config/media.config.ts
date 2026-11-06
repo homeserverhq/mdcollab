@@ -15,43 +15,43 @@ const DEFAULT_MAX_UPLOAD_SIZE = 20 * 1024 * 1024; // 20 MB default
 const azureSchema = z.object({
   type: z.literal(MediaBackendType.AZURE),
   azure: z.object({
-    connectionString: z.string().describe('HD_MEDIA_BACKEND_AZURE_CONNECTION_STRING'),
-    container: z.string().describe('HD_MEDIA_BACKEND_AZURE_CONTAINER'),
+    connectionString: z.string().describe('MDCOLLAB_MEDIA_BACKEND_AZURE_CONNECTION_STRING'),
+    container: z.string().describe('MDCOLLAB_MEDIA_BACKEND_AZURE_CONTAINER'),
   }),
 });
 
 const filesystemSchema = z.object({
   type: z.literal(MediaBackendType.FILESYSTEM),
   filesystem: z.object({
-    uploadPath: z.string().describe('HD_MEDIA_BACKEND_FILESYSTEM_UPLOAD_PATH'),
+    uploadPath: z.string().describe('MDCOLLAB_MEDIA_BACKEND_FILESYSTEM_UPLOAD_PATH'),
   }),
 });
 
 const imgurSchema = z.object({
   type: z.literal(MediaBackendType.IMGUR),
   imgur: z.object({
-    clientId: z.string().describe('HD_MEDIA_BACKEND_IMGUR_CLIENT_ID'),
+    clientId: z.string().describe('MDCOLLAB_MEDIA_BACKEND_IMGUR_CLIENT_ID'),
   }),
 });
 
 const s3Schema = z.object({
   type: z.literal(MediaBackendType.S3),
   s3: z.object({
-    accessKeyId: z.string().describe('HD_MEDIA_BACKEND_S3_ACCESS_KEY'),
-    secretAccessKey: z.string().describe('HD_MEDIA_BACKEND_S3_SECRET_KEY'),
-    bucket: z.string().describe('HD_MEDIA_BACKEND_S3_BUCKET'),
-    endpoint: z.string().url().describe('HD_MEDIA_BACKEND_S3_ENDPOINT'),
-    region: z.string().optional().describe('HD_MEDIA_BACKEND_S3_REGION'),
-    pathStyle: z.boolean().default(false).describe('HD_MEDIA_BACKEND_S3_PATH_STYLE'),
+    accessKeyId: z.string().describe('MDCOLLAB_MEDIA_BACKEND_S3_ACCESS_KEY'),
+    secretAccessKey: z.string().describe('MDCOLLAB_MEDIA_BACKEND_S3_SECRET_KEY'),
+    bucket: z.string().describe('MDCOLLAB_MEDIA_BACKEND_S3_BUCKET'),
+    endpoint: z.string().url().describe('MDCOLLAB_MEDIA_BACKEND_S3_ENDPOINT'),
+    region: z.string().optional().describe('MDCOLLAB_MEDIA_BACKEND_S3_REGION'),
+    pathStyle: z.boolean().default(false).describe('MDCOLLAB_MEDIA_BACKEND_S3_PATH_STYLE'),
   }),
 });
 
 const webdavSchema = z.object({
   type: z.literal(MediaBackendType.WEBDAV),
   webdav: z.object({
-    connectionString: z.string().url().describe('HD_MEDIA_BACKEND_WEBDAV_CONNECTION_STRING'),
-    uploadDir: z.string().optional().describe('HD_MEDIA_BACKEND_WEBDAV_UPLOAD_DIR'),
-    publicUrl: z.string().url().describe('HD_MEDIA_BACKEND_WEBDAV_PUBLIC_URL'),
+    connectionString: z.string().url().describe('MDCOLLAB_MEDIA_BACKEND_WEBDAV_CONNECTION_STRING'),
+    uploadDir: z.string().optional().describe('MDCOLLAB_MEDIA_BACKEND_WEBDAV_UPLOAD_DIR'),
+    publicUrl: z.string().url().describe('MDCOLLAB_MEDIA_BACKEND_WEBDAV_PUBLIC_URL'),
   }),
 });
 
@@ -67,7 +67,7 @@ const schema = z.object({
     .number()
     .min(0)
     .default(DEFAULT_MAX_UPLOAD_SIZE)
-    .describe('HD_MEDIA_MAX_UPLOAD_SIZE'),
+    .describe('MDCOLLAB_MEDIA_MAX_UPLOAD_SIZE'),
 });
 
 export type MediaConfig = z.infer<typeof schema>;
@@ -80,38 +80,38 @@ export type WebdavMediaConfig = z.infer<typeof webdavSchema>;
 export default registerAs('mediaConfig', () => {
   const mediaConfig = schema.safeParse({
     backend: {
-      type: process.env.HD_MEDIA_BACKEND_TYPE,
+      type: process.env.MDCOLLAB_MEDIA_BACKEND_TYPE,
       filesystem: {
-        uploadPath: process.env.HD_MEDIA_BACKEND_FILESYSTEM_UPLOAD_PATH,
+        uploadPath: process.env.MDCOLLAB_MEDIA_BACKEND_FILESYSTEM_UPLOAD_PATH,
       },
       s3: {
-        accessKeyId: process.env.HD_MEDIA_BACKEND_S3_ACCESS_KEY,
-        secretAccessKey: process.env.HD_MEDIA_BACKEND_S3_SECRET_KEY,
-        bucket: process.env.HD_MEDIA_BACKEND_S3_BUCKET,
-        endpoint: process.env.HD_MEDIA_BACKEND_S3_ENDPOINT,
-        region: process.env.HD_MEDIA_BACKEND_S3_REGION,
-        pathStyle: parseOptionalBoolean(process.env.HD_MEDIA_BACKEND_S3_PATH_STYLE),
+        accessKeyId: process.env.MDCOLLAB_MEDIA_BACKEND_S3_ACCESS_KEY,
+        secretAccessKey: process.env.MDCOLLAB_MEDIA_BACKEND_S3_SECRET_KEY,
+        bucket: process.env.MDCOLLAB_MEDIA_BACKEND_S3_BUCKET,
+        endpoint: process.env.MDCOLLAB_MEDIA_BACKEND_S3_ENDPOINT,
+        region: process.env.MDCOLLAB_MEDIA_BACKEND_S3_REGION,
+        pathStyle: parseOptionalBoolean(process.env.MDCOLLAB_MEDIA_BACKEND_S3_PATH_STYLE),
       },
       azure: {
-        connectionString: process.env.HD_MEDIA_BACKEND_AZURE_CONNECTION_STRING,
-        container: process.env.HD_MEDIA_BACKEND_AZURE_CONTAINER,
+        connectionString: process.env.MDCOLLAB_MEDIA_BACKEND_AZURE_CONNECTION_STRING,
+        container: process.env.MDCOLLAB_MEDIA_BACKEND_AZURE_CONTAINER,
       },
       imgur: {
-        clientId: process.env.HD_MEDIA_BACKEND_IMGUR_CLIENT_ID,
+        clientId: process.env.MDCOLLAB_MEDIA_BACKEND_IMGUR_CLIENT_ID,
       },
       webdav: {
-        connectionString: process.env.HD_MEDIA_BACKEND_WEBDAV_CONNECTION_STRING,
-        uploadDir: process.env.HD_MEDIA_BACKEND_WEBDAV_UPLOAD_DIR,
-        publicUrl: process.env.HD_MEDIA_BACKEND_WEBDAV_PUBLIC_URL,
+        connectionString: process.env.MDCOLLAB_MEDIA_BACKEND_WEBDAV_CONNECTION_STRING,
+        uploadDir: process.env.MDCOLLAB_MEDIA_BACKEND_WEBDAV_UPLOAD_DIR,
+        publicUrl: process.env.MDCOLLAB_MEDIA_BACKEND_WEBDAV_PUBLIC_URL,
       },
     },
-    maxUploadSize: process.env.HD_MEDIA_MAX_UPLOAD_SIZE
-      ? parseInt(process.env.HD_MEDIA_MAX_UPLOAD_SIZE)
+    maxUploadSize: process.env.MDCOLLAB_MEDIA_MAX_UPLOAD_SIZE
+      ? parseInt(process.env.MDCOLLAB_MEDIA_MAX_UPLOAD_SIZE)
       : DEFAULT_MAX_UPLOAD_SIZE,
   });
   if (mediaConfig.error) {
     const errorMessages = mediaConfig.error.issues.map((issue) =>
-      extractDescriptionFromZodIssue(issue, 'HD_MEDIA'),
+      extractDescriptionFromZodIssue(issue, 'MDCOLLAB_MEDIA'),
     );
     const errorMessage = buildErrorMessage(errorMessages);
     return printConfigErrorAndExit(errorMessage);

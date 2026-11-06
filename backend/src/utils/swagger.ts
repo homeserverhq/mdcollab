@@ -15,14 +15,14 @@ export const PUBLIC_API_PATH = 'api/doc/v2';
 export const PRIVATE_API_PATH = 'api/doc/private';
 
 /**
- * Sets up the public API documentation for HedgeDoc.
+ * Sets up the public API documentation for mdCollab.
  *
  * @param app The NestJS application instance to set up the Swagger module on.
  */
 export async function setupPublicApiDocs(app: INestApplication): Promise<void> {
   const version = await getServerVersionFromPackageJson();
   const publicApiOptions = new DocumentBuilder()
-    .setTitle('HedgeDoc Public API')
+    .setTitle('mdCollab Public API')
     .setVersion(version.fullString)
     .addSecurity('token', {
       type: 'http',
@@ -36,14 +36,14 @@ export async function setupPublicApiDocs(app: INestApplication): Promise<void> {
 }
 
 /**
- * Sets up the private API documentation for HedgeDoc.
+ * Sets up the private API documentation for mdCollab.
  *
  * @param app The NestJS application instance to set up the Swagger module on.
  */
 export async function setupPrivateApiDocs(app: INestApplication): Promise<void> {
   const version = await getServerVersionFromPackageJson();
   const privateApiOptions = new DocumentBuilder()
-    .setTitle('HedgeDoc Private API')
+    .setTitle('mdCollab Private API')
     .setVersion(version.fullString)
     .build();
 

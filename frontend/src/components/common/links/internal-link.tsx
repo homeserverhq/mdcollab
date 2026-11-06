@@ -10,7 +10,7 @@ import React from 'react'
 
 /**
  * An internal link.
- * This should be used for linking pages of the HedgeDoc instance.
+ * This should be used for linking pages of the mdCollab instance.
  *
  * @param href The links location
  * @param text The links text

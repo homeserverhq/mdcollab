@@ -23,7 +23,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
 -description: Many features, such wow!
 +description: Many more features, such wow!
  robots: noindex
- tags: hedgedoc, demo, react
+ tags: mdcollab, demo, react
  opengraph:
    title: Features
 @@ -10,9 +10,9 @@
@@ -64,7 +64,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
 title: Features
 description: Many more features, such wow!
 robots: noindex
-tags: hedgedoc, demo, react
+tags: mdcollab, demo, react
 opengraph:
   title: Features
 ---

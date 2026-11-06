@@ -1,4 +1,4 @@
-{$HD_BASE_URL}
+{$MDCOLLAB_BASE_URL}
 
 log {
 	output stdout

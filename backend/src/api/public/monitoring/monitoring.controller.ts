@@ -48,11 +48,11 @@ export class MonitoringController {
   @OpenApi(
     {
       code: 204,
-      description: 'HedgeDoc is healthy',
+      description: 'mdCollab is healthy',
     },
     {
       code: 503,
-      description: 'HedgeDoc is currently not healthy',
+      description: 'mdCollab is currently not healthy',
     },
   )
   async getHealth(@Res() reply: FastifyReply): Promise<void> {

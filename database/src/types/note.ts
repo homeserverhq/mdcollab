@@ -5,7 +5,7 @@
  */
 
 /**
- * Notes are the central part of HedgeDoc. A note is accessed and identified by a list of aliases.
+ * Notes are the central part of mdCollab. A note is accessed and identified by a list of aliases.
  * The note object itself only contains basic metadata about the note. The content is stored in note revisions.
  * The permission management is extracted into the note-user and note-group permission tables.
  */
@@ -16,7 +16,7 @@ export interface Note {
   /** The {@link User} id of the note owner */
   [FieldNameNote.ownerId]: number
 
-  /** The HedgeDoc major version this note was created in. This is used to migrate certain features from HD1 to HD2 */
+  /** The mdCollab major version this note was created in. This is used to migrate certain features from HD1 to HD2 */
   [FieldNameNote.version]: number
 
   /** Timestamp when the note was created */

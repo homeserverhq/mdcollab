@@ -9,7 +9,7 @@ import React from 'react'
 
 /**
  * An external link.
- * This should be used for linking pages that are not part of the HedgeDoc instance.
+ * This should be used for linking pages that are not part of the mdCollab instance.
  * The links will be opened in a new tab.
  *
  * @param href The links location

@@ -6,7 +6,7 @@
 
 import { Card, ListGroup } from 'react-bootstrap'
 import { Trans, useTranslation } from 'react-i18next'
-import { Flag as IconFlag, Tag as IconTag, Github as IconGithub } from 'react-bootstrap-icons'
+import { Tag as IconTag, Github as IconGithub } from 'react-bootstrap-icons'
 import links from '../../links.json'
 import { ExternalLink } from '../common/links/external-link'
 
@@ -27,9 +27,6 @@ export const ProjectLinks = () => {
           </ListGroup.Item>
           <ListGroup.Item>
             <ExternalLink text={t('about.project.reportIssue')} icon={IconTag} href={links.issues} />
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <ExternalLink text={t('about.project.helpTranslating')} icon={IconFlag} href={links.translate} />
           </ListGroup.Item>
         </ListGroup>
       </Card.Body>

@@ -1,16 +1,16 @@
 <!--
-SPDX-FileCopyrightText: 2026 The HedgeDoc developers (see AUTHORS file)
+SPDX-FileCopyrightText: 2026 The mdCollab developers (see AUTHORS file)
 
 SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
 # Security
 
-This page describes security-related configuration options for HedgeDoc.
+This page describes security-related configuration options for mdCollab.
 
 ## Rate Limiting
 
-HedgeDoc implements rate limiting to protect against abuse and brute-force attacks. Rate limiting
+mdCollab implements rate limiting to protect against abuse and brute-force attacks. Rate limiting
 applies different limits based on the authentication level and endpoint type.
 
 1. **Public API**: For requests to the public API using a valid API-token
@@ -39,12 +39,12 @@ Setting a `*_MAX` value to `0` effectively disables rate limiting for that tier
 
 | environment variable                            | default | description                                                        |
 |-------------------------------------------------|---------|--------------------------------------------------------------------|
-| `HD_SECURITY_RATE_LIMIT_PUBLIC_API_MAX`         | 150     | Number of maximum requests for the public API with auth token      |
-| `HD_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW`      | 300     | Time window in seconds for public API limit                        |
-| `HD_SECURITY_RATE_LIMIT_AUTHENTICATED_MAX`      | 900     | Maximum requests for authenticated usage                           |
-| `HD_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW`   | 300     | Time window in seconds for authenticated usage                     |
-| `HD_SECURITY_RATE_LIMIT_UNAUTHENTICATED_MAX`    | 100     | Maximum requests for unauthenticated usage                         |
-| `HD_SECURITY_RATE_LIMIT_UNAUTHENTICATED_WINDOW` | 300     | Time window in seconds for unauthenticated usage                   |
-| `HD_SECURITY_RATE_LIMIT_AUTH_MAX`               | 40      | Maximum of auth request attempts                                   |
-| `HD_SECURITY_RATE_LIMIT_AUTH_WINDOW`            | 900     | Time window in seconds for auth request attempts                   |
-| `HD_SECURITY_RATE_LIMIT_BYPASS`                 | *none*  | Bypass rate limiting for these IP addresses (comma-separated list) |
+| `MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_MAX`         | 150     | Number of maximum requests for the public API with auth token      |
+| `MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW`      | 300     | Time window in seconds for public API limit                        |
+| `MDCOLLAB_SECURITY_RATE_LIMIT_AUTHENTICATED_MAX`      | 900     | Maximum requests for authenticated usage                           |
+| `MDCOLLAB_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW`   | 300     | Time window in seconds for authenticated usage                     |
+| `MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_MAX`    | 100     | Maximum requests for unauthenticated usage                         |
+| `MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_WINDOW` | 300     | Time window in seconds for unauthenticated usage                   |
+| `MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_MAX`               | 40      | Maximum of auth request attempts                                   |
+| `MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_WINDOW`            | 900     | Time window in seconds for auth request attempts                   |
+| `MDCOLLAB_SECURITY_RATE_LIMIT_BYPASS`                 | *none*  | Bypass rate limiting for these IP addresses (comma-separated list) |

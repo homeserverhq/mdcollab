@@ -1,10 +1,5 @@
 {
-  "chat": "https://matrix.to/#/#hedgedoc:matrix.org",
-  "community": "https://community.hedgedoc.org",
-  "githubOrg": "https://github.com/hedgedoc/",
-  "sourceCode": "https://github.com/hedgedoc/hedgedoc",
-  "issues": "https://github.com/hedgedoc/hedgedoc/issues",
-  "mastodon": "https://social.hedgedoc.org",
-  "translate": "https://translate.hedgedoc.org",
-  "webpage": "https://hedgedoc.org"
+  "githubOrg": "https://github.com/your-org",
+  "sourceCode": "https://github.com/your-org/mdcollab",
+  "issues": "https://github.com/your-org/mdcollab/issues"
 }

@@ -29,34 +29,8 @@ class MessageService implements OnApplicationBootstrap, OnApplicationShutdown {
     const publicApiDocsURL = new URL(PUBLIC_API_PATH, baseUrl).toString();
     const privateApiDocsURL = new URL(PRIVATE_API_PATH, baseUrl).toString();
 
-    const logo = [
-      '',
-      '                @  @@@  @                  ',
-      '            @@@@@@@@@@@@@@@@@              ',
-      '         @@@@@@@@@@@@@@@@@@@@@@@           ',
-      '        @@@@@@@@@@@@@@@@@@@@@@@@@          ',
-      '      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@        ',
-      '    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      ',
-      '    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      ',
-      '   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     ',
-      '   @@@@@@@@      @@@@@@@      @@@@@@@@     ',
-      '   @@@@@@           @           @@@@@@     ',
-      '   @@@@@                         @@@@@     ',
-      '   @@@@                           @@@@     ',
-      '   @@@@@        @@     @@        @@@@@     ',
-      '    @@@@        @@     @@        @@@@      ',
-      '    @@@@@@                     @@@@@@      ',
-      '      @@@@@@                 @@@@@@        ',
-      '        @@@@@@             @@@@@@          ',
-      '         @@@@@@@         @@@@@@@           ',
-      '            @@@@@@     @@@@@@              ',
-      '                @  @@@  @                  ',
-      '',
-    ];
-
     const defaultMessages = [
-      `Welcome to HedgeDoc ${version.fullString}`,
-      'You can find the documentation at https://docs.hedgedoc.org',
+      `Welcome to mdCollab ${version.fullString}`,
       `You can find the public API specification at ${publicApiDocsURL}`,
       `The backend is listening on port ${port}`,
     ];
@@ -64,37 +38,19 @@ class MessageService implements OnApplicationBootstrap, OnApplicationShutdown {
     if (isDevMode()) {
       // Insert the private api url only if we're in DevMode
       defaultMessages.splice(
-        3,
+        2,
         0,
         `You can find the private API specification at ${privateApiDocsURL}`,
       );
     }
 
-    // insert empty lines in between each line
-    let insertIndex = 1;
-    while (insertIndex <= defaultMessages.length) {
-      defaultMessages.splice(insertIndex, 0, '');
-      insertIndex++;
-      insertIndex++;
-    }
-
-    const differenceOfLines = logo.length - defaultMessages.length;
-    const numberOfLinesBefore = Math.ceil(differenceOfLines / 2);
-    const numberOfLinesAfter = Math.floor(differenceOfLines / 2);
-
-    const messages = [
-      ...Array<string>(numberOfLinesBefore).fill(''),
-      ...defaultMessages,
-      ...Array<string>(numberOfLinesAfter).fill(''),
-    ];
-
-    for (let i = 0; i < logo.length; i++) {
-      this.logger.log(`${logo[i]}${messages[i]}`);
+    for (const message of defaultMessages) {
+      this.logger.log(message);
     }
   }
 
   onApplicationShutdown(): void {
-    this.logger.log('Goodbye. Thanks for using HedgeDoc! ❤️');
+    this.logger.log('Goodbye. Thanks for using mdCollab! ❤️');
   }
 }
 

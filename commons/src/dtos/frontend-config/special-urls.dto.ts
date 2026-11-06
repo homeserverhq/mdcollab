@@ -11,6 +11,6 @@ export const SpecialUrlSchema = z
     termsOfUse: z.string().url().nullable().describe('A link to the privacy notice'),
     imprint: z.string().url().nullable().describe('A link to the imprint notice'),
   })
-  .describe('The special urls an HedgeDoc instance can link to.')
+  .describe('The special urls an mdCollab instance can link to.')
 
 export type SpecialUrlInterface = z.infer<typeof SpecialUrlSchema>

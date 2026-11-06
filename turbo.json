@@ -3,7 +3,7 @@
   "globalPassThroughEnv": [
     "NODE_ENV",
     "DEBUG",
-    "HD_*",
+    "MDCOLLAB_*",
     "CADDY_HOST"
   ],
   "tasks": {
@@ -116,7 +116,7 @@
         "^build"
       ],
       "env": [
-        "HEDGEDOC_TEST_DB_TYPE"
+        "MDCOLLAB_TEST_DB_TYPE"
       ],
       "outputs": [
         "coverage-e2e/**"

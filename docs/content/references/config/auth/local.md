@@ -1,14 +1,14 @@
 # Local
 
-HedgeDoc provides local accounts, handled internally. This feature only provides basic
+mdCollab provides local accounts, handled internally. This feature only provides basic
 functionality, so for most environments, we recommend using an external authentication mechanism,
 which also enables more secure authentication like 2FA or Passkeys.
 
 | environment variable                      | default | example                 | description                                                                                         |
 |-------------------------------------------|---------|-------------------------|-----------------------------------------------------------------------------------------------------|
-| `HD_AUTH_LOCAL_ENABLE_LOGIN`              | `false` | `true`, `false`         | This makes it possible to use the local accounts in HedgeDoc.                                       |
-| `HD_AUTH_LOCAL_ENABLE_REGISTER`           | `false` | `true`, `false`         | This makes it possible to register new local accounts in HedgeDoc.                                  |
-| `HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH` | `2`     | `0`, `1`, `2`, `3`, `4` | The minimum password score, that passwords need to have. See the table below for more explanations. |
+| `MDCOLLAB_AUTH_LOCAL_ENABLE_LOGIN`              | `false` | `true`, `false`         | This makes it possible to use the local accounts in mdCollab.                                       |
+| `MDCOLLAB_AUTH_LOCAL_ENABLE_REGISTER`           | `false` | `true`, `false`         | This makes it possible to register new local accounts in mdCollab.                                  |
+| `MDCOLLAB_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH` | `2`     | `0`, `1`, `2`, `3`, `4` | The minimum password score, that passwords need to have. See the table below for more explanations. |
 
 ## Password score
 

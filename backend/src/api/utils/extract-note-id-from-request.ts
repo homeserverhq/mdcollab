@@ -19,7 +19,7 @@ export async function extractNoteIdFromRequest(
 
 function extractNoteAlias(request: CompleteRequest): string | undefined {
   const params = request.params as Record<string, string | undefined>;
-  const noteAlias = params['noteAlias'] || request.headers['hedgedoc-note'];
+  const noteAlias = params['noteAlias'] || request.headers['mdcollab-note'];
   if (Array.isArray(noteAlias)) {
     return noteAlias[0];
   }

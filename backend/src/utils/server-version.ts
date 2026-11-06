@@ -12,7 +12,7 @@ import { ServerVersionDto } from '../dtos/server-version.dto';
 let versionCache: ServerVersionDto | undefined = undefined;
 
 /**
- * Reads the HedgeDoc version from the root package.json. This is done only once per run and then cached for further calls
+ * Reads the mdCollab version from the root package.json. This is done only once per run and then cached for further calls
  *
  * @returns A Promise that contains the parsed server version.
  * @throws Error if the package.json couldn't be found or doesn't contain a correct version.

@@ -7,7 +7,7 @@ Otherwise, the build process may fail.
 
 <!-- markdownlint-disable proper-names -->
 ```shell
-docker buildx build -f backend/docker/Dockerfile -t hedgedoc-backend .
+docker buildx build -f backend/docker/Dockerfile -t mdcollab-backend .
 ```
 <!-- markdownlint-enable proper-names -->
 
@@ -15,7 +15,7 @@ or
 
 <!-- markdownlint-disable proper-names -->
 ```shell
-docker buildx build -f frontend/docker/Dockerfile -t hedgedoc-frontend .
+docker buildx build -f frontend/docker/Dockerfile -t mdcollab-frontend .
 ```
 <!-- markdownlint-enable proper-names -->
 

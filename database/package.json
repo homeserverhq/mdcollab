@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "description": "CJS code required for the database migrations",
-  "author": "The HedgeDoc Authors",
+  "author": "The mdCollab Authors",
   "license": "AGPL-3.0",
   "scripts": {
     "build": "./build.sh",
@@ -37,7 +37,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hedgedoc/hedgedoc.git"
+    "url": "https://github.com/your-org/mdcollab.git"
   },
   "devDependencies": {
     "@types/node": "24.10.7",

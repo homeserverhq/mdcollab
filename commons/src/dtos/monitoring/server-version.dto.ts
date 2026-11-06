@@ -14,6 +14,6 @@ export const ServerVersionSchema = z
     commit: z.string().optional().describe('The commit of the server'),
     fullString: z.string().describe('The full version string of the server'),
   })
-  .describe('The version of the HedgeDoc server.')
+  .describe('The version of the mdCollab server.')
 
 export type ServerVersionInterface = z.infer<typeof ServerVersionSchema>

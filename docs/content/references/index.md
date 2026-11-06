@@ -8,7 +8,7 @@ These include for example configuration options or API methods.
     <a href='/references/hfm/'>
         <div class='topic'>
             <span>✏</span>
-            <span>HedgeDoc Flavoured Markdown</span>
+            <span>mdCollab Flavoured Markdown</span>
         </div>
     </a>
     <a href='/references/config/'>

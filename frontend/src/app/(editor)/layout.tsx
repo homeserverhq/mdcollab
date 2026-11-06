@@ -64,17 +64,17 @@ export default async function RootLayout({ children, appBar }: RootLayoutProps) 
 }
 
 export const metadata: Metadata = {
-  applicationName: 'HedgeDoc',
+  applicationName: 'mdCollab',
   appleWebApp: {
-    title: 'HedgeDoc'
+    title: 'mdCollab'
   },
-  description: 'HedgeDoc - Ideas grow better together',
-  title: 'HedgeDoc',
+  description: 'mdCollab - Collaborate on markdown in real time',
+  title: 'mdCollab',
   manifest: '/icons/site.webmanifest'
 }
 
 export const viewport: Viewport = {
-  themeColor: '#b51f08',
+  themeColor: '#2563eb',
   width: 'device-width',
   initialScale: 1
 }

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.4.0",
   "description": "Common code between frontend and backend",
-  "author": "The HedgeDoc Authors",
+  "author": "The mdCollab Authors",
   "license": "AGPL-3.0",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.json",
@@ -36,7 +36,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hedgedoc/hedgedoc.git"
+    "url": "https://github.com/your-org/mdcollab.git"
   },
   "dependencies": {
     "@file-type/xml": "1.1.1",

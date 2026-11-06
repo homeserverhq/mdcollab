@@ -44,7 +44,7 @@ describe('get note interceptor', () => {
   it('extracts the note from the request headers', async () => {
     const request = Mock.of<CompleteRequest>({
       params: {},
-      headers: { ['hedgedoc-note']: mockNoteId },
+      headers: { ['mdcollab-note']: mockNoteId },
     });
     const context = mockExecutionContext(request);
     const sut: GetNoteIdInterceptor = new GetNoteIdInterceptor(notesService);

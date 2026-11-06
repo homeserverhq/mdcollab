@@ -1,10 +1,10 @@
 # User Profiles and Authentication
 
 !!! info "Design Document"
-    This is a design document, explaining the design and vision for a HedgeDoc 2
+    This is a design document, explaining the design and vision for a mdCollab 2
     feature. It is not a user guide and may or may not be fully implemented.
 
-Each user in HedgeDoc 2 has a profile
+Each user in mdCollab 2 has a profile
 which contains the following information:
 
 - username (`janedoe`)
@@ -14,11 +14,11 @@ which contains the following information:
 - the date the user was created
 - the date the profile was last updated
 
-HedgeDoc 2 supports multiple authentication methods per user.  
+mdCollab 2 supports multiple authentication methods per user.
 These are called *identities* and each identity is backed by an
 auth provider (like OIDC, LDAP or internal auth).
 
-One of a users identities may be marked as *sync source*.  
+One of a users identities may be marked as *sync source*.
 This identity is used to automatically update profile attributes like the
 display name or profile picture on every login. If a sync source exists, the
 user can not manually edit their profile information.
@@ -27,7 +27,7 @@ it is automatically used as sync source.
 
 The administrator may globally set one or more auth providers as sync source,
 e.g. to enforce that all profile information comes from the corporate
-LDAP and is the same across multiple applications.  
+LDAP and is the same across multiple applications.
 If global sync sources exist, new accounts can only be created using
 these auth providers. The auth provider that was used to create the account
 is automatically set as sync source and cannot be changed by the user.
@@ -54,7 +54,7 @@ Google account and use it to login afterwards.
 
 ## Example: Username Conflict
 
-HedgeDoc is configured with two auth providers.
+mdCollab is configured with two auth providers.
 
 - A user logs in using auth provider A.
 - The backend receives the profile information from provider A and notices that the username
@@ -80,7 +80,7 @@ This is because:
 
 - Creating new accounts is only possible with a sync source auth provider.
 - Setting an auth provider as sync-source entails that profile information the auth provider
-  provides must be saved into the local HedgeDoc database.
+  provides must be saved into the local mdCollab database.
 - As the username the auth provider provides already exists in the database, a new user cannot
   be created with that username.
 
@@ -90,7 +90,7 @@ to resolve the issue.
 !!! warning
     Admins must ensure that usernames are unique across all auth providers set as a global sync
     source. Otherwise, if e.g. in both LDAPs configured as sync source a user `johndoe` exists,
-    only the first that logs in can use HedgeDoc.
+    only the first that logs in can use mdCollab.
 
 #### Local sync sources
 

@@ -49,7 +49,7 @@ describe('Media', () => {
         .post(`${PUBLIC_API_PREFIX}/media`)
         .set('Authorization', `Bearer ${testSetup.authTokens[0].secret}`)
         .attach('file', 'test/public-api/fixtures/test.png')
-        .set('HedgeDoc-Note', noteAlias1)
+        .set('MDCOLLAB-Note', noteAlias1)
         .expect('Content-Type', /json/)
         .expect(201);
       const uuid = uploadResponse.body.uuid;
@@ -61,7 +61,7 @@ describe('Media', () => {
         .post(`${PUBLIC_API_PREFIX}/media`)
         .set('Authorization', `Bearer ${testSetup.authTokens[0].secret}`)
         .attach('file', 'test/public-api/fixtures/test.png')
-        .set('HedgeDoc-Note', noteAlias1.toUpperCase())
+        .set('MDCOLLAB-Note', noteAlias1.toUpperCase())
         .expect('Content-Type', /json/)
         .expect(201);
       const uuid = uploadResponse.body.uuid;
@@ -77,7 +77,7 @@ describe('Media', () => {
           .post(`${PUBLIC_API_PREFIX}/media`)
           .set('Authorization', `Bearer ${testSetup.authTokens[0].secret}`)
           .attach('file', 'test/public-api/fixtures/test.zip')
-          .set('HedgeDoc-Note', noteAlias1)
+          .set('MDCOLLAB-Note', noteAlias1)
           .expect(400);
         await expect(fs.access(uploadPath)).rejects.toBeDefined();
       });
@@ -86,7 +86,7 @@ describe('Media', () => {
           .post(`${PUBLIC_API_PREFIX}/media`)
           .set('Authorization', `Bearer ${testSetup.authTokens[0].secret}`)
           .attach('file', 'test/public-api/fixtures/test.zip')
-          .set('HedgeDoc-Note', 'i_dont_exist')
+          .set('MDCOLLAB-Note', 'i_dont_exist')
           .expect(404);
         await expect(fs.access(uploadPath)).rejects.toBeDefined();
       });
@@ -98,7 +98,7 @@ describe('Media', () => {
           .post(`${PUBLIC_API_PREFIX}/media`)
           .set('Authorization', `Bearer ${testSetup.authTokens[0].secret}`)
           .attach('file', 'test/public-api/fixtures/test.png')
-          .set('HedgeDoc-Note', noteAlias1)
+          .set('MDCOLLAB-Note', noteAlias1)
           .expect('Content-Type', /json/)
           .expect(500);
       });
@@ -106,7 +106,7 @@ describe('Media', () => {
         await agent
           .post(`${PUBLIC_API_PREFIX}/media`)
           .set('Authorization', `Bearer ${testSetup.authTokens[0].secret}`)
-          .set('HedgeDoc-Note', noteAlias1)
+          .set('MDCOLLAB-Note', noteAlias1)
           .expect('Content-Type', /json/)
           .expect(400);
       });

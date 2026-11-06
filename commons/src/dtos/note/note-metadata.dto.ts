@@ -17,7 +17,7 @@ export const NoteMetadataSchema = NoteAliasesSchema.merge(
       .string()
       .describe('The description of the note. Does not contain any markup but might be empty.'),
     tags: z.array(z.string()).describe('List of tags assigned to this note'),
-    version: z.number().describe('The HedgeDoc version this note was created in'),
+    version: z.number().describe('The mdCollab version this note was created in'),
     updatedAt: z
       .string()
       .datetime({ offset: false })

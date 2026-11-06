@@ -21,7 +21,7 @@ const buildGitlabTokenProvisioningUrl = (snippetUrl: string): string => {
   } catch {
     // Use GitLab.com until a valid instance URL has been entered.
   }
-  return `${instanceOrigin}/-/user_settings/personal_access_tokens?name=HedgeDoc+snippet+import&scopes=read_api`
+  return `${instanceOrigin}/-/user_settings/personal_access_tokens?name=mdCollab+snippet+import&scopes=read_api`
 }
 
 /**

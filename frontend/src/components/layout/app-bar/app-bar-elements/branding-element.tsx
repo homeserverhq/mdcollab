@@ -5,15 +5,15 @@
  */
 import { useDarkModeState } from '../../../../hooks/dark-mode/use-dark-mode-state'
 import { CustomBranding } from '../../../common/custom-branding/custom-branding'
-import { HedgeDocLogoHorizontalGrey } from '../../../common/hedge-doc-logo/hedge-doc-logo-horizontal-grey'
-import { LogoSize } from '../../../common/hedge-doc-logo/logo-size'
+import { MdCollabLogoHorizontalGrey } from '../../../common/mdcollab-logo/mdcollab-logo-horizontal-grey'
+import { LogoSize } from '../../../common/mdcollab-logo/logo-size'
 import { BrandingSeparatorDash } from './branding-separator-dash'
 import Link from 'next/link'
 import React from 'react'
 import { Navbar } from 'react-bootstrap'
 
 /**
- * Renders the HedgeDoc branding and branding customizations for the app bar.
+ * Renders the mdCollab branding and branding customizations for the app bar.
  */
 export const BrandingElement: React.FC = () => {
   const darkModeActivated = useDarkModeState()
@@ -21,7 +21,7 @@ export const BrandingElement: React.FC = () => {
   return (
     <Navbar.Brand>
       <Link href='/explore/my' className='text-secondary text-decoration-none d-flex align-items-center'>
-        <HedgeDocLogoHorizontalGrey
+        <MdCollabLogoHorizontalGrey
           size={LogoSize.SMALL}
           className={'w-auto'}
           color={darkModeActivated ? 'dark' : 'light'}

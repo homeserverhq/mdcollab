@@ -17,13 +17,13 @@ const securityConfigSchema = z.object({
         .int()
         .nonnegative()
         .default(150)
-        .describe('HD_SECURITY_RATE_LIMIT_PUBLIC_API_MAX'),
+        .describe('MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_MAX'),
       window: z
         .number()
         .int()
         .positive()
         .default(300)
-        .describe('HD_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW'),
+        .describe('MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW'),
     }),
     authenticated: z.object({
       max: z
@@ -31,13 +31,13 @@ const securityConfigSchema = z.object({
         .int()
         .nonnegative()
         .default(900)
-        .describe('HD_SECURITY_RATE_LIMIT_AUTHENTICATED_MAX'),
+        .describe('MDCOLLAB_SECURITY_RATE_LIMIT_AUTHENTICATED_MAX'),
       window: z
         .number()
         .int()
         .positive()
         .default(300)
-        .describe('HD_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW'),
+        .describe('MDCOLLAB_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW'),
     }),
     unauthenticated: z.object({
       max: z
@@ -45,28 +45,28 @@ const securityConfigSchema = z.object({
         .int()
         .nonnegative()
         .default(100)
-        .describe('HD_SECURITY_RATE_LIMIT_UNAUTHENTICATED_MAX'),
+        .describe('MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_MAX'),
       window: z
         .number()
         .int()
         .positive()
         .default(300)
-        .describe('HD_SECURITY_RATE_LIMIT_UNAUTHENTICATED_WINDOW'),
+        .describe('MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_WINDOW'),
     }),
     auth: z.object({
-      max: z.number().int().nonnegative().default(40).describe('HD_SECURITY_RATE_LIMIT_AUTH_MAX'),
+      max: z.number().int().nonnegative().default(40).describe('MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_MAX'),
       window: z
         .number()
         .int()
         .positive()
         .default(900)
-        .describe('HD_SECURITY_RATE_LIMIT_AUTH_WINDOW'),
+        .describe('MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_WINDOW'),
     }),
     bypass: z
       .array(z.union([z.ipv4(), z.ipv6()]))
       .optional()
       .default([])
-      .describe('HD_SECURITY_RATE_LIMIT_BYPASS'),
+      .describe('MDCOLLAB_SECURITY_RATE_LIMIT_BYPASS'),
   }),
 });
 
@@ -76,28 +76,28 @@ export default registerAs('securityConfig', () => {
   const securityConfig = securityConfigSchema.safeParse({
     rateLimit: {
       publicApi: {
-        max: parseOptionalNumber(process.env.HD_SECURITY_RATE_LIMIT_PUBLIC_API_MAX),
-        window: parseOptionalNumber(process.env.HD_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW),
+        max: parseOptionalNumber(process.env.MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_MAX),
+        window: parseOptionalNumber(process.env.MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW),
       },
       authenticated: {
-        max: parseOptionalNumber(process.env.HD_SECURITY_RATE_LIMIT_AUTHENTICATED_MAX),
-        window: parseOptionalNumber(process.env.HD_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW),
+        max: parseOptionalNumber(process.env.MDCOLLAB_SECURITY_RATE_LIMIT_AUTHENTICATED_MAX),
+        window: parseOptionalNumber(process.env.MDCOLLAB_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW),
       },
       unauthenticated: {
-        max: parseOptionalNumber(process.env.HD_SECURITY_RATE_LIMIT_UNAUTHENTICATED_MAX),
-        window: parseOptionalNumber(process.env.HD_SECURITY_RATE_LIMIT_UNAUTHENTICATED_WINDOW),
+        max: parseOptionalNumber(process.env.MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_MAX),
+        window: parseOptionalNumber(process.env.MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_WINDOW),
       },
       auth: {
-        max: parseOptionalNumber(process.env.HD_SECURITY_RATE_LIMIT_AUTH_MAX),
-        window: parseOptionalNumber(process.env.HD_SECURITY_RATE_LIMIT_AUTH_WINDOW),
+        max: parseOptionalNumber(process.env.MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_MAX),
+        window: parseOptionalNumber(process.env.MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_WINDOW),
       },
-      bypass: process.env.HD_SECURITY_RATE_LIMIT_BYPASS?.split(',') ?? [],
+      bypass: process.env.MDCOLLAB_SECURITY_RATE_LIMIT_BYPASS?.split(',') ?? [],
     },
   });
 
   if (securityConfig.error) {
     const errorMessages = securityConfig.error.issues.map((issue) =>
-      extractDescriptionFromZodIssue(issue, 'HD_SECURITY'),
+      extractDescriptionFromZodIssue(issue, 'MDCOLLAB_SECURITY'),
     );
     const errorMessage = buildErrorMessage(errorMessages);
     return printConfigErrorAndExit(errorMessage);

@@ -5,7 +5,7 @@
     This means that if you use imgur as your image backend, you may lose images
     uploaded by you or your users. See this [FAQ entry][faq-entry]
 
-You can use [Imgur][imgur] to handle your image uploads in HedgeDoc.
+You can use [Imgur][imgur] to handle your image uploads in mdCollab.
 
 All you need for that is to register an application with Imgur and get a client id:
 
@@ -19,8 +19,8 @@ Then you just add the following lines to your configuration:
 (with the appropriate substitution for `<IMGUR_CLIENT_ID>` of course)
 
 ```dotenv
-HD_MEDIA_BACKEND_TYPE="imgur"
-HD_MEDIA_BACKEND_IMGUR_CLIENT_ID="<IMGUR_CLIENT_ID>"
+MDCOLLAB_MEDIA_BACKEND_TYPE="imgur"
+MDCOLLAB_MEDIA_BACKEND_IMGUR_CLIENT_ID="<IMGUR_CLIENT_ID>"
 ```
 
 All uploads are saved in the `media_uploads` database table and contain the deletion token

@@ -10,15 +10,15 @@ import securityConfig from './security.config';
 
 describe('securityConfig: rate limiting', () => {
   const completeRateLimitConfig = {
-    HD_SECURITY_RATE_LIMIT_PUBLIC_API_MAX: '150',
-    HD_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW: '300',
-    HD_SECURITY_RATE_LIMIT_AUTHENTICATED_MAX: '600',
-    HD_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW: '300',
-    HD_SECURITY_RATE_LIMIT_UNAUTHENTICATED_MAX: '100',
-    HD_SECURITY_RATE_LIMIT_UNAUTHENTICATED_WINDOW: '300',
-    HD_SECURITY_RATE_LIMIT_AUTH_MAX: '40',
-    HD_SECURITY_RATE_LIMIT_AUTH_WINDOW: '900',
-    HD_SECURITY_RATE_LIMIT_BYPASS: '127.0.0.1,::1',
+    MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_MAX: '150',
+    MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW: '300',
+    MDCOLLAB_SECURITY_RATE_LIMIT_AUTHENTICATED_MAX: '600',
+    MDCOLLAB_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW: '300',
+    MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_MAX: '100',
+    MDCOLLAB_SECURITY_RATE_LIMIT_UNAUTHENTICATED_WINDOW: '300',
+    MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_MAX: '40',
+    MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_WINDOW: '900',
+    MDCOLLAB_SECURITY_RATE_LIMIT_BYPASS: '127.0.0.1,::1',
   };
 
   describe('is correctly parsed', () => {
@@ -67,7 +67,7 @@ describe('securityConfig: rate limiting', () => {
     it('when max is set to 0 (disables rate limiting)', () => {
       const restore = mockedEnv(
         {
-          HD_SECURITY_RATE_LIMIT_PUBLIC_API_MAX: '0',
+          MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_MAX: '0',
         },
         {
           clear: true,
@@ -81,7 +81,7 @@ describe('securityConfig: rate limiting', () => {
     it('when bypass is set with a single IPv4 address', () => {
       const restore = mockedEnv(
         {
-          HD_SECURITY_RATE_LIMIT_BYPASS: '192.168.1.1',
+          MDCOLLAB_SECURITY_RATE_LIMIT_BYPASS: '192.168.1.1',
         },
         {
           clear: true,
@@ -95,7 +95,7 @@ describe('securityConfig: rate limiting', () => {
     it('when bypass is set with multiple IP addresses', () => {
       const restore = mockedEnv(
         {
-          HD_SECURITY_RATE_LIMIT_BYPASS: '127.0.0.1,::1,192.168.1.1',
+          MDCOLLAB_SECURITY_RATE_LIMIT_BYPASS: '127.0.0.1,::1,192.168.1.1',
         },
         {
           clear: true,
@@ -109,7 +109,7 @@ describe('securityConfig: rate limiting', () => {
     it('when bypass is set with IPv6 addresses', () => {
       const restore = mockedEnv(
         {
-          HD_SECURITY_RATE_LIMIT_BYPASS: '::1,fe80::1',
+          MDCOLLAB_SECURITY_RATE_LIMIT_BYPASS: '::1,fe80::1',
         },
         {
           clear: true,
@@ -144,7 +144,7 @@ describe('securityConfig: rate limiting', () => {
     it('when max is negative', () => {
       const restore = mockedEnv(
         {
-          HD_SECURITY_RATE_LIMIT_PUBLIC_API_MAX: '-1',
+          MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_MAX: '-1',
         },
         {
           clear: true,
@@ -152,7 +152,7 @@ describe('securityConfig: rate limiting', () => {
       );
       securityConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_SECURITY_RATE_LIMIT_PUBLIC_API_MAX: Too small: expected number to be >=0',
+        'MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_MAX: Too small: expected number to be >=0',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
@@ -161,7 +161,7 @@ describe('securityConfig: rate limiting', () => {
     it('when window is zero', () => {
       const restore = mockedEnv(
         {
-          HD_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW: '0',
+          MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW: '0',
         },
         {
           clear: true,
@@ -169,7 +169,7 @@ describe('securityConfig: rate limiting', () => {
       );
       securityConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW: Too small: expected number to be >0',
+        'MDCOLLAB_SECURITY_RATE_LIMIT_PUBLIC_API_WINDOW: Too small: expected number to be >0',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
@@ -178,7 +178,7 @@ describe('securityConfig: rate limiting', () => {
     it('when window is negative', () => {
       const restore = mockedEnv(
         {
-          HD_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW: '-300',
+          MDCOLLAB_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW: '-300',
         },
         {
           clear: true,
@@ -186,7 +186,7 @@ describe('securityConfig: rate limiting', () => {
       );
       securityConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW: Too small: expected number to be >0',
+        'MDCOLLAB_SECURITY_RATE_LIMIT_AUTHENTICATED_WINDOW: Too small: expected number to be >0',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
@@ -195,7 +195,7 @@ describe('securityConfig: rate limiting', () => {
     it('when max is not an integer', () => {
       const restore = mockedEnv(
         {
-          HD_SECURITY_RATE_LIMIT_AUTH_MAX: '20.5',
+          MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_MAX: '20.5',
         },
         {
           clear: true,
@@ -203,7 +203,7 @@ describe('securityConfig: rate limiting', () => {
       );
       securityConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_SECURITY_RATE_LIMIT_AUTH_MAX: Invalid input: expected int, received number',
+        'MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_MAX: Invalid input: expected int, received number',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
@@ -212,7 +212,7 @@ describe('securityConfig: rate limiting', () => {
     it('when window is not an integer', () => {
       const restore = mockedEnv(
         {
-          HD_SECURITY_RATE_LIMIT_AUTH_WINDOW: '600.7',
+          MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_WINDOW: '600.7',
         },
         {
           clear: true,
@@ -220,7 +220,7 @@ describe('securityConfig: rate limiting', () => {
       );
       securityConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_SECURITY_RATE_LIMIT_AUTH_WINDOW: Invalid input: expected int, received number',
+        'MDCOLLAB_SECURITY_RATE_LIMIT_AUTH_WINDOW: Invalid input: expected int, received number',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
@@ -229,7 +229,7 @@ describe('securityConfig: rate limiting', () => {
     it('when bypass contains an invalid IP address', () => {
       const restore = mockedEnv(
         {
-          HD_SECURITY_RATE_LIMIT_BYPASS: '127.0.0.1,invalid-ip',
+          MDCOLLAB_SECURITY_RATE_LIMIT_BYPASS: '127.0.0.1,invalid-ip',
         },
         {
           clear: true,
@@ -237,7 +237,7 @@ describe('securityConfig: rate limiting', () => {
       );
       securityConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_SECURITY_RATE_LIMIT_BYPASS[1]: Invalid input',
+        'MDCOLLAB_SECURITY_RATE_LIMIT_BYPASS[1]: Invalid input',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
@@ -246,7 +246,7 @@ describe('securityConfig: rate limiting', () => {
     it('when bypass contains a malformed IPv4 address', () => {
       const restore = mockedEnv(
         {
-          HD_SECURITY_RATE_LIMIT_BYPASS: '999.999.999.999',
+          MDCOLLAB_SECURITY_RATE_LIMIT_BYPASS: '999.999.999.999',
         },
         {
           clear: true,
@@ -254,7 +254,7 @@ describe('securityConfig: rate limiting', () => {
       );
       securityConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_SECURITY_RATE_LIMIT_BYPASS[0]: Invalid input',
+        'MDCOLLAB_SECURITY_RATE_LIMIT_BYPASS[0]: Invalid input',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();

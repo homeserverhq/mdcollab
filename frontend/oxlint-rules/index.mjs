@@ -8,7 +8,7 @@ import { translationKeysRule } from './translation-keys.mjs'
 
 const plugin = {
   meta: {
-    name: 'hedgedoc-frontend',
+    name: 'mdcollab-frontend',
     version: '1.0.0'
   },
   rules: {

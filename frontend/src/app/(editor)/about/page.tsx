@@ -14,7 +14,6 @@ import { EditorToRendererCommunicatorContextProvider } from '../../../components
 import { Trans, useTranslation } from 'react-i18next'
 import { InstanceVersion } from '../../../components/about-page/instance-version'
 import { ProjectLinks } from '../../../components/about-page/project-links'
-import { SocialLinks } from '../../../components/about-page/social-links'
 import { MotdCard } from '../../../components/about-page/motd-card'
 
 /**
@@ -41,7 +40,6 @@ const AboutPage: NextPage = () => {
       <MotdCard />
       <InstanceVersion />
       <ProjectLinks />
-      <SocialLinks />
     </TwoColumnLayout>
   )
 }

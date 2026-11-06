@@ -44,7 +44,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
             canEdit: false
           },
           {
-            groupName: 'hedgedoc-devs',
+            groupName: 'mdcollab-devs',
             canEdit: true
           }
         ],

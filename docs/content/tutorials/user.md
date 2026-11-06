@@ -1,6 +1,6 @@
 # Create a user
 
-This tutorial assumes that you just deployed a HedgeDoc instance with [this guide][setup].
+This tutorial assumes that you just deployed a mdCollab instance with [this guide][setup].
 We'll assume the domain you use for the instance is <https://md.example.com>, so please
 substitute your actual domain anywhere you encounter <https://md.example.com>
 
@@ -8,7 +8,7 @@ substitute your actual domain anywhere you encounter <https://md.example.com>
 
 2. Click the "Sign In" button in the top right corner of the page.
 
-   ![Sign In button on the HedgeDoc start page][sign-in]{ width="400" }
+   ![Sign In button on the mdCollab start page][sign-in]{ width="400" }
 
 3. Click on the "Register" button in "Sign in via Username" section.
 
@@ -22,7 +22,7 @@ substitute your actual domain anywhere you encounter <https://md.example.com>
 
 5. Click on the "Register" button.
 
-Congratulation you know have a working local user account for your HedgeDoc instance.
+Congratulation you know have a working local user account for your mdCollab instance.
 
 ## Further reading
 

@@ -12,7 +12,7 @@ import { promisify } from 'node:util';
 
 import authConfiguration, { AuthConfig } from '../config/auth.config';
 import { ConsoleLoggerService } from '../logger/console-logger.service';
-import { HEDGEDOC_SESSION } from '../utils/session';
+import { MDCOLLAB_SESSION } from '../utils/session';
 import { KnexSessionStore } from './knex-session-store';
 
 /**
@@ -62,7 +62,7 @@ export class SessionService {
   }
 
   /**
-   * Extracts the HedgeDoc session cookie from the given {@link IncomingMessage request} and checks if the signature is correct.
+   * Extracts the mdCollab session cookie from the given {@link IncomingMessage request} and checks if the signature is correct.
    *
    * @param request The http request that contains a session cookie
    * @returns An {@link Optional optional} that either contains the extracted session id or is empty if no session cookie has been found
@@ -71,7 +71,7 @@ export class SessionService {
    */
   extractSessionIdFromRequest(request: IncomingMessage): string | null {
     const cookies = fastifyCookie.parse(request.headers.cookie ?? '');
-    const sessionCookie = cookies[HEDGEDOC_SESSION];
+    const sessionCookie = cookies[MDCOLLAB_SESSION];
     if (!sessionCookie) {
       return null;
     }
@@ -121,10 +121,10 @@ export class SessionService {
   private extractVerifiedSessionIdFromCookieContent(rawCookie: string): string {
     const parsedCookie = SessionService.sessionCookieContentRegex.exec(rawCookie);
     if (parsedCookie === null) {
-      throw new Error(`cookie "${HEDGEDOC_SESSION}" doesn't look like a signed session cookie`);
+      throw new Error(`cookie "${MDCOLLAB_SESSION}" doesn't look like a signed session cookie`);
     }
     if (!fastifyCookie.unsign(parsedCookie[1], this.authConfig.session.secret).valid) {
-      throw new Error(`signature of cookie "${HEDGEDOC_SESSION}" isn't valid.`);
+      throw new Error(`signature of cookie "${MDCOLLAB_SESSION}" isn't valid.`);
     }
     return parsedCookie[2];
   }

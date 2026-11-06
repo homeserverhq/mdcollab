@@ -59,7 +59,7 @@ export class MediaController {
     },
   })
   @ApiHeader({
-    name: 'HedgeDoc-Note',
+    name: 'MDCOLLAB-Note',
     description: 'ID or aliases of the parent note',
   })
   @OpenApi(

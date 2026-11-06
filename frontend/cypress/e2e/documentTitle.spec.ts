@@ -14,67 +14,67 @@ describe('Document Title', () => {
   describe('title should be yaml metadata title', () => {
     it('just yaml metadata title', () => {
       cy.setCodemirrorContent(`---\ntitle: ${title}\n---`)
-      cy.title().should('eq', `${title} - HedgeDoc @ ${branding.name}`)
+      cy.title().should('eq', `${title} - mdCollab @ ${branding.name}`)
     })
 
     it('yaml metadata title and opengraph title', () => {
       cy.setCodemirrorContent(`---\ntitle: ${title}\nopengraph:\n  title: False title\n---`)
-      cy.title().should('eq', `${title} - HedgeDoc @ ${branding.name}`)
+      cy.title().should('eq', `${title} - mdCollab @ ${branding.name}`)
     })
 
     it('yaml metadata title, opengraph title and first heading', () => {
       cy.setCodemirrorContent(`---\ntitle: ${title}\nopengraph:\n  title: False title\n---\n# a first title`)
-      cy.title().should('eq', `${title} - HedgeDoc @ ${branding.name}`)
+      cy.title().should('eq', `${title} - mdCollab @ ${branding.name}`)
     })
   })
 
   describe('title should be opengraph title', () => {
     it('just opengraph title', () => {
       cy.setCodemirrorContent(`---\nopengraph:\n  title: ${title}\n---`)
-      cy.title().should('eq', `${title} - HedgeDoc @ ${branding.name}`)
+      cy.title().should('eq', `${title} - mdCollab @ ${branding.name}`)
     })
 
     it('opengraph title and first heading', () => {
       cy.setCodemirrorContent(`---\nopengraph:\n  title: ${title}\n---\n# a first title`)
-      cy.title().should('eq', `${title} - HedgeDoc @ ${branding.name}`)
+      cy.title().should('eq', `${title} - mdCollab @ ${branding.name}`)
     })
   })
 
   describe('title should be first heading', () => {
     it('just first heading', () => {
       cy.setCodemirrorContent(`# ${title}`)
-      cy.title().should('eq', `${title} - HedgeDoc @ ${branding.name}`)
+      cy.title().should('eq', `${title} - mdCollab @ ${branding.name}`)
     })
 
     it('just first heading with alt-text instead of image', () => {
       cy.setCodemirrorContent(`# ${title} ![abc](https://dummyimage.com/48)`)
-      cy.title().should('eq', `${title} abc - HedgeDoc @ ${branding.name}`)
+      cy.title().should('eq', `${title} abc - mdCollab @ ${branding.name}`)
     })
 
     it('just first heading without link syntax', () => {
-      cy.setCodemirrorContent(`# ${title} [link](https://hedgedoc.org)`)
-      cy.title().should('eq', `${title} link - HedgeDoc @ ${branding.name}`)
+      cy.setCodemirrorContent(`# ${title} [link](https://example.com)`)
+      cy.title().should('eq', `${title} link - mdCollab @ ${branding.name}`)
     })
 
     it('markdown syntax removed first', () => {
       cy.setCodemirrorContent(`# ${title} 1*2*3 4*5**`)
-      cy.title().should('eq', `${title} 123 4*5** - HedgeDoc @ ${branding.name}`)
+      cy.title().should('eq', `${title} 123 4*5** - mdCollab @ ${branding.name}`)
     })
 
     it('markdown syntax removed second', () => {
       cy.setCodemirrorContent(`# ${title} **1 2*`)
-      cy.title().should('eq', `${title} *1 2 - HedgeDoc @ ${branding.name}`)
+      cy.title().should('eq', `${title} *1 2 - mdCollab @ ${branding.name}`)
     })
 
     it('markdown syntax removed third', () => {
       cy.setCodemirrorContent(`# ${title} _asd_`)
-      cy.title().should('eq', `${title} asd - HedgeDoc @ ${branding.name}`)
+      cy.title().should('eq', `${title} asd - mdCollab @ ${branding.name}`)
     })
 
     it('katex code looks right', () => {
       cy.setCodemirrorContent(`# $\\alpha$-foo`)
       cy.getIframeBody().find('h1').should('contain', 'α')
-      cy.title().should('eq', `\\alpha-foo - HedgeDoc @ ${branding.name}`)
+      cy.title().should('eq', `\\alpha-foo - mdCollab @ ${branding.name}`)
     })
   })
 })

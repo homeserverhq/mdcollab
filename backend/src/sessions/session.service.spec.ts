@@ -19,7 +19,7 @@ import { createDefaultMockAuthConfig, registerAuthConfig } from '../config/mock/
 import { mockKnexDb } from '../database/mock/provider';
 import { mockSelect } from '../database/mock/mock-queries';
 import { LoggerModule } from '../logger/logger.module';
-import { HEDGEDOC_SESSION } from '../utils/session';
+import { MDCOLLAB_SESSION } from '../utils/session';
 import { SessionService } from './session.service';
 
 describe('SessionService', () => {
@@ -101,13 +101,13 @@ describe('SessionService', () => {
     });
     it('returns empty Optional if cookie is malformed', async () => {
       const testRequest = new IncomingMessage(mockSocket);
-      testRequest.headers.cookie = fastifyCookie.serialize(HEDGEDOC_SESSION, 'foo', {});
+      testRequest.headers.cookie = fastifyCookie.serialize(MDCOLLAB_SESSION, 'foo', {});
       expect(() => service.extractSessionIdFromRequest(testRequest)).toThrow(Error);
     });
     it('returns empty Optional if cookie has invalid signature', async () => {
       const testRequest = new IncomingMessage(mockSocket);
       testRequest.headers.cookie = fastifyCookie.serialize(
-        HEDGEDOC_SESSION,
+        MDCOLLAB_SESSION,
         `s:${sessionId}:fakeSignature`,
         {},
       );
@@ -116,7 +116,7 @@ describe('SessionService', () => {
     it('returns the correct id for session id', () => {
       const signature = fastifyCookie.sign(sessionId, authConfig.session.secret);
       const testRequest = new IncomingMessage(mockSocket);
-      testRequest.headers.cookie = fastifyCookie.serialize(HEDGEDOC_SESSION, `s:${signature}`, {});
+      testRequest.headers.cookie = fastifyCookie.serialize(MDCOLLAB_SESSION, `s:${signature}`, {});
       expect(service.extractSessionIdFromRequest(testRequest)).toEqual(sessionId);
     });
   });

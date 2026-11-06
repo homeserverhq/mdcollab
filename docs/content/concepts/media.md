@@ -1,10 +1,10 @@
 # Media
 
 !!! info "Design Document"
-    This is a design document, explaining the design and vision for a HedgeDoc 2
+    This is a design document, explaining the design and vision for a mdCollab 2
     feature. It is not a user guide and may or may not be fully implemented.
 
-Media is the term for uploads associated with a note in HedgeDoc.
+Media is the term for uploads associated with a note in mdCollab.
 Currently, there's only support for images.
 
 Media files can be saved to different storage backends like the local filesystem, S3, Azure Blob

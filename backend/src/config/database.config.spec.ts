@@ -32,8 +32,8 @@ describe('databaseConfig', () => {
     it('SQLite config', () => {
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypeSqlite,
-          HD_DATABASE_NAME: databaseFileSqlite,
+          MDCOLLAB_DATABASE_TYPE: databaseTypeSqlite,
+          MDCOLLAB_DATABASE_NAME: databaseFileSqlite,
         },
         {
           clear: true,
@@ -48,12 +48,12 @@ describe('databaseConfig', () => {
     it('MariaDB config', () => {
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypeMariadb,
-          HD_DATABASE_NAME: databaseName,
-          HD_DATABASE_USERNAME: databaseUser,
-          HD_DATABASE_PASSWORD: databasePass,
-          HD_DATABASE_HOST: databaseHost,
-          HD_DATABASE_PORT: String(databasePort),
+          MDCOLLAB_DATABASE_TYPE: databaseTypeMariadb,
+          MDCOLLAB_DATABASE_NAME: databaseName,
+          MDCOLLAB_DATABASE_USERNAME: databaseUser,
+          MDCOLLAB_DATABASE_PASSWORD: databasePass,
+          MDCOLLAB_DATABASE_HOST: databaseHost,
+          MDCOLLAB_DATABASE_PORT: String(databasePort),
         },
         {
           clear: true,
@@ -72,12 +72,12 @@ describe('databaseConfig', () => {
     it('MariaDB config with TLS defaults when not enabled', () => {
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypeMariadb,
-          HD_DATABASE_NAME: databaseName,
-          HD_DATABASE_USERNAME: databaseUser,
-          HD_DATABASE_PASSWORD: databasePass,
-          HD_DATABASE_HOST: databaseHost,
-          HD_DATABASE_PORT: String(databasePort),
+          MDCOLLAB_DATABASE_TYPE: databaseTypeMariadb,
+          MDCOLLAB_DATABASE_NAME: databaseName,
+          MDCOLLAB_DATABASE_USERNAME: databaseUser,
+          MDCOLLAB_DATABASE_PASSWORD: databasePass,
+          MDCOLLAB_DATABASE_HOST: databaseHost,
+          MDCOLLAB_DATABASE_PORT: String(databasePort),
         },
         {
           clear: true,
@@ -92,12 +92,12 @@ describe('databaseConfig', () => {
     it('Postgres config', () => {
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypePostgres,
-          HD_DATABASE_NAME: databaseName,
-          HD_DATABASE_USERNAME: databaseUser,
-          HD_DATABASE_PASSWORD: databasePass,
-          HD_DATABASE_HOST: databaseHost,
-          HD_DATABASE_PORT: String(databasePort),
+          MDCOLLAB_DATABASE_TYPE: databaseTypePostgres,
+          MDCOLLAB_DATABASE_NAME: databaseName,
+          MDCOLLAB_DATABASE_USERNAME: databaseUser,
+          MDCOLLAB_DATABASE_PASSWORD: databasePass,
+          MDCOLLAB_DATABASE_HOST: databaseHost,
+          MDCOLLAB_DATABASE_PORT: String(databasePort),
         },
         {
           clear: true,
@@ -116,18 +116,18 @@ describe('databaseConfig', () => {
     it('Postgres config with TLS enabled', () => {
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypePostgres,
-          HD_DATABASE_NAME: databaseName,
-          HD_DATABASE_USERNAME: databaseUser,
-          HD_DATABASE_PASSWORD: databasePass,
-          HD_DATABASE_HOST: databaseHost,
-          HD_DATABASE_PORT: String(databasePort),
-          HD_DATABASE_TLS_ENABLED: 'true',
-          HD_DATABASE_TLS_REJECT_UNAUTHORIZED: 'false',
-          HD_DATABASE_TLS_CIPHERS: 'TLS_AES_256_GCM_SHA384',
-          HD_DATABASE_TLS_MIN_VERSION: 'TLSv1.2',
-          HD_DATABASE_TLS_MAX_VERSION: 'TLSv1.3',
-          HD_DATABASE_TLS_PASSPHRASE: 'test-passphrase',
+          MDCOLLAB_DATABASE_TYPE: databaseTypePostgres,
+          MDCOLLAB_DATABASE_NAME: databaseName,
+          MDCOLLAB_DATABASE_USERNAME: databaseUser,
+          MDCOLLAB_DATABASE_PASSWORD: databasePass,
+          MDCOLLAB_DATABASE_HOST: databaseHost,
+          MDCOLLAB_DATABASE_PORT: String(databasePort),
+          MDCOLLAB_DATABASE_TLS_ENABLED: 'true',
+          MDCOLLAB_DATABASE_TLS_REJECT_UNAUTHORIZED: 'false',
+          MDCOLLAB_DATABASE_TLS_CIPHERS: 'TLS_AES_256_GCM_SHA384',
+          MDCOLLAB_DATABASE_TLS_MIN_VERSION: 'TLSv1.2',
+          MDCOLLAB_DATABASE_TLS_MAX_VERSION: 'TLSv1.3',
+          MDCOLLAB_DATABASE_TLS_PASSPHRASE: 'test-passphrase',
         },
         {
           clear: true,
@@ -148,15 +148,15 @@ describe('databaseConfig', () => {
 
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypePostgres,
-          HD_DATABASE_NAME: databaseName,
-          HD_DATABASE_USERNAME: databaseUser,
-          HD_DATABASE_PASSWORD: databasePass,
-          HD_DATABASE_HOST: databaseHost,
-          HD_DATABASE_TLS_ENABLED: 'true',
-          HD_DATABASE_TLS_CA_PATH: '/path/to/ca.pem',
-          HD_DATABASE_TLS_CERT_PATH: '/path/to/cert.pem',
-          HD_DATABASE_TLS_KEY_PATH: '/path/to/key.pem',
+          MDCOLLAB_DATABASE_TYPE: databaseTypePostgres,
+          MDCOLLAB_DATABASE_NAME: databaseName,
+          MDCOLLAB_DATABASE_USERNAME: databaseUser,
+          MDCOLLAB_DATABASE_PASSWORD: databasePass,
+          MDCOLLAB_DATABASE_HOST: databaseHost,
+          MDCOLLAB_DATABASE_TLS_ENABLED: 'true',
+          MDCOLLAB_DATABASE_TLS_CA_PATH: '/path/to/ca.pem',
+          MDCOLLAB_DATABASE_TLS_CERT_PATH: '/path/to/cert.pem',
+          MDCOLLAB_DATABASE_TLS_KEY_PATH: '/path/to/key.pem',
         },
         {
           clear: true,
@@ -184,15 +184,15 @@ describe('databaseConfig', () => {
 
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypeMariadb,
-          HD_DATABASE_NAME: databaseName,
-          HD_DATABASE_USERNAME: databaseUser,
-          HD_DATABASE_PASSWORD: databasePass,
-          HD_DATABASE_HOST: databaseHost,
-          HD_DATABASE_TLS_ENABLED: 'true',
-          HD_DATABASE_TLS_CA_PATH: '/path/to/ca.pem',
-          HD_DATABASE_TLS_CIPHERS: 'TLS_AES_256_GCM_SHA384',
-          HD_DATABASE_TLS_REJECT_UNAUTHORIZED: 'true',
+          MDCOLLAB_DATABASE_TYPE: databaseTypeMariadb,
+          MDCOLLAB_DATABASE_NAME: databaseName,
+          MDCOLLAB_DATABASE_USERNAME: databaseUser,
+          MDCOLLAB_DATABASE_PASSWORD: databasePass,
+          MDCOLLAB_DATABASE_HOST: databaseHost,
+          MDCOLLAB_DATABASE_TLS_ENABLED: 'true',
+          MDCOLLAB_DATABASE_TLS_CA_PATH: '/path/to/ca.pem',
+          MDCOLLAB_DATABASE_TLS_CIPHERS: 'TLS_AES_256_GCM_SHA384',
+          MDCOLLAB_DATABASE_TLS_REJECT_UNAUTHORIZED: 'true',
         },
         {
           clear: true,
@@ -215,11 +215,11 @@ describe('databaseConfig', () => {
     it('Postgres config without TLS produces no ssl in knex config', () => {
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypePostgres,
-          HD_DATABASE_NAME: databaseName,
-          HD_DATABASE_USERNAME: databaseUser,
-          HD_DATABASE_PASSWORD: databasePass,
-          HD_DATABASE_HOST: databaseHost,
+          MDCOLLAB_DATABASE_TYPE: databaseTypePostgres,
+          MDCOLLAB_DATABASE_NAME: databaseName,
+          MDCOLLAB_DATABASE_USERNAME: databaseUser,
+          MDCOLLAB_DATABASE_PASSWORD: databasePass,
+          MDCOLLAB_DATABASE_HOST: databaseHost,
         },
         {
           clear: true,
@@ -256,12 +256,12 @@ describe('databaseConfig', () => {
     it('when the port is negative', () => {
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypePostgres,
-          HD_DATABASE_NAME: databaseName,
-          HD_DATABASE_USERNAME: databaseUser,
-          HD_DATABASE_PASSWORD: databasePass,
-          HD_DATABASE_HOST: databaseHost,
-          HD_DATABASE_PORT: String(invalidDatabasePort),
+          MDCOLLAB_DATABASE_TYPE: databaseTypePostgres,
+          MDCOLLAB_DATABASE_NAME: databaseName,
+          MDCOLLAB_DATABASE_USERNAME: databaseUser,
+          MDCOLLAB_DATABASE_PASSWORD: databasePass,
+          MDCOLLAB_DATABASE_HOST: databaseHost,
+          MDCOLLAB_DATABASE_PORT: String(invalidDatabasePort),
         },
         {
           clear: true,
@@ -269,7 +269,7 @@ describe('databaseConfig', () => {
       );
       databaseConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_DATABASE_PORT: Too small: expected number to be >0',
+        'MDCOLLAB_DATABASE_PORT: Too small: expected number to be >0',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
@@ -277,12 +277,12 @@ describe('databaseConfig', () => {
     it('when the port is too big', () => {
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypePostgres,
-          HD_DATABASE_NAME: databaseName,
-          HD_DATABASE_USERNAME: databaseUser,
-          HD_DATABASE_PASSWORD: databasePass,
-          HD_DATABASE_HOST: databaseHost,
-          HD_DATABASE_PORT: String(invalidDatabasePort2),
+          MDCOLLAB_DATABASE_TYPE: databaseTypePostgres,
+          MDCOLLAB_DATABASE_NAME: databaseName,
+          MDCOLLAB_DATABASE_USERNAME: databaseUser,
+          MDCOLLAB_DATABASE_PASSWORD: databasePass,
+          MDCOLLAB_DATABASE_HOST: databaseHost,
+          MDCOLLAB_DATABASE_PORT: String(invalidDatabasePort2),
         },
         {
           clear: true,
@@ -290,7 +290,7 @@ describe('databaseConfig', () => {
       );
       databaseConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_DATABASE_PORT: Too big: expected number to be <=65535',
+        'MDCOLLAB_DATABASE_PORT: Too big: expected number to be <=65535',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
@@ -299,14 +299,14 @@ describe('databaseConfig', () => {
     it('when TLS min version is greater than max version', () => {
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypePostgres,
-          HD_DATABASE_NAME: databaseName,
-          HD_DATABASE_USERNAME: databaseUser,
-          HD_DATABASE_PASSWORD: databasePass,
-          HD_DATABASE_HOST: databaseHost,
-          HD_DATABASE_TLS_ENABLED: 'true',
-          HD_DATABASE_TLS_MIN_VERSION: 'TLSv1.3',
-          HD_DATABASE_TLS_MAX_VERSION: 'TLSv1.2',
+          MDCOLLAB_DATABASE_TYPE: databaseTypePostgres,
+          MDCOLLAB_DATABASE_NAME: databaseName,
+          MDCOLLAB_DATABASE_USERNAME: databaseUser,
+          MDCOLLAB_DATABASE_PASSWORD: databasePass,
+          MDCOLLAB_DATABASE_HOST: databaseHost,
+          MDCOLLAB_DATABASE_TLS_ENABLED: 'true',
+          MDCOLLAB_DATABASE_TLS_MIN_VERSION: 'TLSv1.3',
+          MDCOLLAB_DATABASE_TLS_MAX_VERSION: 'TLSv1.2',
         },
         {
           clear: true,
@@ -323,20 +323,20 @@ describe('databaseConfig', () => {
     it('when TLS version is invalid', () => {
       const restore = mockedEnv(
         {
-          HD_DATABASE_TYPE: databaseTypePostgres,
-          HD_DATABASE_NAME: databaseName,
-          HD_DATABASE_USERNAME: databaseUser,
-          HD_DATABASE_PASSWORD: databasePass,
-          HD_DATABASE_HOST: databaseHost,
-          HD_DATABASE_TLS_ENABLED: 'true',
-          HD_DATABASE_TLS_MIN_VERSION: 'TLSv1.0',
+          MDCOLLAB_DATABASE_TYPE: databaseTypePostgres,
+          MDCOLLAB_DATABASE_NAME: databaseName,
+          MDCOLLAB_DATABASE_USERNAME: databaseUser,
+          MDCOLLAB_DATABASE_PASSWORD: databasePass,
+          MDCOLLAB_DATABASE_HOST: databaseHost,
+          MDCOLLAB_DATABASE_TLS_ENABLED: 'true',
+          MDCOLLAB_DATABASE_TLS_MIN_VERSION: 'TLSv1.0',
         },
         {
           clear: true,
         },
       );
       databaseConfig();
-      expect(spyConsoleError.mock.calls[0][0]).toContain('HD_DATABASE_TLS_MIN_VERSION');
+      expect(spyConsoleError.mock.calls[0][0]).toContain('MDCOLLAB_DATABASE_TLS_MIN_VERSION');
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
     });

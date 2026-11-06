@@ -88,9 +88,9 @@ describe('DeleteApiRequestBuilder', () => {
   it('sendRequest with other body', async () => {
     expectFetch('/api/private/test', 204, {
       method: 'DELETE',
-      body: 'HedgeDoc'
+      body: 'mdCollab'
     })
-    await new DeleteApiRequestBuilder('test').withBody('HedgeDoc').sendRequest()
+    await new DeleteApiRequestBuilder('test').withBody('mdCollab').sendRequest()
   })
 
   describe('sendRequest with custom options', () => {

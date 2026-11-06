@@ -25,7 +25,7 @@ export const FrontendConfigSchema = z
     branding: BrandingSchema.describe('Individual branding information'),
     useImageProxy: z.boolean().describe('Is an image proxy enabled?'),
     specialUrls: SpecialUrlSchema.describe('Links to some special pages'),
-    version: ServerVersionSchema.describe('The version of HedgeDoc'),
+    version: ServerVersionSchema.describe('The version of mdCollab'),
     plantUmlServer: z
       .string()
       .url()

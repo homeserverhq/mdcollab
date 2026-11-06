@@ -1,0 +1,25 @@
+mdCollab
+========
+
+mdCollab is an independent fork of HedgeDoc 2.
+
+Upstream project: HedgeDoc
+Upstream repository: https://github.com/hedgedoc/hedgedoc
+Upstream commit used for this fork: c937fd26b5d20ca8b2c5fd26e5b467f0a5c03e08
+
+The original code is Copyright (c) The HedgeDoc developers and contributors.
+See the AUTHORS file and the SPDX copyright headers in individual files.
+
+This fork is distributed under the GNU Affero General Public License v3.0 only.
+See LICENSE and LICENSES/AGPL-3.0-only.txt for the full license text.
+
+Modifications in this fork include, among other things:
+- Rebranding from HedgeDoc to mdCollab.
+- Replacement of HedgeDoc logo and icon assets with mdCollab placeholders.
+- Renaming of environment variables from HD_* to MDCOLLAB_*.
+- Renaming of the note API header and session cookie.
+- Removal of upstream community, documentation-site, and registry URLs.
+- Removal of upstream workflows that performed remote actions.
+
+HedgeDoc is a trademark of its respective owners. mdCollab is not affiliated
+with or endorsed by the HedgeDoc project. See TRADEMARKS.md.

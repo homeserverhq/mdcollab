@@ -33,10 +33,10 @@ FROM base
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-LABEL org.opencontainers.image.title='HedgeDoc production frontend image'
-LABEL org.opencontainers.image.url='https://hedgedoc.org'
-LABEL org.opencontainers.image.source='https://github.com/hedgedoc/hedgedoc'
-LABEL org.opencontainers.image.documentation='https://github.com/hedgedoc/hedgedoc/blob/develop/docs/content/how-to/develop/docker.md'
+LABEL org.opencontainers.image.title='mdCollab production frontend image'
+LABEL org.opencontainers.image.url='https://github.com/your-org/mdcollab'
+LABEL org.opencontainers.image.source='https://github.com/your-org/mdcollab'
+LABEL org.opencontainers.image.documentation='https://github.com/your-org/mdcollab/blob/develop/docs/content/how-to/develop/docker.md'
 LABEL org.opencontainers.image.licenses='AGPL-3.0'
 
 WORKDIR /usr/src/app

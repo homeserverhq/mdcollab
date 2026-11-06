@@ -27,13 +27,13 @@ describe('noteConfig', () => {
     it('when given correct and complete environment variables', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
-          HD_NOTE_PERMISSIONS_DEFAULT_PUBLICLY_VISIBLE: publiclyVisible.toString(),
-          HD_NOTE_REVISION_RETENTION_DAYS: retentionDays.toString(),
-          HD_NOTE_PERSIST_INTERVAL: persistInteval.toString(),
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_PUBLICLY_VISIBLE: publiclyVisible.toString(),
+          MDCOLLAB_NOTE_REVISION_RETENTION_DAYS: retentionDays.toString(),
+          MDCOLLAB_NOTE_PERSIST_INTERVAL: persistInteval.toString(),
         },
         {
           clear: true,
@@ -52,12 +52,12 @@ describe('noteConfig', () => {
       restore();
     });
 
-    it('when no HD_NOTE_FORBIDDEN_ALIASES is set', () => {
+    it('when no MDCOLLAB_NOTE_FORBIDDEN_ALIASES is set', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
         },
         {
           clear: true,
@@ -73,13 +73,13 @@ describe('noteConfig', () => {
       restore();
     });
 
-    it('when HD_NOTE_FORBIDDEN_ALIASES is a single item', () => {
+    it('when MDCOLLAB_NOTE_FORBIDDEN_ALIASES is a single item', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAlias,
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAlias,
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
         },
         {
           clear: true,
@@ -96,13 +96,13 @@ describe('noteConfig', () => {
       restore();
     });
 
-    it('when HD_NOTE_FORBIDDEN_ALIASES has multiple items', () => {
+    it('when MDCOLLAB_NOTE_FORBIDDEN_ALIASES has multiple items', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
         },
         {
           clear: true,
@@ -119,13 +119,13 @@ describe('noteConfig', () => {
       restore();
     });
 
-    it('with mixed-case HD_NOTE_FORBIDDEN_ALIASES being transformed to lowercase', () => {
+    it('with mixed-case MDCOLLAB_NOTE_FORBIDDEN_ALIASES being transformed to lowercase', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAlias.toUpperCase(),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAlias.toUpperCase(),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
         },
         {
           clear: true,
@@ -142,12 +142,12 @@ describe('noteConfig', () => {
       restore();
     });
 
-    it('when no HD_NOTE_MAX_LENGTH is set', () => {
+    it('when no MDCOLLAB_NOTE_MAX_LENGTH is set', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
         },
         {
           clear: true,
@@ -164,13 +164,13 @@ describe('noteConfig', () => {
       restore();
     });
 
-    it('when no HD_PERMISSION_DEFAULT_EVERYONE is set', () => {
+    it('when no MDCOLLAB_PERMISSION_DEFAULT_EVERYONE is set', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
         },
         {
           clear: true,
@@ -187,12 +187,12 @@ describe('noteConfig', () => {
       restore();
     });
 
-    it('when no HD_PERMISSION_DEFAULT_LOGGED_IN is set', () => {
+    it('when no MDCOLLAB_PERMISSION_DEFAULT_LOGGED_IN is set', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
         },
         {
           clear: true,
@@ -209,12 +209,12 @@ describe('noteConfig', () => {
       restore();
     });
 
-    it('when no HD_PERMISSIONS_MAX_GUEST_LEVEL is set', () => {
+    it('when no MDCOLLAB_PERMISSIONS_MAX_GUEST_LEVEL is set', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
         },
         {
           clear: true,
@@ -234,8 +234,8 @@ describe('noteConfig', () => {
     it('when no permission variables are set', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
         },
         {
           clear: true,
@@ -249,13 +249,13 @@ describe('noteConfig', () => {
       restore();
     });
 
-    it('when no HD_NOTE_REVISION_RETENTION_DAYS is set', () => {
+    it('when no MDCOLLAB_NOTE_REVISION_RETENTION_DAYS is set', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
         },
         {
           clear: true,
@@ -273,13 +273,13 @@ describe('noteConfig', () => {
       restore();
     });
 
-    it('when no HD_NOTE_PERSIST_INTERVAL is set', () => {
+    it('when no MDCOLLAB_NOTE_PERSIST_INTERVAL is set', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.WRITE],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.WRITE],
         },
         {
           clear: true,
@@ -317,13 +317,13 @@ describe('noteConfig', () => {
       jest.restoreAllMocks();
     });
 
-    it('when given a non-valid HD_NOTE_FORBIDDEN_ALIASES', async () => {
+    it('when given a non-valid MDCOLLAB_NOTE_FORBIDDEN_ALIASES', async () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: invalidforbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: invalidforbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
         },
         {
           clear: true,
@@ -331,22 +331,22 @@ describe('noteConfig', () => {
       );
       noteConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_NOTE_FORBIDDEN_ALIASES[0]: Too small: expected string to have >=1 characters',
+        'MDCOLLAB_NOTE_FORBIDDEN_ALIASES[0]: Too small: expected string to have >=1 characters',
       );
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_NOTE_FORBIDDEN_ALIASES[1]: Too small: expected string to have >=1 characters',
+        'MDCOLLAB_NOTE_FORBIDDEN_ALIASES[1]: Too small: expected string to have >=1 characters',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
     });
 
-    it('when given a negative HD_NOTE_MAX_LENGTH', async () => {
+    it('when given a negative MDCOLLAB_NOTE_MAX_LENGTH', async () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: negativeMaxDocumentLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: negativeMaxDocumentLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
         },
         {
           clear: true,
@@ -354,19 +354,19 @@ describe('noteConfig', () => {
       );
       noteConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_NOTE_MAX_LENGTH: Too small: expected number to be >0',
+        'MDCOLLAB_NOTE_MAX_LENGTH: Too small: expected number to be >0',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
     });
 
-    it('when given a non-integer HD_NOTE_MAX_LENGTH', async () => {
+    it('when given a non-integer MDCOLLAB_NOTE_MAX_LENGTH', async () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: floatMaxDocumentLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: floatMaxDocumentLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
         },
         {
           clear: true,
@@ -374,19 +374,19 @@ describe('noteConfig', () => {
       );
       noteConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_NOTE_MAX_LENGTH: Invalid input: expected int, received number',
+        'MDCOLLAB_NOTE_MAX_LENGTH: Invalid input: expected int, received number',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
     });
 
-    it('when given a non-number HD_NOTE_MAX_LENGTH', async () => {
+    it('when given a non-number MDCOLLAB_NOTE_MAX_LENGTH', async () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: invalidMaxDocumentLength,
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: invalidMaxDocumentLength,
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
         },
         {
           clear: true,
@@ -394,19 +394,19 @@ describe('noteConfig', () => {
       );
       noteConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_NOTE_MAX_LENGTH: Invalid input: expected number, received NaN',
+        'MDCOLLAB_NOTE_MAX_LENGTH: Invalid input: expected number, received NaN',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
     });
 
-    it('when given a non-valid HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE', async () => {
+    it('when given a non-valid MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE', async () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: wrongDefaultPermission,
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: wrongDefaultPermission,
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
         },
         {
           clear: true,
@@ -414,19 +414,19 @@ describe('noteConfig', () => {
       );
       noteConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        `HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: Invalid option: expected one of "${PermissionLevelNames[PermissionLevel.DENY]}"|"${PermissionLevelNames[PermissionLevel.READ]}"|"${PermissionLevelNames[PermissionLevel.WRITE]}"|"${PermissionLevelNames[PermissionLevel.FULL]}"`,
+        `MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: Invalid option: expected one of "${PermissionLevelNames[PermissionLevel.DENY]}"|"${PermissionLevelNames[PermissionLevel.READ]}"|"${PermissionLevelNames[PermissionLevel.WRITE]}"|"${PermissionLevelNames[PermissionLevel.FULL]}"`,
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
     });
 
-    it('when given a non-valid HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN', async () => {
+    it('when given a non-valid MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN', async () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: wrongDefaultPermission,
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: wrongDefaultPermission,
         },
         {
           clear: true,
@@ -434,20 +434,20 @@ describe('noteConfig', () => {
       );
       noteConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        `HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: Invalid option: expected one of "${PermissionLevelNames[PermissionLevel.DENY]}"|"${PermissionLevelNames[PermissionLevel.READ]}"|"${PermissionLevelNames[PermissionLevel.WRITE]}"|"${PermissionLevelNames[PermissionLevel.FULL]}"`,
+        `MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: Invalid option: expected one of "${PermissionLevelNames[PermissionLevel.DENY]}"|"${PermissionLevelNames[PermissionLevel.READ]}"|"${PermissionLevelNames[PermissionLevel.WRITE]}"|"${PermissionLevelNames[PermissionLevel.FULL]}"`,
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
     });
 
-    it('when given a non-valid HD_PERMISSIONS_MAX_GUEST_LEVEL', async () => {
+    it('when given a non-valid MDCOLLAB_PERMISSIONS_MAX_GUEST_LEVEL', async () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: wrongDefaultPermission,
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: wrongDefaultPermission,
         },
         {
           clear: true,
@@ -455,20 +455,20 @@ describe('noteConfig', () => {
       );
       noteConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        `HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: Invalid option: expected one of "${PermissionLevelNames[PermissionLevel.DENY]}"|"${PermissionLevelNames[PermissionLevel.READ]}"|"${PermissionLevelNames[PermissionLevel.WRITE]}"|"${PermissionLevelNames[PermissionLevel.FULL]}"`,
+        `MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: Invalid option: expected one of "${PermissionLevelNames[PermissionLevel.DENY]}"|"${PermissionLevelNames[PermissionLevel.READ]}"|"${PermissionLevelNames[PermissionLevel.WRITE]}"|"${PermissionLevelNames[PermissionLevel.FULL]}"`,
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
     });
 
-    it('when HD_PERMISSIONS_MAX_GUEST_LEVEL is set to deny and HD_PERMISSION_DEFAULT_EVERYONE is set', async () => {
+    it('when MDCOLLAB_PERMISSIONS_MAX_GUEST_LEVEL is set to deny and MDCOLLAB_PERMISSION_DEFAULT_EVERYONE is set', async () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: 'deny',
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: 'deny',
         },
         {
           clear: true,
@@ -476,7 +476,7 @@ describe('noteConfig', () => {
       );
       noteConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        `HD_NOTE: 'HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE' is set to '${PermissionLevelNames[PermissionLevel.READ]}', but 'HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL' is set to '${PermissionLevelNames[PermissionLevel.DENY]}'. This does not work since the default level may not be higher than the maximum guest level.`,
+        `MDCOLLAB_NOTE: 'MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE' is set to '${PermissionLevelNames[PermissionLevel.READ]}', but 'MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL' is set to '${PermissionLevelNames[PermissionLevel.DENY]}'. This does not work since the default level may not be higher than the maximum guest level.`,
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
@@ -490,13 +490,13 @@ describe('noteConfig', () => {
       ])(
         'check default everyone and logged-in interaction',
         (everyonePermission, loggedInPermission) => {
-          it(`when HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE is set to ${everyonePermission}, but HD_PERMISSION_DEFAULT_LOGGED_IN is set to ${loggedInPermission}`, async () => {
+          it(`when MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE is set to ${everyonePermission}, but MDCOLLAB_PERMISSION_DEFAULT_LOGGED_IN is set to ${loggedInPermission}`, async () => {
             const restore = mockedEnv(
               {
-                HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-                HD_NOTE_MAX_LENGTH: maxLength.toString(),
-                HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: everyonePermission,
-                HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: loggedInPermission,
+                MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+                MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+                MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: everyonePermission,
+                MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: loggedInPermission,
               },
               {
                 clear: true,
@@ -504,7 +504,7 @@ describe('noteConfig', () => {
             );
             noteConfig();
             expect(spyConsoleError.mock.calls[0][0]).toContain(
-              `HD_NOTE: 'HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE' is set to '${everyonePermission}', but 'HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN' is set to '${loggedInPermission}'. This would give everyone greater permissions than logged-in users, and is not allowed since it doesn't make sense.`,
+              `MDCOLLAB_NOTE: 'MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE' is set to '${everyonePermission}', but 'MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN' is set to '${loggedInPermission}'. This would give everyone greater permissions than logged-in users, and is not allowed since it doesn't make sense.`,
             );
             restore();
           });
@@ -513,13 +513,13 @@ describe('noteConfig', () => {
       describe.each([
         [PermissionLevelNames[PermissionLevel.READ], PermissionLevelNames[PermissionLevel.DENY]],
       ])('check default everyone and max guest level full', (defaultEveryone) => {
-        it(`when HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL is set to ${PermissionLevelNames[PermissionLevel.FULL]} and HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE is set to ${defaultEveryone}`, async () => {
+        it(`when MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL is set to ${PermissionLevelNames[PermissionLevel.FULL]} and MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE is set to ${defaultEveryone}`, async () => {
           const restore = mockedEnv(
             {
-              HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-              HD_NOTE_MAX_LENGTH: maxLength.toString(),
-              HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: defaultEveryone,
-              HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: PermissionLevelNames[PermissionLevel.FULL],
+              MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+              MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+              MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: defaultEveryone,
+              MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: PermissionLevelNames[PermissionLevel.FULL],
             },
             {
               clear: true,
@@ -527,7 +527,7 @@ describe('noteConfig', () => {
           );
           noteConfig();
           expect(spyConsoleError.mock.calls[0][0]).toContain(
-            `'HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL' is set to '${PermissionLevelNames[PermissionLevel.FULL]}', but 'HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE' is set to '${defaultEveryone}'. This does not allow the guest users to write in the notes they can create.`,
+            `'MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL' is set to '${PermissionLevelNames[PermissionLevel.FULL]}', but 'MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE' is set to '${defaultEveryone}'. This does not allow the guest users to write in the notes they can create.`,
           );
           expect(spyProcessExit).toHaveBeenCalledWith(1);
           restore();
@@ -538,13 +538,13 @@ describe('noteConfig', () => {
         [PermissionLevelNames[PermissionLevel.WRITE], PermissionLevelNames[PermissionLevel.DENY]],
         [PermissionLevelNames[PermissionLevel.READ], PermissionLevelNames[PermissionLevel.DENY]],
       ])('check default everyone and max guest level full', (defaultEveryone, maxGuestLevel) => {
-        it(`when 'HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE' is set to '${defaultEveryone}', but 'HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL' is set to '${maxGuestLevel}'`, async () => {
+        it(`when 'MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE' is set to '${defaultEveryone}', but 'MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL' is set to '${maxGuestLevel}'`, async () => {
           const restore = mockedEnv(
             {
-              HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-              HD_NOTE_MAX_LENGTH: maxLength.toString(),
-              HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: defaultEveryone,
-              HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: maxGuestLevel,
+              MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+              MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+              MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: defaultEveryone,
+              MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL: maxGuestLevel,
             },
             {
               clear: true,
@@ -552,7 +552,7 @@ describe('noteConfig', () => {
           );
           noteConfig();
           expect(spyConsoleError.mock.calls[0][0]).toContain(
-            `HD_NOTE: 'HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE' is set to '${defaultEveryone}', but 'HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL' is set to '${maxGuestLevel}'. This does not work since the default level may not be higher than the maximum guest level.`,
+            `MDCOLLAB_NOTE: 'MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE' is set to '${defaultEveryone}', but 'MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL' is set to '${maxGuestLevel}'. This does not work since the default level may not be higher than the maximum guest level.`,
           );
           expect(spyProcessExit).toHaveBeenCalledWith(1);
           restore();
@@ -563,11 +563,11 @@ describe('noteConfig', () => {
     it('when given a negative retention days', async () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_REVISION_RETENTION_DAYS: (-1).toString(),
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_REVISION_RETENTION_DAYS: (-1).toString(),
         },
         {
           clear: true,
@@ -575,7 +575,7 @@ describe('noteConfig', () => {
       );
       noteConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_NOTE_REVISION_RETENTION_DAYS: Too small: expected number to be >=0',
+        'MDCOLLAB_NOTE_REVISION_RETENTION_DAYS: Too small: expected number to be >=0',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
@@ -584,12 +584,12 @@ describe('noteConfig', () => {
     it('when given a negative persistence interval', () => {
       const restore = mockedEnv(
         {
-          HD_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
-          HD_NOTE_MAX_LENGTH: maxLength.toString(),
-          HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
-          HD_NOTE_REVISION_RETENTION_DAYS: retentionDays.toString(),
-          HD_NOTE_PERSIST_INTERVAL: (-1).toString(),
+          MDCOLLAB_NOTE_FORBIDDEN_ALIASES: forbiddenAliases.join(','),
+          MDCOLLAB_NOTE_MAX_LENGTH: maxLength.toString(),
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN: PermissionLevelNames[PermissionLevel.READ],
+          MDCOLLAB_NOTE_REVISION_RETENTION_DAYS: retentionDays.toString(),
+          MDCOLLAB_NOTE_PERSIST_INTERVAL: (-1).toString(),
         },
         {
           clear: true,
@@ -597,7 +597,7 @@ describe('noteConfig', () => {
       );
       noteConfig();
       expect(spyConsoleError.mock.calls[0][0]).toContain(
-        'HD_NOTE_PERSIST_INTERVAL: Too small: expected number to be >=0',
+        'MDCOLLAB_NOTE_PERSIST_INTERVAL: Too small: expected number to be >=0',
       );
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();

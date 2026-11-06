@@ -34,15 +34,15 @@ const tlsVersionEnum = z.enum(['TLSv1.2', 'TLSv1.3']);
 
 const dbTlsSchema = z
   .object({
-    enabled: z.boolean().default(false).describe('HD_DATABASE_TLS_ENABLED'),
-    caPath: z.string().optional().describe('HD_DATABASE_TLS_CA_PATH'),
-    certPath: z.string().optional().describe('HD_DATABASE_TLS_CERT_PATH'),
-    keyPath: z.string().optional().describe('HD_DATABASE_TLS_KEY_PATH'),
-    rejectUnauthorized: z.boolean().default(true).describe('HD_DATABASE_TLS_REJECT_UNAUTHORIZED'),
-    ciphers: z.string().optional().describe('HD_DATABASE_TLS_CIPHERS'),
-    minVersion: tlsVersionEnum.optional().describe('HD_DATABASE_TLS_MIN_VERSION'),
-    maxVersion: tlsVersionEnum.optional().describe('HD_DATABASE_TLS_MAX_VERSION'),
-    passphrase: z.string().optional().describe('HD_DATABASE_TLS_PASSPHRASE'),
+    enabled: z.boolean().default(false).describe('MDCOLLAB_DATABASE_TLS_ENABLED'),
+    caPath: z.string().optional().describe('MDCOLLAB_DATABASE_TLS_CA_PATH'),
+    certPath: z.string().optional().describe('MDCOLLAB_DATABASE_TLS_CERT_PATH'),
+    keyPath: z.string().optional().describe('MDCOLLAB_DATABASE_TLS_KEY_PATH'),
+    rejectUnauthorized: z.boolean().default(true).describe('MDCOLLAB_DATABASE_TLS_REJECT_UNAUTHORIZED'),
+    ciphers: z.string().optional().describe('MDCOLLAB_DATABASE_TLS_CIPHERS'),
+    minVersion: tlsVersionEnum.optional().describe('MDCOLLAB_DATABASE_TLS_MIN_VERSION'),
+    maxVersion: tlsVersionEnum.optional().describe('MDCOLLAB_DATABASE_TLS_MAX_VERSION'),
+    passphrase: z.string().optional().describe('MDCOLLAB_DATABASE_TLS_PASSPHRASE'),
   })
   .superRefine((config, ctx) => {
     if (config.minVersion && config.maxVersion && config.minVersion > config.maxVersion) {
@@ -56,27 +56,27 @@ const dbTlsSchema = z
   });
 
 const sqliteDbSchema = z.object({
-  type: z.literal(DatabaseType.SQLITE).describe('HD_DATABASE_TYPE'),
-  name: z.string().describe('HD_DATABASE_NAME'),
+  type: z.literal(DatabaseType.SQLITE).describe('MDCOLLAB_DATABASE_TYPE'),
+  name: z.string().describe('MDCOLLAB_DATABASE_NAME'),
 });
 
 const postgresDbSchema = z.object({
-  type: z.literal(DatabaseType.POSTGRES).describe('HD_DATABASE_TYPE'),
-  name: z.string().describe('HD_DATABASE_NAME'),
-  username: z.string().describe('HD_DATABASE_USERNAME'),
-  password: z.string().describe('HD_DATABASE_PASSWORD'),
-  host: z.string().describe('HD_DATABASE_HOST'),
-  port: z.number().positive().max(65535).default(5432).describe('HD_DATABASE_PORT'),
+  type: z.literal(DatabaseType.POSTGRES).describe('MDCOLLAB_DATABASE_TYPE'),
+  name: z.string().describe('MDCOLLAB_DATABASE_NAME'),
+  username: z.string().describe('MDCOLLAB_DATABASE_USERNAME'),
+  password: z.string().describe('MDCOLLAB_DATABASE_PASSWORD'),
+  host: z.string().describe('MDCOLLAB_DATABASE_HOST'),
+  port: z.number().positive().max(65535).default(5432).describe('MDCOLLAB_DATABASE_PORT'),
   tls: dbTlsSchema.optional(),
 });
 
 const mariaDbSchema = z.object({
-  type: z.literal(DatabaseType.MARIADB).describe('HD_DATABASE_TYPE'),
-  name: z.string().describe('HD_DATABASE_NAME'),
-  username: z.string().describe('HD_DATABASE_USERNAME'),
-  password: z.string().describe('HD_DATABASE_PASSWORD'),
-  host: z.string().describe('HD_DATABASE_HOST'),
-  port: z.number().positive().max(65535).default(3306).describe('HD_DATABASE_PORT'),
+  type: z.literal(DatabaseType.MARIADB).describe('MDCOLLAB_DATABASE_TYPE'),
+  name: z.string().describe('MDCOLLAB_DATABASE_NAME'),
+  username: z.string().describe('MDCOLLAB_DATABASE_USERNAME'),
+  password: z.string().describe('MDCOLLAB_DATABASE_PASSWORD'),
+  host: z.string().describe('MDCOLLAB_DATABASE_HOST'),
+  port: z.number().positive().max(65535).default(3306).describe('MDCOLLAB_DATABASE_PORT'),
   tls: dbTlsSchema.optional(),
 });
 
@@ -90,27 +90,27 @@ export type DatabaseConfig = z.infer<typeof dbSchema>;
 
 export default registerAs('databaseConfig', () => {
   const databaseConfig = dbSchema.safeParse({
-    type: process.env.HD_DATABASE_TYPE,
-    username: process.env.HD_DATABASE_USERNAME,
-    password: process.env.HD_DATABASE_PASSWORD,
-    name: process.env.HD_DATABASE_NAME,
-    host: process.env.HD_DATABASE_HOST,
-    port: parseOptionalNumber(process.env.HD_DATABASE_PORT),
+    type: process.env.MDCOLLAB_DATABASE_TYPE,
+    username: process.env.MDCOLLAB_DATABASE_USERNAME,
+    password: process.env.MDCOLLAB_DATABASE_PASSWORD,
+    name: process.env.MDCOLLAB_DATABASE_NAME,
+    host: process.env.MDCOLLAB_DATABASE_HOST,
+    port: parseOptionalNumber(process.env.MDCOLLAB_DATABASE_PORT),
     tls: {
-      enabled: parseOptionalBoolean(process.env.HD_DATABASE_TLS_ENABLED),
-      caPath: process.env.HD_DATABASE_TLS_CA_PATH,
-      certPath: process.env.HD_DATABASE_TLS_CERT_PATH,
-      keyPath: process.env.HD_DATABASE_TLS_KEY_PATH,
-      rejectUnauthorized: parseOptionalBoolean(process.env.HD_DATABASE_TLS_REJECT_UNAUTHORIZED),
-      ciphers: process.env.HD_DATABASE_TLS_CIPHERS,
-      minVersion: process.env.HD_DATABASE_TLS_MIN_VERSION,
-      maxVersion: process.env.HD_DATABASE_TLS_MAX_VERSION,
-      passphrase: process.env.HD_DATABASE_TLS_PASSPHRASE,
+      enabled: parseOptionalBoolean(process.env.MDCOLLAB_DATABASE_TLS_ENABLED),
+      caPath: process.env.MDCOLLAB_DATABASE_TLS_CA_PATH,
+      certPath: process.env.MDCOLLAB_DATABASE_TLS_CERT_PATH,
+      keyPath: process.env.MDCOLLAB_DATABASE_TLS_KEY_PATH,
+      rejectUnauthorized: parseOptionalBoolean(process.env.MDCOLLAB_DATABASE_TLS_REJECT_UNAUTHORIZED),
+      ciphers: process.env.MDCOLLAB_DATABASE_TLS_CIPHERS,
+      minVersion: process.env.MDCOLLAB_DATABASE_TLS_MIN_VERSION,
+      maxVersion: process.env.MDCOLLAB_DATABASE_TLS_MAX_VERSION,
+      passphrase: process.env.MDCOLLAB_DATABASE_TLS_PASSPHRASE,
     },
   });
   if (databaseConfig.error) {
     const errorMessages = databaseConfig.error.issues.map((issue) =>
-      extractDescriptionFromZodIssue(issue, 'HD_DATABASE'),
+      extractDescriptionFromZodIssue(issue, 'MDCOLLAB_DATABASE'),
     );
     const errorMessage = buildErrorMessage(errorMessages);
     return printConfigErrorAndExit(errorMessage);
@@ -188,7 +188,7 @@ export function getKnexConfig(databaseConfig: DatabaseConfig): Knex.Config {
           user: databaseConfig.username,
           database: databaseConfig.name,
           password: databaseConfig.password,
-          application_name: 'HedgeDoc',
+          application_name: 'mdCollab',
           ssl: buildPostgresTlsOptions(databaseConfig.tls),
         },
         pool: {

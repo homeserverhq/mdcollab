@@ -3,9 +3,9 @@
 # SPDX-License-Identifier: CC0-1.0
 
 version = 1
-SPDX-PackageName = "hedgedoc"
-SPDX-PackageSupplier = "The HedgeDoc developers <license@hedgedoc.org>"
-SPDX-PackageDownloadLocation = "https://github.com/hedgedoc/hedgedoc"
+SPDX-PackageName = "mdcollab"
+SPDX-PackageSupplier = "mdCollab contributors"
+SPDX-PackageDownloadLocation = "https://github.com/your-org/mdcollab"
 
 [[annotations]]
 path = ".idea/**"
@@ -56,28 +56,16 @@ SPDX-FileCopyrightText = "2021 The HedgeDoc developers (see AUTHORS file)"
 SPDX-License-Identifier = "CC-BY-SA-4.0"
 
 [[annotations]]
-path = "docs/content/old/dev/db-schema.plantuml"
-precedence = "aggregate"
-SPDX-FileCopyrightText = "2021 The HedgeDoc developers (see AUTHORS file)"
-SPDX-License-Identifier = "CC-BY-SA-4.0"
-
-[[annotations]]
-path = "docs/content/old/dev/**api.yml"
-precedence = "aggregate"
-SPDX-FileCopyrightText = "2021 The HedgeDoc developers (see AUTHORS file)"
-SPDX-License-Identifier = "CC-BY-SA-4.0"
-
-[[annotations]]
 path = "docs/content/images/logo.svg"
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2021 The HedgeDoc developers (see AUTHORS file)"
-SPDX-License-Identifier = "LicenseRef-HedgeDoc-Icon-Usage-Guidelines"
+SPDX-FileCopyrightText = "2026 mdCollab contributors"
+SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
-path = "docs/content/images/hedgedoc_logo_**.svg"
+path = "docs/content/images/mdcollab_logo_**.svg"
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2021 The HedgeDoc developers (see AUTHORS file)"
-SPDX-License-Identifier = "LicenseRef-HedgeDoc-Icon-Usage-Guidelines"
+SPDX-FileCopyrightText = "2026 mdCollab contributors"
+SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
 path = "docs/content/theme/styles/Roboto/**"
@@ -130,8 +118,8 @@ SPDX-License-Identifier = "CC0-1.0"
 [[annotations]]
 path = "frontend/public/icons/**"
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2021 The HedgeDoc developers (see AUTHORS file)"
-SPDX-License-Identifier = "LicenseRef-HedgeDoc-Icon-Usage-Guidelines"
+SPDX-FileCopyrightText = "2026 mdCollab contributors"
+SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
 path = "frontend/locales/**"

@@ -59,6 +59,6 @@ export function buildErrorMessage(errorMessages: string[]): string {
     totalErrorMessage += message;
   }
   totalErrorMessage +=
-    '\nFor further information, have a look at our configuration docs at https://docs.hedgedoc.org/configuration\n';
+    '\nFor further information, see the configuration reference in the documentation.\n';
   return totalErrorMessage;
 }

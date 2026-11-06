@@ -54,23 +54,23 @@ function validateUrl(value: string | undefined, ctx: RefinementCtx): void {
 
 const schema = z
   .object({
-    baseUrl: z.string().superRefine(validateUrl).describe('HD_BASE_URL'),
+    baseUrl: z.string().superRefine(validateUrl).describe('MDCOLLAB_BASE_URL'),
     rendererBaseUrl: z
       .string()
       .superRefine(validateUrl)
       .default('')
-      .describe('HD_RENDERER_BASE_URL'),
-    backendPort: z.number().positive().int().max(65535).default(3000).describe('HD_BACKEND_PORT'),
+      .describe('MDCOLLAB_RENDERER_BASE_URL'),
+    backendPort: z.number().positive().int().max(65535).default(3000).describe('MDCOLLAB_BACKEND_PORT'),
     backendBindIp: z
       .union([z.ipv4(), z.ipv6()])
       .default('127.0.0.1')
-      .describe('HD_BACKEND_BIND_IP'),
+      .describe('MDCOLLAB_BACKEND_BIND_IP'),
     log: z.object({
       level: z
         .enum(Object.values(Loglevel) as [Loglevel, ...Loglevel[]])
         .default(Loglevel.INFO)
-        .describe('HD_LOG_LEVEL'),
-      showTimestamp: z.boolean().default(true).describe('HD_LOG_SHOW_TIMESTAMP'),
+        .describe('MDCOLLAB_LOG_LEVEL'),
+      showTimestamp: z.boolean().default(true).describe('MDCOLLAB_LOG_SHOW_TIMESTAMP'),
     }),
   })
   .transform((data) => {
@@ -85,18 +85,18 @@ export type AppConfig = z.infer<typeof schema>;
 
 export default registerAs('appConfig', () => {
   const appConfig = schema.safeParse({
-    baseUrl: process.env.HD_BASE_URL,
-    rendererBaseUrl: process.env.HD_RENDERER_BASE_URL,
-    backendPort: parseOptionalNumber(process.env.HD_BACKEND_PORT),
-    backendBindIp: process.env.HD_BACKEND_BIND_IP,
+    baseUrl: process.env.MDCOLLAB_BASE_URL,
+    rendererBaseUrl: process.env.MDCOLLAB_RENDERER_BASE_URL,
+    backendPort: parseOptionalNumber(process.env.MDCOLLAB_BACKEND_PORT),
+    backendBindIp: process.env.MDCOLLAB_BACKEND_BIND_IP,
     log: {
-      level: process.env.HD_LOG_LEVEL,
-      showTimestamp: parseOptionalBoolean(process.env.HD_LOG_SHOW_TIMESTAMP),
+      level: process.env.MDCOLLAB_LOG_LEVEL,
+      showTimestamp: parseOptionalBoolean(process.env.MDCOLLAB_LOG_SHOW_TIMESTAMP),
     },
   });
   if (appConfig.error) {
     const errorMessages = appConfig.error.issues.map((issue) =>
-      extractDescriptionFromZodIssue(issue, 'HD'),
+      extractDescriptionFromZodIssue(issue, 'MDCOLLAB'),
     );
     const errorMessage = buildErrorMessage(errorMessages);
     return printConfigErrorAndExit(errorMessage);

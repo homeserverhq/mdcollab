@@ -1,15 +1,10 @@
 # Frequently Asked Questions
 
-This page collects Frequently Asked Questions of the community.  
-If you have any questions that aren't answered here, feel free to ask on our
-[community forums][hedgedoc-community] or in out [Matrix chat][matrix.org-url].
-
-[matrix.org-url]: https://chat.hedgedoc.org
-[hedgedoc-community]: https://community.hedgedoc.org
+This page collects Frequently Asked Questions about mdCollab.
 
 ## Why did you switch from MathJax to KaTeX?
 
-The new react frontend, that was introduced with HedgeDoc 2.0 switched from MathJax 2
+The new react frontend, that was introduced with mdCollab 2.0 switched from MathJax 2
 to [KaTeX][katex], because:
 
 - [KaTeX is much faster than MathJax](https://www.intmath.com/cg5/katex-mathjax-comparison.php?processor=MathJax )
@@ -20,7 +15,7 @@ to [KaTeX][katex], because:
 
 ## Why are code-blocks with 'sequence' as language deprecated?
 
-Starting with HedgeDoc 2.0, mermaid is used for rendering sequence-diagrams.
+Starting with mdCollab 2.0, mermaid is used for rendering sequence-diagrams.
 The [syntax][mermaid-syntax] doesn't change. To remove the deprecation warning, simply change the
 codeblock-"language" from `sequence` to `mermaid` and insert a single line with `sequenceDiagram`
 just before your diagram content.
@@ -44,7 +39,7 @@ John-->>Alice: Great!
 
 ## Why do tags in headings don't work anymore?
 
-Starting with HedgeDoc 2.0, we don't support tag headings in the note anymore.
+Starting with mdCollab 2.0, we don't support tag headings in the note anymore.
 
 ```markdown
 #### tags: `tag1`, `tag2`
@@ -52,7 +47,7 @@ Starting with HedgeDoc 2.0, we don't support tag headings in the note anymore.
 
 Instead, please use the [frontmatter metadata][frontmatter] to specify tags.
 
-[frontmatter]: https://demo.hedgedoc.org/yaml-metadata#tags
+[frontmatter]: ../references/hfm.md
 
 ## Why is the comma separated definition of tags in the YAML-metadata deprecated?
 
@@ -87,14 +82,14 @@ tags: ['tag1', 'tag2']
 
 ## Why should I want to run my renderer on a different (sub-)domain?
 
-If the renderer is provided by another domain, it's way harder to manipulate HedgeDoc or
+If the renderer is provided by another domain, it's way harder to manipulate mdCollab or
 steal credentials from the rendered note content, because renderer and editor are more isolated.
 This increases the security of the software and greatly mitigates [XSS attacks][xss].
-However, you can run HedgeDoc without this extra security, but we recommend using it if possible.
+However, you can run mdCollab without this extra security, but we recommend using it if possible.
 
 !!! note
-    When you want to use a separate domain for `HD_RENDERER_BASE_URL`, your reverse proxy config
-    needs to be adjusted to direct requests for this domain to the frontend.
+    When you want to use a separate domain for `MDCOLLAB_RENDERER_BASE_URL`, your reverse
+    proxy config needs to be adjusted to direct requests for this domain to the frontend.
 
 [xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
 

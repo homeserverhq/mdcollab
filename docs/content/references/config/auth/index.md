@@ -1,7 +1,7 @@
 # Authentication
 
-HedgeDoc supports multiple authentication mechanisms that can be enabled and configured.
-An authentication method is always linked to an account on the HedgeDoc instance.
+mdCollab supports multiple authentication mechanisms that can be enabled and configured.
+An authentication method is always linked to an account on the mdCollab instance.
 However, an account can also have multiple authentication methods linked.
 
 Each user has a unique username.
@@ -16,7 +16,7 @@ If a user already has an account, they can link a new authentication method in t
 - [LDAP](./ldap.md)
 - [OpenID Connect (OIDC)](./oidc.md)
 
-While HedgeDoc provides a basic local account system, we recommend using an external
+While mdCollab provides a basic local account system, we recommend using an external
 authentication mechanism for most environments.
 
 For LDAP and OIDC you can configure multiple auth providers of that type.
@@ -26,16 +26,16 @@ The identifier should consist of only letters (`a-z`, `A-Z`), numbers (`0-9`), a
 
 ## Profile sync
 
-A HedgeDoc account stores generic profile information like the display name of the
+A mdCollab account stores generic profile information like the display name of the
 user and optionally a URL to a profile picture.
 Depending on your configuration, users can change this information in their settings.
-You can also configure HedgeDoc to sync this information from an external source like
+You can also configure mdCollab to sync this information from an external source like
 LDAP or OIDC. In this case, changes made by the user will be overridden on login with
 the external source, that is configured as sync source.
 
 ## Account merging
 
-There's no built-in account merging in HedgeDoc. So if you registered with different
+There's no built-in account merging in mdCollab. So if you registered with different
 auth methods, you will have different accounts.
 To manually resolve this situation, you can do the following:
 
@@ -49,8 +49,8 @@ To manually resolve this situation, you can do the following:
 
 | environment variable            | default   | example                                                                         | description                                                                                                                                                           |
 |---------------------------------|-----------|---------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `HD_AUTH_SESSION_SECRET`        | (not set) | `5aaea9250828ce6942b35d170a385e74c41f1f05`, just random data                    | **Required.** The secret used to sign the session cookie. Needs to be at least 32 bytes long.                                                                         |
-| `HD_AUTH_SESSION_LIFETIME`      | `1209600` | `604800`, `1209600`                                                             | The lifetime of a session in seconds. After this time without activity, a user will be logged out.                                                                    |
-| `HD_AUTH_ALLOW_PROFILE_EDITS`   | `true`    | `true`, `false`                                                                 | Allow users to edit their profile information.                                                                                                                        |
-| `HD_AUTH_ALLOW_CHOOSE_USERNAME` | `true`    | `true`,  `false`                                                                | If enabled, users may freely choose their username when signing-up via an external auth source (OIDC). Otherwise the username from the external auth source is taken. |
-| `HD_AUTH_SYNC_SOURCE`           | (not set) | `gitlab`, if there's an auth method (LDAP or OIDC) with the identifier `gitlab` | If enabled, the auth method with the configured identifier will update user's profile information on login.                                                           |
+| `MDCOLLAB_AUTH_SESSION_SECRET`        | (not set) | `5aaea9250828ce6942b35d170a385e74c41f1f05`, just random data                    | **Required.** The secret used to sign the session cookie. Needs to be at least 32 bytes long.                                                                         |
+| `MDCOLLAB_AUTH_SESSION_LIFETIME`      | `1209600` | `604800`, `1209600`                                                             | The lifetime of a session in seconds. After this time without activity, a user will be logged out.                                                                    |
+| `MDCOLLAB_AUTH_ALLOW_PROFILE_EDITS`   | `true`    | `true`, `false`                                                                 | Allow users to edit their profile information.                                                                                                                        |
+| `MDCOLLAB_AUTH_ALLOW_CHOOSE_USERNAME` | `true`    | `true`,  `false`                                                                | If enabled, users may freely choose their username when signing-up via an external auth source (OIDC). Otherwise the username from the external auth source is taken. |
+| `MDCOLLAB_AUTH_SYNC_SOURCE`           | (not set) | `gitlab`, if there's an auth method (LDAP or OIDC) with the identifier `gitlab` | If enabled, the auth method with the configured identifier will update user's profile information on login.                                                           |

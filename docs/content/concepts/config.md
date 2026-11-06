@@ -1,17 +1,17 @@
 # Config
 
 !!! info "Design Document"
-    This is a design document, explaining the design and vision for a HedgeDoc 2
+    This is a design document, explaining the design and vision for a mdCollab 2
     feature. It is not a user guide and may or may not be fully implemented.
 
-The configuration of HedgeDoc 2 is handled entirely by environment variables.
-Most of these variables are prefixed with `HD_` (for HedgeDoc).
+The configuration of mdCollab 2 is handled entirely by environment variables.
+Most of these variables are prefixed with `MDCOLLAB_` (for mdCollab).
 NestJS - the framework we use - is reading the variables from the environment and also from
 the `.env` file in the root of the project.
 
 ## How the config code works
 
-The config of HedgeDoc is split up into **nine** different modules:
+The config of mdCollab is split up into **nine** different modules:
 
 `app.config.ts`
 : General configuration of the app
@@ -45,7 +45,7 @@ Each of those files (except `auth.config.ts` which is discussed later) consists 
 
 ### Interface
 
-The interface just describes which options the configuration has and how the rest of HedgeDoc can
+The interface just describes which options the configuration has and how the rest of mdCollab can
 use them. All enums that are used in here are put in their own files with the extension `.enum.ts`.
 
 ### Joi Schema
@@ -83,25 +83,27 @@ Therefore, we have two big extra steps in the default export:
    configured variables into arrays.
 2. The error messages are piped into the util method `replaceAuthErrorsWithEnvironmentVariables`.
    This replaces the error messages of the form `gitlab[0].providerName`
-   with `HD_AUTH_GITLAB_<nameOfFirstGitlab>_PROVIDER_NAME`. For this the util function gets
+   with `MDCOLLAB_AUTH_GITLAB_<nameOfFirstGitlab>_PROVIDER_NAME`. For this the util function gets
    the error, the name of the config option (e.g `'gitlab'`), the approriate prefix
-   (e.g. `'HD_AUTH_GITLAB_'`), and an array of the user defined names.
+   (e.g. `'MDCOLLAB_AUTH_GITLAB_'`), and an array of the user defined names.
 
 ## Default permission config
 
-HedgeDoc 2 allows to configure a default permission value for the `EVERYONE` and `LOGGED_IN`
+mdCollab 2 allows to configure a default permission value for the `EVERYONE` and `LOGGED_IN`
 special groups. This default value is applied to all new notes. It is ensured that the `EVERYONE`
 level is always at least as permissive as the `LOGGED_IN` level, as otherwise logged-in users would
 have fewer permissions than guests by default. These default permissions are configured using
-`HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE` and `HD_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN`.
+`MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE` and
+`MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_LOGGED_IN`.
 
-There is another config 2️⃣ `HD_NOTE_PERMISSIONS_MAX_GUEST_LEVEL` which defines the maximum allowed
-permission for guests on the instance. This limits user's ability to give guests higher permissions
-for a note. This value also acts to define whether guests are allowed to create notes on the
-instance, which is possible if the value is `full`.
+There is another config 2️⃣ `MDCOLLAB_NOTE_PERMISSIONS_MAX_GUEST_LEVEL` which defines the maximum
+allowed permission for guests on the instance. This limits user's ability to give guests higher
+permissions for a note. This value also acts to define whether guests are allowed to create notes
+on the instance, which is possible if the value is `full`.
 
 To avoid a situation where guests can create a note but not edit it afterward, the
-`HD_NOTE_MAX_GUEST_LEVEL=full` setting requires `HD_NOTE_PERMISSIONS_DEFAULT_EVERYONE` to bet set
+`MDCOLLAB_NOTE_MAX_GUEST_LEVEL=full` setting requires
+`MDCOLLAB_NOTE_PERMISSIONS_DEFAULT_EVERYONE` to bet set
 to `write`.
 
 The following table shows accepted and not accepted configurations:

@@ -1,18 +1,18 @@
 # WebDAV
 
-You can use any [WebDAV][webdav] server to handle your image uploads in HedgeDoc.
+You can use any [WebDAV][webdav] server to handle your image uploads in mdCollab.
 
-The WebDAV server must host the files in a way that allows HedgeDoc to request and receive them.
+The WebDAV server must host the files in a way that allows mdCollab to request and receive them.
 
 You just add the following lines to your configuration:  
 (with the appropriate substitution for `<CONNECTION_STRING>`,
 `<UPLOAD_DIR>`, and `<PUBLIC_URL>` of course)
 
 ```dotenv
-HD_MEDIA_BACKEND_TYPE="webdav"
-HD_MEDIA_BACKEND_WEBDAV_CONNECTION_STRING="<CONNECTION_STRING>"
-HD_MEDIA_BACKEND_WEBDAV_UPLOAD_DIR="<UPLOAD_DIR>"
-HD_MEDIA_BACKEND_WEBDAV_PUBLIC_URL="<PUBLIC_URL>"
+MDCOLLAB_MEDIA_BACKEND_TYPE="webdav"
+MDCOLLAB_MEDIA_BACKEND_WEBDAV_CONNECTION_STRING="<CONNECTION_STRING>"
+MDCOLLAB_MEDIA_BACKEND_WEBDAV_UPLOAD_DIR="<UPLOAD_DIR>"
+MDCOLLAB_MEDIA_BACKEND_WEBDAV_PUBLIC_URL="<PUBLIC_URL>"
 ```
 
 The `<CONNECTION_STRING>` should include the username and password (if needed)
@@ -22,7 +22,7 @@ With `<UPLOAD_DIR>` you can specify a folder you want to upload to,
 but you can also omit this (just don't spcify this value at all),
 if you prefer to upload directly to the root of the WebDAV server.
 
-Finally, `<PUBLIC_URL>` specifies with which url HedgeDoc can access the upload. For this purpose
+Finally, `<PUBLIC_URL>` specifies with which url mdCollab can access the upload. For this purpose
 the filename will be appended to `<PUBLIC_URL>`. So the file `test.png` with `<PUBLIC_URL>`
 `https://dav.example.com` should be accessible via `https://dav.example.com/test.png`.
 
@@ -40,7 +40,7 @@ In this example the username will be `TestUser`.
 1. Create an app password by going to `Settings` > `Security`. Nextcloud will generate a password
    for you. Let's assume it's `passw0rd`.
 2. In the Files app [create a new folder][nextcloud-folder] that will hold
-   your uploads (e.g `HedgeDoc`).
+   your uploads (e.g `mdCollab`).
 3. [Share][nextcloud-share] the newly created folder. The folder should (per default) be configured
    with the option `Read Only` (which we will assume in this guide), but
    `Allow upload and editing` should be fine, too.
@@ -57,13 +57,13 @@ In this example the username will be `TestUser`.
    (`cloud.example.com/remote.php/dav/files/TestUser/` in our example). The WebDAV url in our
    example should now look like this
    `https://TestUser:passw0rd@cloud.example.com/remote.php/dav/files/TestUser/`.
-8. Configure HedgeDoc:
+8. Configure mdCollab:
 
 ```dotenv
-HD_MEDIA_BACKEND_TYPE="webdav"
-HD_MEDIA_BACKEND_WEBDAV_CONNECTION_STRING="https://TestUser:passw0rd@cloud.example.com/remote.php/dav/files/TestUser/"
-HD_MEDIA_BACKEND_WEBDAV_UPLOAD_DIR="HedgeDoc"
-HD_MEDIA_BACKEND_WEBDAV_PUBLIC_URL="https://cloud.example.com/s/some-id/download?path=%2F&files="
+MDCOLLAB_MEDIA_BACKEND_TYPE="webdav"
+MDCOLLAB_MEDIA_BACKEND_WEBDAV_CONNECTION_STRING="https://TestUser:passw0rd@cloud.example.com/remote.php/dav/files/TestUser/"
+MDCOLLAB_MEDIA_BACKEND_WEBDAV_UPLOAD_DIR="mdCollab"
+MDCOLLAB_MEDIA_BACKEND_WEBDAV_PUBLIC_URL="https://cloud.example.com/s/some-id/download?path=%2F&files="
 ```
 
 Start using image uploads backed by Nextclouds WebDAV server.

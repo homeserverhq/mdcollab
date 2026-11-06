@@ -1,31 +1,31 @@
 services:
   backend:
-    image: ghcr.io/hedgedoc/hedgedoc/backend:2.0.0-alpha.3
+    image: mdcollab/backend:latest
     volumes:
       - $PWD/.env:/usr/src/app/backend/.env
-      - hedgedoc_uploads:/usr/src/app/backend/uploads
+      - mdcollab_uploads:/usr/src/app/backend/uploads
 
   frontend:
-    image: ghcr.io/hedgedoc/hedgedoc/frontend:2.0.0-alpha.3
+    image: mdcollab/frontend:latest
     environment:
-      HD_BASE_URL: "${HD_BASE_URL}"
-      HD_INTERNAL_API_URL: http://backend:3000
+      MDCOLLAB_BASE_URL: "${MDCOLLAB_BASE_URL}"
+      MDCOLLAB_INTERNAL_API_URL: http://backend:3000
       HOSTNAME: "0.0.0.0"
 
   db:
     image: postgres:16
     environment:
-      POSTGRES_USER: "${HD_DATABASE_USERNAME}"
-      POSTGRES_PASSWORD: "${HD_DATABASE_PASSWORD}"
-      POSTGRES_DB: "${HD_DATABASE_NAME}"
+      POSTGRES_USER: "${MDCOLLAB_DATABASE_USERNAME}"
+      POSTGRES_PASSWORD: "${MDCOLLAB_DATABASE_PASSWORD}"
+      POSTGRES_DB: "${MDCOLLAB_DATABASE_NAME}"
     volumes:
-      - hedgedoc_postgres:/var/lib/postgresql/data
+      - mdcollab_postgres:/var/lib/postgresql/data
 
   proxy:
     image: caddy:latest
     restart: unless-stopped
     environment:
-      HD_BASE_URL: "${HD_BASE_URL}"
+      MDCOLLAB_BASE_URL: "${MDCOLLAB_BASE_URL}"
     ports:
       - "80:80"
       - "443:443"
@@ -36,5 +36,5 @@ services:
 
 volumes:
   caddy_data:
-  hedgedoc_uploads:
-  hedgedoc_postgres:
+  mdcollab_uploads:
+  mdcollab_postgres:

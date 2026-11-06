@@ -5,11 +5,11 @@
  */
 
 export enum LocalStorageKey {
-  EDITOR_PREFERENCES = 'hedgedoc-editor-preferences',
-  DARK_MODE = 'hedgedoc-darkmode',
-  MOTD_LAST_MODIFIED = 'hedgedoc-motd-last-modified',
-  GUEST_UUID = 'hedgedoc-guest-uuid',
-  DEBUG_LOGGING = 'hedgedoc-debug-logging',
-  CUSTOM_DELAY = 'hedgedoc-custom-delay',
-  LANGUAGE = 'hedgedoc-language'
+  EDITOR_PREFERENCES = 'mdcollab-editor-preferences',
+  DARK_MODE = 'mdcollab-darkmode',
+  MOTD_LAST_MODIFIED = 'mdcollab-motd-last-modified',
+  GUEST_UUID = 'mdcollab-guest-uuid',
+  DEBUG_LOGGING = 'mdcollab-debug-logging',
+  CUSTOM_DELAY = 'mdcollab-custom-delay',
+  LANGUAGE = 'mdcollab-language'
 }

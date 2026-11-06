@@ -40,16 +40,7 @@ jobs:
         run: pnpm run test:e2e:ci --filter=@hedgedoc/backend
         shell: bash
         env:
-          HEDGEDOC_TEST_DB_TYPE: sqlite
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          TURBO_API: ${{ vars.TURBO_API }}
-          TURBO_TEAM: ${{ vars.TURBO_TEAM }}
-
-      - name: Upload coverage
-        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
-        with:
-          directory: backend/coverage-e2e
-          flags: backend, e2e-tests, backend-e2e-tests
+          MDCOLLAB_TEST_DB_TYPE: sqlite
 
   backend-mariadb:
     if: "(github.event_name == 'pull_request_target') == github.event.pull_request.head.repo.fork"
@@ -59,10 +50,10 @@ jobs:
         # renovate: datasource=docker depName=mariadb
         image: mariadb:12.3.3@sha256:dd9b303aed4f4890ed09f766d8ca9ddfd176c0c6f6267feff53b3192ec65a979
         env:
-          MARIADB_USER: hedgedoc
-          MARIADB_PASSWORD: hedgedoc
-          MARIADB_DATABASE: hedgedoc
-          MARIADB_ROOT_PASSWORD: hedgedoc
+          MARIADB_USER: mdcollab
+          MARIADB_PASSWORD: mdcollab
+          MARIADB_DATABASE: mdcollab
+          MARIADB_ROOT_PASSWORD: mdcollab
           MARIADB_MYSQL_LOCALHOST_USER: 1
           MARIADB_MYSQL_LOCALHOST_GRANTS: USAGE
         options: --health-cmd "healthcheck.sh --su-mysql --connect --innodb_initialized" --health-interval 10s --health-timeout 5s --health-retries 10
@@ -81,10 +72,7 @@ jobs:
         run: pnpm run test:e2e:ci --filter=@hedgedoc/backend
         shell: bash
         env:
-          HEDGEDOC_TEST_DB_TYPE: mariadb
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          TURBO_API: ${{ vars.TURBO_API }}
-          TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+          MDCOLLAB_TEST_DB_TYPE: mariadb
 
   backend-postgres:
     if: "(github.event_name == 'pull_request_target') == github.event.pull_request.head.repo.fork"
@@ -94,8 +82,8 @@ jobs:
         # renovate: datasource=docker depName=postgres
         image: postgres:18.6@sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280
         env:
-          POSTGRES_PASSWORD: hedgedoc
-          POSTGRES_USER: hedgedoc
+          POSTGRES_PASSWORD: mdcollab
+          POSTGRES_USER: mdcollab
         options: --health-cmd pg_isready --health-interval 5s --health-timeout 2s --health-retries 5
         ports:
           - 5432:5432
@@ -112,10 +100,7 @@ jobs:
         run: pnpm run test:e2e:ci --filter=@hedgedoc/backend
         shell: bash
         env:
-          HEDGEDOC_TEST_DB_TYPE: postgres
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          TURBO_API: ${{ vars.TURBO_API }}
-          TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+          MDCOLLAB_TEST_DB_TYPE: postgres
 
 #  frontend-build:
 #    if: "(github.event_name == 'pull_request_target') == github.event.pull_request.head.repo.fork"
@@ -137,10 +122,7 @@ jobs:
 #        shell: bash
 #        env:
 #          NODEJS_VERSION: ${{ env.NODEJS_VERSION }}
-#          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-#          TURBO_API: ${{ vars.TURBO_API }}
-#          TURBO_TEAM: ${{ vars.TURBO_TEAM }}
-#
+####
 #      - name: Compress build
 #        run: tar --zstd -cf frontend-e2e-build.tar.zst frontend/dist/
 #
@@ -193,7 +175,7 @@ jobs:
 #        env:
 #          NODE_ENV: test
 #          HOSTNAME: "127.0.0.1"
-#          HD_BASE_URL: "http://127.0.0.1:3001/"
+#          MDCOLLAB_BASE_URL: "http://127.0.0.1:3001/"
 #          PORT: 3001
 #
 #      - name: Wait for server
@@ -206,10 +188,7 @@ jobs:
 #          CYPRESS_CACHE_FOLDER: /home/runner/.cache/cypress
 #          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-#          TURBO_API: ${{ vars.TURBO_API }}
-#          TURBO_TEAM: ${{ vars.TURBO_TEAM }}
-#          CYPRESS_CONTAINER_ID: ${{ matrix.containers }}
+####          CYPRESS_CONTAINER_ID: ${{ matrix.containers }}
 #
 #      - uses: actions/upload-artifact@v4.6.2 # master
 #        if: always()

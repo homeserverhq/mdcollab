@@ -11,13 +11,13 @@ import { buildErrorMessage, extractDescriptionFromZodIssue } from './zod-error-m
 
 const schema = z.object({
   branding: z.object({
-    customName: z.string().or(z.null()).describe('HD_BRANDING_CUSTOM_NAME'),
-    customLogo: z.url().or(z.null()).describe('HD_BRANDING_CUSTOM_LOGO'),
+    customName: z.string().or(z.null()).describe('MDCOLLAB_BRANDING_CUSTOM_NAME'),
+    customLogo: z.url().or(z.null()).describe('MDCOLLAB_BRANDING_CUSTOM_LOGO'),
   }),
   urls: z.object({
-    privacy: z.url().or(z.null()).describe('HD_URLS_PRIVACY'),
-    termsOfUse: z.url().or(z.null()).describe('HD_URLS_TERMS_OF_USE'),
-    imprint: z.url().or(z.null()).describe('HD_URLS_IMPRINT'),
+    privacy: z.url().or(z.null()).describe('MDCOLLAB_URLS_PRIVACY'),
+    termsOfUse: z.url().or(z.null()).describe('MDCOLLAB_URLS_TERMS_OF_USE'),
+    imprint: z.url().or(z.null()).describe('MDCOLLAB_URLS_IMPRINT'),
   }),
 });
 
@@ -26,18 +26,18 @@ export type CustomizationConfig = z.infer<typeof schema>;
 export default registerAs('customizationConfig', () => {
   const customizationConfig = schema.safeParse({
     branding: {
-      customName: process.env.HD_BRANDING_CUSTOM_NAME ?? null,
-      customLogo: process.env.HD_BRANDING_CUSTOM_LOGO ?? null,
+      customName: process.env.MDCOLLAB_BRANDING_CUSTOM_NAME ?? null,
+      customLogo: process.env.MDCOLLAB_BRANDING_CUSTOM_LOGO ?? null,
     },
     urls: {
-      privacy: process.env.HD_URLS_PRIVACY ?? null,
-      termsOfUse: process.env.HD_URLS_TERMS_OF_USE ?? null,
-      imprint: process.env.HD_URLS_IMPRINT ?? null,
+      privacy: process.env.MDCOLLAB_URLS_PRIVACY ?? null,
+      termsOfUse: process.env.MDCOLLAB_URLS_TERMS_OF_USE ?? null,
+      imprint: process.env.MDCOLLAB_URLS_IMPRINT ?? null,
     },
   });
   if (customizationConfig.error) {
     const errorMessages = customizationConfig.error.issues.map((issue) =>
-      extractDescriptionFromZodIssue(issue, 'HD'),
+      extractDescriptionFromZodIssue(issue, 'MDCOLLAB'),
     );
     const errorMessage = buildErrorMessage(errorMessages);
     return printConfigErrorAndExit(errorMessage);

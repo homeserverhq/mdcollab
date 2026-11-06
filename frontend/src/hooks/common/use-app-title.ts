@@ -15,6 +15,6 @@ export const useAppTitle = (): string => {
   const brandingName = useFrontendConfig().branding.name
 
   return useMemo(() => {
-    return 'HedgeDoc' + (brandingName ? ` @ ${brandingName}` : '')
+    return 'mdCollab' + (brandingName ? ` @ ${brandingName}` : '')
   }, [brandingName])
 }

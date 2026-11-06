@@ -47,6 +47,6 @@ export const ServerStatusSchema = z
       .positive()
       .describe('Number of disconnections in the queue'),
   })
-  .describe('The server status of the HedgeDoc instance.')
+  .describe('The server status of the mdCollab instance.')
 
 export type ServerStatusInterface = z.infer<typeof ServerStatusSchema>

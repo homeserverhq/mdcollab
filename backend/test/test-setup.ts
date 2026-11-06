@@ -179,7 +179,7 @@ export class TestSetupBuilder {
    * @param dbName The name of the database to use
    */
   private static async createTestDatabase(dbName: string) {
-    const dbType = process.env.HEDGEDOC_TEST_DB_TYPE || 'sqlite';
+    const dbType = process.env.MDCOLLAB_TEST_DB_TYPE || 'sqlite';
     // we need to use this low-level way of writing to get the message to the output without getting
     // a lot of extra output about using console.log
     process.stdout.write(`Using dbname ${dbName} (${dbType})\n`);
@@ -192,7 +192,7 @@ export class TestSetupBuilder {
     await adminKnex.raw(`DROP DATABASE IF EXISTS ${dbName}`);
     await adminKnex.raw(`CREATE DATABASE ${dbName}`);
     if (dbType === 'mariadb') {
-      await adminKnex.raw(`GRANT ALL PRIVILEGES ON ${dbName}.* TO 'hedgedoc'@'%'`);
+      await adminKnex.raw(`GRANT ALL PRIVILEGES ON ${dbName}.* TO 'mdcollab'@'%'`);
     }
     await adminKnex.destroy();
   }
@@ -205,7 +205,7 @@ export class TestSetupBuilder {
    * @returns The database configuration
    */
   private static getTestDatabaseConfig(dbName: string, asAdmin = false): Knex.Config {
-    const dbType = process.env.HEDGEDOC_TEST_DB_TYPE || 'sqlite';
+    const dbType = process.env.MDCOLLAB_TEST_DB_TYPE || 'sqlite';
     switch (dbType) {
       case 'sqlite':
         return {
@@ -220,29 +220,29 @@ export class TestSetupBuilder {
           client: 'pg',
           connection: {
             database: asAdmin ? 'postgres' : dbName,
-            user: 'hedgedoc',
-            password: 'hedgedoc',
-            host: process.env.HD_DATABASE_HOST || 'localhost',
-            port: parseInt(process.env.HD_DATABASE_PORT || '5432'),
+            user: 'mdcollab',
+            password: 'mdcollab',
+            host: process.env.MDCOLLAB_DATABASE_HOST || 'localhost',
+            port: parseInt(process.env.MDCOLLAB_DATABASE_PORT || '5432'),
             // oxlint-disable-next-line @typescript-eslint/naming-convention
-            application_name: 'HedgeDoc Test Server',
+            application_name: 'mdCollab Test Server',
           },
         };
       case 'mariadb':
         return {
           client: 'mysql2',
           connection: {
-            database: asAdmin ? 'hedgedoc' : dbName,
-            user: asAdmin ? 'root' : 'hedgedoc',
-            password: 'hedgedoc',
-            host: process.env.HD_DATABASE_HOST || 'localhost',
-            port: parseInt(process.env.HD_DATABASE_PORT || '3306'),
+            database: asAdmin ? 'mdcollab' : dbName,
+            user: asAdmin ? 'root' : 'mdcollab',
+            password: 'mdcollab',
+            host: process.env.MDCOLLAB_DATABASE_HOST || 'localhost',
+            port: parseInt(process.env.MDCOLLAB_DATABASE_PORT || '3306'),
             dateStrings: true,
             charset: 'utf8mb4',
           },
         };
       default:
-        throw new Error('Unknown database type in HEDGEDOC_TEST_DB_TYPE');
+        throw new Error('Unknown database type in MDCOLLAB_TEST_DB_TYPE');
     }
   }
 
@@ -251,7 +251,7 @@ export class TestSetupBuilder {
    */
   public static create(mocks?: CreateTestSetupParameters): TestSetupBuilder {
     const testSetupBuilder = new TestSetupBuilder();
-    const testId = `hedgedoc_test_${uuidv4()}`.replaceAll('-', '_');
+    const testId = `mdcollab_test_${uuidv4()}`.replaceAll('-', '_');
     testSetupBuilder.testId = testId;
 
     const routes: Routes = [
@@ -268,7 +268,7 @@ export class TestSetupBuilder {
         module: MediaRedirectModule,
       },
     ];
-    process.env.HD_BASE_URL = `https://${testId}.example.com`;
+    process.env.MDCOLLAB_BASE_URL = `https://${testId}.example.com`;
 
     const knexConfig = TestSetupBuilder.getTestDatabaseConfig(testId);
     testSetupBuilder.testingModuleBuilder = Test.createTestingModule({

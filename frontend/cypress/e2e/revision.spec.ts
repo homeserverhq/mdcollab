@@ -22,7 +22,7 @@ describe('Revision modal', () => {
       guestAuthorUuids: ['1', '2', '3', '4'],
       title: 'Features',
       description: 'Many features, such wow!',
-      tags: ['hedgedoc', 'demo', 'react']
+      tags: ['mdcollab', 'demo', 'react']
     },
     {
       id: 0,
@@ -32,7 +32,7 @@ describe('Revision modal', () => {
       guestAuthorUuids: ['1', '2'],
       title: 'Features',
       description: 'Many more features, such wow!',
-      tags: ['hedgedoc', 'demo', 'react']
+      tags: ['mdcollab', 'demo', 'react']
     }
   ]
   beforeEach(() => {
@@ -76,7 +76,7 @@ describe('Revision modal', () => {
       createdAt: defaultCreatedAt,
       title: 'Features',
       description: 'Many more features, such wow!',
-      tags: ['hedgedoc', 'demo', 'react'],
+      tags: ['mdcollab', 'demo', 'react'],
       patch: testContent,
       edits: [],
       length: 2788,

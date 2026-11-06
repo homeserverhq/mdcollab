@@ -1,5 +1,5 @@
 name: Bug report
-description: Create a report to help us improve HedgeDoc.
+description: Create a report to help us improve mdCollab.
 title: "type a short title of your bug report here"
 labels: ["type: bug"]
 body:
@@ -58,7 +58,7 @@ body:
       value: |
         - Host OS: [e.g. Ubuntu 20.04]
         - NodeJS version: [run `node --version`]
-        - HedgeDoc version: (Click "Releases" in the footer)
+        - mdCollab version: (Click "Releases" in the footer)
     validations:
       required: true
   - type: textarea

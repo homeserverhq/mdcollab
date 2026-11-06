@@ -132,7 +132,7 @@ export const ExportGitlabSnippetModal: React.FC<ModalVisibilityProps> = ({ show,
             <Trans i18nKey={'editor.importExport.service.gitlab.infoToken'} />{' '}
             <ExternalLink
               text={textTokenLink}
-              href={`${gitlabUrl ?? 'https://gitlab.com'}/-/user_settings/personal_access_tokens?name=HedgeDoc+snippet+export&scopes=api`}
+              href={`${gitlabUrl ?? 'https://gitlab.com'}/-/user_settings/personal_access_tokens?name=mdCollab+snippet+export&scopes=api`}
             />
           </FormText>
         </FormGroup>

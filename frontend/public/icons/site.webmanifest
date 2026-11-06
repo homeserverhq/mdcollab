@@ -1,6 +1,6 @@
 {
-    "name": "HedgeDoc",
-    "short_name": "HedgeDoc",
+    "name": "mdCollab",
+    "short_name": "mdCollab",
     "icons": [
         {
             "src": "/icons/android-chrome-192x192.png",
@@ -13,6 +13,6 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#b51f08",
+    "theme_color": "#2563eb",
     "background_color": "#303030"
 }

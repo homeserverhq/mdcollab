@@ -17,7 +17,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
       authorGuestUuids: ['1', '2', '3'],
       title: 'Features',
       description: 'Many features, such wow!',
-      tags: ['hedgedoc', 'demo', 'react']
+      tags: ['mdcollab', 'demo', 'react']
     },
     {
       uuid: '019a5648-4986-7213-9067-a4a6859171c5',
@@ -27,7 +27,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
       authorGuestUuids: ['1', '2', '3'],
       title: 'Features',
       description: 'Many more features, such wow!',
-      tags: ['hedgedoc', 'demo', 'react']
+      tags: ['mdcollab', 'demo', 'react']
     }
   ])
 }

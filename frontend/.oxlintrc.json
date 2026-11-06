@@ -22,7 +22,7 @@
     "jest/expect-expect": ["error", {
       "assertFunctionNames": ["expect*", "screen.*", "test*"]
     }],
-    "hedgedoc-frontend/translation-keys": "warn",
+    "mdcollab-frontend/translation-keys": "warn",
     "nextjs/no-img-element": "off"
   },
   "env": {

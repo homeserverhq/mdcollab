@@ -9,7 +9,7 @@ import { Message, MessageType } from './message.js'
 import { TransportAdapter } from './transport-adapter.js'
 
 /**
- * Provides a transport adapter that simulates a connection with a real HedgeDoc realtime backend.
+ * Provides a transport adapter that simulates a connection with a real mdCollab realtime backend.
  */
 export class MockedBackendTransportAdapter implements TransportAdapter {
   private readonly doc: RealtimeDoc

@@ -136,7 +136,7 @@ export function readOptionalFileContents(filePath?: string): string | undefined 
 }
 
 /**
- * Prints the given error message to the console (STDERR usually) and then exits the HedgeDoc process.
+ * Prints the given error message to the console (STDERR usually) and then exits the mdCollab process.
  * This is required, since just throwing a config error does not exit the app but instead just gives the
  * error message to the exception handler. We cannot use the loggerService here, since the config
  * configures the logger as well and could be prone to errors.

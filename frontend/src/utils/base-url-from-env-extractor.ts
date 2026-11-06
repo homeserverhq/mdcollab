@@ -35,10 +35,10 @@ export class BaseUrlFromEnvExtractor {
   }
 
   private renewBaseUrls(): BaseUrls {
-    return this.extractUrlFromEnvVar(process.env.HD_BASE_URL)
+    return this.extractUrlFromEnvVar(process.env.MDCOLLAB_BASE_URL)
       .map((editorBaseUrl) => {
-        const rendererBaseUrl = this.extractUrlFromEnv('HD_RENDERER_BASE_URL').orElse(editorBaseUrl)
-        const internalApiUrl = this.extractUrlFromEnv('HD_INTERNAL_API_URL').orElse(undefined)
+        const rendererBaseUrl = this.extractUrlFromEnv('MDCOLLAB_RENDERER_BASE_URL').orElse(editorBaseUrl)
+        const internalApiUrl = this.extractUrlFromEnv('MDCOLLAB_INTERNAL_API_URL').orElse(undefined)
         return {
           editor: editorBaseUrl.toString(),
           renderer: rendererBaseUrl.toString(),

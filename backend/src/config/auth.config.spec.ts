@@ -15,7 +15,7 @@ import { TEST_CERT_FILE_CONTENT, TEST_CERT_FILE_PATH } from './shared-test-data'
 describe('authConfig', () => {
   const secret = 'this-is-a-long-but-insecure-secret';
   const neededAuthConfig = {
-    HD_AUTH_SESSION_SECRET: secret,
+    MDCOLLAB_AUTH_SESSION_SECRET: secret,
   };
 
   describe('local', () => {
@@ -23,9 +23,9 @@ describe('authConfig', () => {
     const enableRegister = true;
     const minimalPasswordStrength = 1;
     const completeLocalConfig = {
-      HD_AUTH_LOCAL_ENABLE_LOGIN: String(enableLogin),
-      HD_AUTH_LOCAL_ENABLE_REGISTER: String(enableRegister),
-      HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: String(minimalPasswordStrength),
+      MDCOLLAB_AUTH_LOCAL_ENABLE_LOGIN: String(enableLogin),
+      MDCOLLAB_AUTH_LOCAL_ENABLE_REGISTER: String(enableRegister),
+      MDCOLLAB_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: String(minimalPasswordStrength),
     };
     describe('is correctly parsed', () => {
       it('when given correct and complete environment variables', () => {
@@ -45,12 +45,12 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when HD_AUTH_LOCAL_ENABLE_LOGIN is not set', () => {
+      it('when MDCOLLAB_AUTH_LOCAL_ENABLE_LOGIN is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLocalConfig,
-            HD_AUTH_LOCAL_ENABLE_LOGIN: undefined,
+            MDCOLLAB_AUTH_LOCAL_ENABLE_LOGIN: undefined,
           },
           {
             clear: true,
@@ -63,12 +63,12 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when HD_AUTH_LOCAL_ENABLE_REGISTER is not set', () => {
+      it('when MDCOLLAB_AUTH_LOCAL_ENABLE_REGISTER is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLocalConfig,
-            HD_AUTH_LOCAL_ENABLE_REGISTER: undefined,
+            MDCOLLAB_AUTH_LOCAL_ENABLE_REGISTER: undefined,
           },
           {
             clear: true,
@@ -81,12 +81,12 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH is not set', () => {
+      it('when MDCOLLAB_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLocalConfig,
-            HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: undefined,
+            MDCOLLAB_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: undefined,
           },
           {
             clear: true,
@@ -120,12 +120,12 @@ describe('authConfig', () => {
         jest.restoreAllMocks();
       });
 
-      it('when HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH is 5', () => {
+      it('when MDCOLLAB_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH is 5', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLocalConfig,
-            HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: '5',
+            MDCOLLAB_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: '5',
           },
           {
             clear: true,
@@ -133,17 +133,17 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: Too big: expected number to be <=4',
+          'MDCOLLAB_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: Too big: expected number to be <=4',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
       });
-      it('when HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH is -1', () => {
+      it('when MDCOLLAB_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH is -1', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLocalConfig,
-            HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: '-1',
+            MDCOLLAB_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: '-1',
           },
           {
             clear: true,
@@ -151,7 +151,7 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: Too small: expected number to be >=0',
+          'MDCOLLAB_AUTH_LOCAL_MINIMAL_PASSWORD_STRENGTH: Too small: expected number to be >=0',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
@@ -161,11 +161,11 @@ describe('authConfig', () => {
 
   describe('session', () => {
     describe('is correctly parsed', () => {
-      it('when HD_AUTH_SESSION_SECRET is at least 32 characters', () => {
+      it('when MDCOLLAB_AUTH_SESSION_SECRET is at least 32 characters', () => {
         const longSecret = 'a'.repeat(40);
         const restore = mockedEnv(
           {
-            HD_AUTH_SESSION_SECRET: longSecret,
+            MDCOLLAB_AUTH_SESSION_SECRET: longSecret,
           },
           {
             clear: true,
@@ -176,11 +176,11 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when HD_AUTH_SESSION_SECRET is exactly 32 characters', () => {
+      it('when MDCOLLAB_AUTH_SESSION_SECRET is exactly 32 characters', () => {
         const exactSecret = 'a'.repeat(32);
         const restore = mockedEnv(
           {
-            HD_AUTH_SESSION_SECRET: exactSecret,
+            MDCOLLAB_AUTH_SESSION_SECRET: exactSecret,
           },
           {
             clear: true,
@@ -212,7 +212,7 @@ describe('authConfig', () => {
         jest.restoreAllMocks();
       });
 
-      it('when HD_AUTH_SESSION_SECRET is not set', () => {
+      it('when MDCOLLAB_AUTH_SESSION_SECRET is not set', () => {
         const restore = mockedEnv(
           {},
           {
@@ -221,17 +221,17 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_SESSION_SECRET: Invalid input: expected string, received undefined',
+          'MDCOLLAB_AUTH_SESSION_SECRET: Invalid input: expected string, received undefined',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
       });
 
-      it('when HD_AUTH_SESSION_SECRET is less than 32 characters', () => {
+      it('when MDCOLLAB_AUTH_SESSION_SECRET is less than 32 characters', () => {
         const shortSecret = 'a'.repeat(31);
         const restore = mockedEnv(
           {
-            HD_AUTH_SESSION_SECRET: shortSecret,
+            MDCOLLAB_AUTH_SESSION_SECRET: shortSecret,
           },
           {
             clear: true,
@@ -239,7 +239,7 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_SESSION_SECRET: Too small: expected string to have >=32 characters',
+          'MDCOLLAB_AUTH_SESSION_SECRET: Too small: expected string to have >=32 characters',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
@@ -271,19 +271,19 @@ describe('authConfig', () => {
     const tlsCa = [TEST_CERT_FILE_PATH];
     const tlsCaContent = [TEST_CERT_FILE_CONTENT];
     const completeLdapConfig = {
-      HD_AUTH_LDAP_SERVERS: ldapNames.join(','),
-      HD_AUTH_LDAP_FUTURAMA_PROVIDER_NAME: providerName,
-      HD_AUTH_LDAP_FUTURAMA_URL: url,
-      HD_AUTH_LDAP_FUTURAMA_SEARCH_BASE: searchBase,
-      HD_AUTH_LDAP_FUTURAMA_SEARCH_FILTER: searchFilter,
-      HD_AUTH_LDAP_FUTURAMA_SEARCH_ATTRIBUTES: searchAttributes.join(','),
-      HD_AUTH_LDAP_FUTURAMA_USER_ID_FIELD: userIdField,
-      HD_AUTH_LDAP_FUTURAMA_EMAIL_FIELD: emailField,
-      HD_AUTH_LDAP_FUTURAMA_DISPLAY_NAME_FIELD: displayNameField,
-      HD_AUTH_LDAP_FUTURAMA_PROFILE_PICTURE_FIELD: profilePictureField,
-      HD_AUTH_LDAP_FUTURAMA_BIND_DN: bindDn,
-      HD_AUTH_LDAP_FUTURAMA_BIND_CREDENTIALS: bindCredentials,
-      HD_AUTH_LDAP_FUTURAMA_TLS_CERT_PATHS: tlsCa.join(','),
+      MDCOLLAB_AUTH_LDAP_SERVERS: ldapNames.join(','),
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_PROVIDER_NAME: providerName,
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_URL: url,
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_SEARCH_BASE: searchBase,
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_SEARCH_FILTER: searchFilter,
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_SEARCH_ATTRIBUTES: searchAttributes.join(','),
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_USER_ID_FIELD: userIdField,
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_EMAIL_FIELD: emailField,
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_DISPLAY_NAME_FIELD: displayNameField,
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_PROFILE_PICTURE_FIELD: profilePictureField,
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_BIND_DN: bindDn,
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_BIND_CREDENTIALS: bindCredentials,
+      MDCOLLAB_AUTH_LDAP_FUTURAMA_TLS_CERT_PATHS: tlsCa.join(','),
     };
     describe('is correctly parsed', () => {
       it('when given correct and complete environment variables', () => {
@@ -316,12 +316,12 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when no HD_AUTH_LDAP_FUTURAMA_PROVIDER_NAME is not set', () => {
+      it('when no MDCOLLAB_AUTH_LDAP_FUTURAMA_PROVIDER_NAME is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLdapConfig,
-            HD_AUTH_LDAP_FUTURAMA_PROVIDER_NAME: undefined,
+            MDCOLLAB_AUTH_LDAP_FUTURAMA_PROVIDER_NAME: undefined,
           },
           {
             clear: true,
@@ -346,12 +346,12 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when no HD_AUTH_LDAP_FUTURAMA_SEARCH_FILTER is not set', () => {
+      it('when no MDCOLLAB_AUTH_LDAP_FUTURAMA_SEARCH_FILTER is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLdapConfig,
-            HD_AUTH_LDAP_FUTURAMA_SEARCH_FILTER: undefined,
+            MDCOLLAB_AUTH_LDAP_FUTURAMA_SEARCH_FILTER: undefined,
           },
           {
             clear: true,
@@ -376,12 +376,12 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when no HD_AUTH_LDAP_FUTURAMA_USER_ID_FIELD is not set', () => {
+      it('when no MDCOLLAB_AUTH_LDAP_FUTURAMA_USER_ID_FIELD is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLdapConfig,
-            HD_AUTH_LDAP_FUTURAMA_USER_ID_FIELD: undefined,
+            MDCOLLAB_AUTH_LDAP_FUTURAMA_USER_ID_FIELD: undefined,
           },
           {
             clear: true,
@@ -406,12 +406,12 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when no HD_AUTH_LDAP_FUTURAMA_DISPLAY_NAME_FIELD is not set', () => {
+      it('when no MDCOLLAB_AUTH_LDAP_FUTURAMA_DISPLAY_NAME_FIELD is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLdapConfig,
-            HD_AUTH_LDAP_FUTURAMA_DISPLAY_NAME_FIELD: undefined,
+            MDCOLLAB_AUTH_LDAP_FUTURAMA_DISPLAY_NAME_FIELD: undefined,
           },
           {
             clear: true,
@@ -436,12 +436,12 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when no HD_AUTH_LDAP_FUTURAMA_PROFILE_PICTURE_FIELD is not set', () => {
+      it('when no MDCOLLAB_AUTH_LDAP_FUTURAMA_PROFILE_PICTURE_FIELD is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLdapConfig,
-            HD_AUTH_LDAP_FUTURAMA_PROFILE_PICTURE_FIELD: undefined,
+            MDCOLLAB_AUTH_LDAP_FUTURAMA_PROFILE_PICTURE_FIELD: undefined,
           },
           {
             clear: true,
@@ -466,12 +466,12 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when no HD_AUTH_LDAP_FUTURAMA_BIND_DN is not set', () => {
+      it('when no MDCOLLAB_AUTH_LDAP_FUTURAMA_BIND_DN is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLdapConfig,
-            HD_AUTH_LDAP_FUTURAMA_BIND_DN: undefined,
+            MDCOLLAB_AUTH_LDAP_FUTURAMA_BIND_DN: undefined,
           },
           {
             clear: true,
@@ -496,12 +496,12 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when no HD_AUTH_LDAP_FUTURAMA_BIND_CREDENTIALS is not set', () => {
+      it('when no MDCOLLAB_AUTH_LDAP_FUTURAMA_BIND_CREDENTIALS is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLdapConfig,
-            HD_AUTH_LDAP_FUTURAMA_BIND_CREDENTIALS: undefined,
+            MDCOLLAB_AUTH_LDAP_FUTURAMA_BIND_CREDENTIALS: undefined,
           },
           {
             clear: true,
@@ -526,12 +526,12 @@ describe('authConfig', () => {
         restore();
       });
 
-      it('when no HD_AUTH_LDAP_FUTURAMA_TLS_CERT_PATHS is not set', () => {
+      it('when no MDCOLLAB_AUTH_LDAP_FUTURAMA_TLS_CERT_PATHS is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLdapConfig,
-            HD_AUTH_LDAP_FUTURAMA_TLS_CERT_PATHS: undefined,
+            MDCOLLAB_AUTH_LDAP_FUTURAMA_TLS_CERT_PATHS: undefined,
           },
           {
             clear: true,
@@ -576,12 +576,12 @@ describe('authConfig', () => {
         jest.restoreAllMocks();
       });
 
-      it('when HD_AUTH_LDAP_FUTURAMA_URL is wrong', () => {
+      it('when MDCOLLAB_AUTH_LDAP_FUTURAMA_URL is wrong', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLdapConfig,
-            HD_AUTH_LDAP_FUTURAMA_URL: undefined,
+            MDCOLLAB_AUTH_LDAP_FUTURAMA_URL: undefined,
           },
           {
             clear: true,
@@ -589,17 +589,17 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_LDAP_FUTURAMA_URL: Invalid input: expected string, received undefined',
+          'MDCOLLAB_AUTH_LDAP_FUTURAMA_URL: Invalid input: expected string, received undefined',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
       });
-      it('when HD_AUTH_LDAP_FUTURAMA_SEARCH_BASE is wrong', () => {
+      it('when MDCOLLAB_AUTH_LDAP_FUTURAMA_SEARCH_BASE is wrong', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLdapConfig,
-            HD_AUTH_LDAP_FUTURAMA_SEARCH_BASE: undefined,
+            MDCOLLAB_AUTH_LDAP_FUTURAMA_SEARCH_BASE: undefined,
           },
           {
             clear: true,
@@ -607,17 +607,17 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_LDAP_FUTURAMA_SEARCH_BASE: Invalid input: expected string, received undefined',
+          'MDCOLLAB_AUTH_LDAP_FUTURAMA_SEARCH_BASE: Invalid input: expected string, received undefined',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
       });
-      it('when HD_AUTH_LDAP_FUTURAMA_TLS_CERT_PATHS is wrong', () => {
+      it('when MDCOLLAB_AUTH_LDAP_FUTURAMA_TLS_CERT_PATHS is wrong', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeLdapConfig,
-            HD_AUTH_LDAP_FUTURAMA_TLS_CERT_PATHS: 'not-a-file.pem',
+            MDCOLLAB_AUTH_LDAP_FUTURAMA_TLS_CERT_PATHS: 'not-a-file.pem',
           },
           {
             clear: true,
@@ -625,7 +625,7 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_LDAP_FUTURAMA_TLS_CA_CERTS[0]: File not found',
+          'MDCOLLAB_AUTH_LDAP_FUTURAMA_TLS_CA_CERTS[0]: File not found',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
@@ -657,23 +657,23 @@ describe('authConfig', () => {
     const defaultEmailField = 'email';
     const enableRegistration = 'false';
     const completeOidcConfig = {
-      HD_AUTH_OIDC_SERVERS: oidcNames.join(','),
-      HD_AUTH_OIDC_GITLAB_PROVIDER_NAME: providerName,
-      HD_AUTH_OIDC_GITLAB_ISSUER: issuer,
-      HD_AUTH_OIDC_GITLAB_CLIENT_ID: clientId,
-      HD_AUTH_OIDC_GITLAB_CLIENT_SECRET: clientSecret,
-      HD_AUTH_OIDC_GITLAB_THEME: theme,
-      HD_AUTH_OIDC_GITLAB_AUTHORIZE_URL: authorizeUrl,
-      HD_AUTH_OIDC_GITLAB_TOKEN_URL: tokenUrl,
-      HD_AUTH_OIDC_GITLAB_USERINFO_URL: userinfoUrl,
-      HD_AUTH_OIDC_GITLAB_END_SESSION_URL: endSessionUrl,
-      HD_AUTH_OIDC_GITLAB_SCOPE: scope,
-      HD_AUTH_OIDC_GITLAB_USER_ID_FIELD: userIdField,
-      HD_AUTH_OIDC_GITLAB_USER_NAME_FIELD: usernameField,
-      HD_AUTH_OIDC_GITLAB_DISPLAY_NAME_FIELD: displayNameField,
-      HD_AUTH_OIDC_GITLAB_PROFILE_PICTURE_FIELD: profilePictureField,
-      HD_AUTH_OIDC_GITLAB_EMAIL_FIELD: emailField,
-      HD_AUTH_OIDC_GITLAB_ENABLE_REGISTRATION: enableRegistration,
+      MDCOLLAB_AUTH_OIDC_SERVERS: oidcNames.join(','),
+      MDCOLLAB_AUTH_OIDC_GITLAB_PROVIDER_NAME: providerName,
+      MDCOLLAB_AUTH_OIDC_GITLAB_ISSUER: issuer,
+      MDCOLLAB_AUTH_OIDC_GITLAB_CLIENT_ID: clientId,
+      MDCOLLAB_AUTH_OIDC_GITLAB_CLIENT_SECRET: clientSecret,
+      MDCOLLAB_AUTH_OIDC_GITLAB_THEME: theme,
+      MDCOLLAB_AUTH_OIDC_GITLAB_AUTHORIZE_URL: authorizeUrl,
+      MDCOLLAB_AUTH_OIDC_GITLAB_TOKEN_URL: tokenUrl,
+      MDCOLLAB_AUTH_OIDC_GITLAB_USERINFO_URL: userinfoUrl,
+      MDCOLLAB_AUTH_OIDC_GITLAB_END_SESSION_URL: endSessionUrl,
+      MDCOLLAB_AUTH_OIDC_GITLAB_SCOPE: scope,
+      MDCOLLAB_AUTH_OIDC_GITLAB_USER_ID_FIELD: userIdField,
+      MDCOLLAB_AUTH_OIDC_GITLAB_USER_NAME_FIELD: usernameField,
+      MDCOLLAB_AUTH_OIDC_GITLAB_DISPLAY_NAME_FIELD: displayNameField,
+      MDCOLLAB_AUTH_OIDC_GITLAB_PROFILE_PICTURE_FIELD: profilePictureField,
+      MDCOLLAB_AUTH_OIDC_GITLAB_EMAIL_FIELD: emailField,
+      MDCOLLAB_AUTH_OIDC_GITLAB_ENABLE_REGISTRATION: enableRegistration,
     };
     describe('is correctly parsed', () => {
       it('when given correct and complete environment variables', () => {
@@ -708,12 +708,12 @@ describe('authConfig', () => {
         expect(firstOidc.enableRegistration).toEqual(false);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_THEME is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_THEME is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_THEME: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_THEME: undefined,
           },
           {
             clear: true,
@@ -741,12 +741,12 @@ describe('authConfig', () => {
         expect(firstOidc.enableRegistration).toEqual(false);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_AUTHORIZE_URL is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_AUTHORIZE_URL is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_AUTHORIZE_URL: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_AUTHORIZE_URL: undefined,
           },
           {
             clear: true,
@@ -774,12 +774,12 @@ describe('authConfig', () => {
         expect(firstOidc.enableRegistration).toEqual(false);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_TOKEN_URL is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_TOKEN_URL is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_TOKEN_URL: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_TOKEN_URL: undefined,
           },
           {
             clear: true,
@@ -807,12 +807,12 @@ describe('authConfig', () => {
         expect(firstOidc.enableRegistration).toEqual(false);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_USERINFO_URL is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_USERINFO_URL is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_USERINFO_URL: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_USERINFO_URL: undefined,
           },
           {
             clear: true,
@@ -840,12 +840,12 @@ describe('authConfig', () => {
         expect(firstOidc.enableRegistration).toEqual(false);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_END_SESSION_URL is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_END_SESSION_URL is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_END_SESSION_URL: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_END_SESSION_URL: undefined,
           },
           {
             clear: true,
@@ -873,12 +873,12 @@ describe('authConfig', () => {
         expect(firstOidc.enableRegistration).toEqual(false);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_SCOPE is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_SCOPE is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_SCOPE: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_SCOPE: undefined,
           },
           {
             clear: true,
@@ -906,12 +906,12 @@ describe('authConfig', () => {
         expect(firstOidc.enableRegistration).toEqual(false);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_USER_ID_FIELD is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_USER_ID_FIELD is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_USER_ID_FIELD: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_USER_ID_FIELD: undefined,
           },
           {
             clear: true,
@@ -939,12 +939,12 @@ describe('authConfig', () => {
         expect(firstOidc.enableRegistration).toEqual(false);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_DISPLAY_NAME_FIELD is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_DISPLAY_NAME_FIELD is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_DISPLAY_NAME_FIELD: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_DISPLAY_NAME_FIELD: undefined,
           },
           {
             clear: true,
@@ -972,12 +972,12 @@ describe('authConfig', () => {
         expect(firstOidc.enableRegistration).toEqual(false);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_PROFILE_PICTURE_FIELD is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_PROFILE_PICTURE_FIELD is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_PROFILE_PICTURE_FIELD: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_PROFILE_PICTURE_FIELD: undefined,
           },
           {
             clear: true,
@@ -1005,12 +1005,12 @@ describe('authConfig', () => {
         expect(firstOidc.enableRegistration).toEqual(false);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_EMAIL_FIELD is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_EMAIL_FIELD is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_EMAIL_FIELD: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_EMAIL_FIELD: undefined,
           },
           {
             clear: true,
@@ -1038,12 +1038,12 @@ describe('authConfig', () => {
         expect(firstOidc.enableRegistration).toEqual(false);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_ENABLE_REGISTRATION is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_ENABLE_REGISTRATION is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_ENABLE_REGISTRATION: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_ENABLE_REGISTRATION: undefined,
           },
           {
             clear: true,
@@ -1092,12 +1092,12 @@ describe('authConfig', () => {
         jest.restoreAllMocks();
       });
 
-      it('when HD_AUTH_OIDC_GITLAB_ISSUER is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_ISSUER is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_ISSUER: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_ISSUER: undefined,
           },
           {
             clear: true,
@@ -1105,17 +1105,17 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_OIDC_GITLAB_ISSUER: Invalid input: expected string, received undefined',
+          'MDCOLLAB_AUTH_OIDC_GITLAB_ISSUER: Invalid input: expected string, received undefined',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_CLIENT_ID is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_CLIENT_ID is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_CLIENT_ID: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_CLIENT_ID: undefined,
           },
           {
             clear: true,
@@ -1123,17 +1123,17 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_OIDC_GITLAB_CLIENT_ID: Invalid input: expected string, received undefined',
+          'MDCOLLAB_AUTH_OIDC_GITLAB_CLIENT_ID: Invalid input: expected string, received undefined',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_CLIENT_SECRET is not set', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_CLIENT_SECRET is not set', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_CLIENT_SECRET: undefined,
+            MDCOLLAB_AUTH_OIDC_GITLAB_CLIENT_SECRET: undefined,
           },
           {
             clear: true,
@@ -1141,17 +1141,17 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_OIDC_GITLAB_CLIENT_SECRET: Invalid input: expected string, received undefined',
+          'MDCOLLAB_AUTH_OIDC_GITLAB_CLIENT_SECRET: Invalid input: expected string, received undefined',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();
       });
-      it('when HD_AUTH_OIDC_GITLAB_THEME is set to a wrong value', () => {
+      it('when MDCOLLAB_AUTH_OIDC_GITLAB_THEME is set to a wrong value', () => {
         const restore = mockedEnv(
           {
             ...neededAuthConfig,
             ...completeOidcConfig,
-            HD_AUTH_OIDC_GITLAB_THEME: 'something else',
+            MDCOLLAB_AUTH_OIDC_GITLAB_THEME: 'something else',
           },
           {
             clear: true,
@@ -1159,7 +1159,7 @@ describe('authConfig', () => {
         );
         authConfig();
         expect(spyConsoleError.mock.calls[0][0]).toContain(
-          'HD_AUTH_OIDC_GITLAB_THEME: Invalid option: expected one of "google"|"github"|"gitlab"|"facebook"|"discord"|"mastodon"|"azure"',
+          'MDCOLLAB_AUTH_OIDC_GITLAB_THEME: Invalid option: expected one of "google"|"github"|"gitlab"|"facebook"|"discord"|"mastodon"|"azure"',
         );
         expect(spyProcessExit).toHaveBeenCalledWith(1);
         restore();

@@ -8,7 +8,7 @@ import z from 'zod';
 
 import { extractDescriptionFromZodIssue } from './zod-error-message';
 
-const PREFIX = 'HD_TEST';
+const PREFIX = 'MDCOLLAB_TEST';
 
 describe('zod error message', () => {
   describe('extractDescriptionFromZodSchema', () => {

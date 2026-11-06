@@ -29,10 +29,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hedgedoc/hedgedoc.git"
+    "url": "https://github.com/your-org/mdcollab.git"
   },
   "bugs": {
-    "url": "https://github.com/hedgedoc/hedgedoc/issues"
+    "url": "https://github.com/your-org/mdcollab/issues"
   },
   "keywords": [
     "react",
@@ -42,7 +42,7 @@
     "inner html",
     "dangerouslySetInnerHTML"
   ],
-  "author": "The HedgeDoc Authors",
+  "author": "The mdCollab Authors",
   "license": "AGPL-3.0",
   "devDependencies": {
     "@jest/globals": "30.5.0",

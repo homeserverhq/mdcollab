@@ -19,7 +19,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
     photoUrl: '/public/img/avatar.png',
     displayName: 'Mock User',
     authProvider: AuthProviderType.LOCAL,
-    email: 'mock@hedgedoc.test'
+    email: 'mock@mdcollab.test'
   })
 }
 

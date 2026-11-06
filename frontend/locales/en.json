@@ -1,7 +1,7 @@
 {
   "app": {
-    "slogan": "Ideas grow better together",
-    "icon": "HedgeDoc logo with text"
+    "slogan": "Collaborate on markdown in real time",
+    "icon": "mdCollab logo with text"
   },
   "about": {
     "title": "About",
@@ -9,17 +9,10 @@
     "project": {
       "heading": "About the software",
       "github": "Project on GitHub",
-      "reportIssue": "Report an issue",
-      "helpTranslating": "Help us translating"
-    },
-    "social": {
-      "heading": "Find us on social media",
-      "discourse": "Join the community",
-      "matrix": "Chat with us on Matrix",
-      "mastodon": "Follow us on Mastodon"
+      "reportIssue": "Report an issue"
     },
     "versionInfo": {
-      "title": "Running HedgeDoc on version"
+      "title": "Running mdCollab on version"
     }
   },
   "navigation": {
@@ -209,7 +202,7 @@
     },
     "profile": {
       "title": "User profile",
-      "info": "Your user profile defines how you're displayed to other users of this HedgeDoc instance, for example on notes you edited or created. When updating your information, keep in mind that your profile is public.",
+      "info": "Your user profile defines how you're displayed to other users of this mdCollab instance, for example on notes you edited or created. When updating your information, keep in mind that your profile is public.",
       "displayName": {
         "title": "Display name",
         "updateFailed": "There was an error changing your display name."
@@ -324,7 +317,7 @@
       },
       "newVersion": {
         "title": "New version available!",
-        "description": "A new version of HedgeDoc is available",
+        "description": "A new version of mdCollab is available",
         "linkText": "See releases notes here",
         "advice": "Refresh to enjoy new features."
       },
@@ -876,7 +869,7 @@
     },
     "emoji": {
       "title": "Emojis",
-      "description": "You can add colored emojis by either placing the unicode character or by using a shortcode. HedgeDoc supports every emoji that Twemoji supports. You can also use the emoji picker in the editor toolbar.",
+      "description": "You can add colored emojis by either placing the unicode character or by using a shortcode. mdCollab supports every emoji that Twemoji supports. You can also use the emoji picker in the editor toolbar.",
       "example": "I :heart: :hedgehog:"
     },
     "csv": {

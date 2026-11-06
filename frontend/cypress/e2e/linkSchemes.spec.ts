@@ -10,10 +10,10 @@ describe('markdown formatted links to', () => {
   })
 
   it('external domains render as external link', () => {
-    cy.setCodemirrorContent('[external](https://hedgedoc.org/)')
+    cy.setCodemirrorContent('[external](https://example.com/)')
     cy.getMarkdownBody()
       .find('a')
-      .should('have.attr', 'href', 'https://hedgedoc.org/')
+      .should('have.attr', 'href', 'https://example.com/')
       .should('have.attr', 'rel', 'noreferer noopener')
       .should('have.attr', 'target', '_blank')
   })
@@ -45,10 +45,10 @@ describe('HTML anchor element links to', () => {
   })
 
   it('external domains render as external link', () => {
-    cy.setCodemirrorContent('<a href="https://hedgedoc.org/">external</a>')
+    cy.setCodemirrorContent('<a href="https://example.com/">external</a>')
     cy.getMarkdownBody()
       .find('a')
-      .should('have.attr', 'href', 'https://hedgedoc.org/')
+      .should('have.attr', 'href', 'https://example.com/')
       .should('have.attr', 'rel', 'noreferer noopener')
       .should('have.attr', 'target', '_blank')
   })

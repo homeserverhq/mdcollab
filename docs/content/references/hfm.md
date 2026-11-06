@@ -1,9 +1,9 @@
-# HedgeDoc Flavored Markdown
+# mdCollab Flavored Markdown
 
-HedgeDoc has its own markdown dialect which supports many features from [CommonMark][commonmark]
+mdCollab has its own markdown dialect which supports many features from [CommonMark][commonmark]
 and [GitHub Flavored Markdown][gfm]. It also adds some new extensions and is missing some.
 
-These tables tell you what exactly we support in HedgeDoc 1.x (HFM 1) and HedgeDoc 2 (HFM 2).
+These tables tell you what exactly we support in HedgeDoc 1.x (HFM 1) and mdCollab 2 (HFM 2).
 
 ## Typography
 
@@ -92,7 +92,7 @@ we decided that HFM 2 should just use plain links if possible.
 Besides the basic HTML typography elements (`<p>`, `<a>`, `<b>`, `<ins>`, `<del>`)
 the following more special HTML elements are supported by some specification.
 
-|    Feature    | HedgeDocMark 1 | HedgeDocMark 2 | CommonMark | GFM |
+|    Feature    | mdCollabMark 1 | mdCollabMark 2 | CommonMark | GFM |
 | :-----------: | :------------: | :------------: | :--------: | :-: |
 |   `<title>`   |                |                |     ☑️     |     |
 | `<textarea>`  |                |       ☑️       |     ☑️     |     |

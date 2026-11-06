@@ -1,7 +1,7 @@
 # Core concepts
 
-Core concepts explain the internal structure of HedgeDoc by providing
-background information and explanations. They are especially useful for contributing to HedgeDoc.
+Core concepts explain the internal structure of mdCollab by providing
+background information and explanations. They are especially useful for contributing to mdCollab.
 
 <!-- markdownlint-disable no-inline-html -->
 <div class='topic-container'>

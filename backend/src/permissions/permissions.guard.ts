@@ -22,7 +22,7 @@ import { PERMISSION_METADATA_KEY } from './require-permission.decorator';
  * The meaning of the FULL permission level differs on the fact if the request contains a noteId or not:
  * If there is a noteId present, the FULL permission level means ownership of the note is required.
  * If there is no noteId present, the FULL permission level means that a note should be created.
- * Since HedgeDoc can be configured to forbid note creation by guests, the config needs to be evaluated in that case.
+ * Since mdCollab can be configured to forbid note creation by guests, the config needs to be evaluated in that case.
  */
 @Injectable()
 export class PermissionsGuard implements CanActivate {
@@ -61,7 +61,7 @@ export class PermissionsGuard implements CanActivate {
         return await this.permissionsService.checkIfUserMayCreateNote(userId);
       } else {
         this.logger.error(
-          'Could not find noteId for permission check. This should never happen. If you see this, please open an issue at https://github.com/hedgedoc/hedgedoc/issues',
+          'Could not find noteId for permission check. This should never happen. If you see this, please open an issue at https://github.com/your-org/mdcollab/issues',
         );
         return false;
       }
@@ -86,7 +86,7 @@ export class PermissionsGuard implements CanActivate {
     // If no requiredPermission are set this is probably an error and this guard should not let the request pass
     if (requiredPermission === undefined) {
       const message =
-        'Could not find requiredPermission metadata. This should never happen. If you see this, please open an issue at https://github.com/hedgedoc/hedgedoc/issues';
+        'Could not find requiredPermission metadata. This should never happen. If you see this, please open an issue at https://github.com/your-org/mdcollab/issues';
       this.logger.error(message);
       throw new Error(message);
     }

@@ -36,7 +36,7 @@ export const uploadFile = async (noteAlias: string, media: File): Promise<string
   const postData = new FormData()
   postData.append('file', media)
   const response = await new PostApiRequestBuilder<MediaUploadInterface, void>('media')
-    .withHeader('HedgeDoc-Note', noteAlias)
+    .withHeader('MDCOLLAB-Note', noteAlias)
     .withBody(postData)
     .sendRequest()
   const upload = await response.asParsedJsonObject()

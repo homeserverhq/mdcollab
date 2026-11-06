@@ -1,6 +1,6 @@
 # LDAP
 
-If you are developing HedgeDoc and need to test something with an LDAP server you can use the
+If you are developing mdCollab and need to test something with an LDAP server you can use the
 [`test-openldap`][docker-image] Docker image from [rroemhild][rroemhild].
 
 Simply run
@@ -14,15 +14,15 @@ docker run --rm -p 10389:10389 -p 10636:10636 rroemhild/test-openldap
 and add the following to the `.env` file then start the backend.
 
 ```dotenv
-HD_AUTH_LDAP_SERVERS="FUTURAMA"
-HD_AUTH_LDAP_FUTURAMA_PROVIDER_NAME="Futurama LDAP"
-HD_AUTH_LDAP_FUTURAMA_URL="ldap://localhost:10389"
-HD_AUTH_LDAP_FUTURAMA_SEARCH_BASE="ou=people,dc=planetexpress,dc=com"
-HD_AUTH_LDAP_FUTURAMA_SEARCH_FILTER=(&(uid={{username}})(objectClass=inetOrgPerson))
-HD_AUTH_LDAP_FUTURAMA_DISPLAY_NAME_FIELD="uid"
-HD_AUTH_LDAP_FUTURAMA_USERID_FIELD="uid"
-HD_AUTH_LDAP_FUTURAMA_BIND_DN="cn=admin,dc=planetexpress,dc=com"
-HD_AUTH_LDAP_FUTURAMA_BIND_CREDENTIALS="GoodNewsEveryone"
+MDCOLLAB_AUTH_LDAP_SERVERS="FUTURAMA"
+MDCOLLAB_AUTH_LDAP_FUTURAMA_PROVIDER_NAME="Futurama LDAP"
+MDCOLLAB_AUTH_LDAP_FUTURAMA_URL="ldap://localhost:10389"
+MDCOLLAB_AUTH_LDAP_FUTURAMA_SEARCH_BASE="ou=people,dc=planetexpress,dc=com"
+MDCOLLAB_AUTH_LDAP_FUTURAMA_SEARCH_FILTER=(&(uid={{username}})(objectClass=inetOrgPerson))
+MDCOLLAB_AUTH_LDAP_FUTURAMA_DISPLAY_NAME_FIELD="uid"
+MDCOLLAB_AUTH_LDAP_FUTURAMA_USERID_FIELD="uid"
+MDCOLLAB_AUTH_LDAP_FUTURAMA_BIND_DN="cn=admin,dc=planetexpress,dc=com"
+MDCOLLAB_AUTH_LDAP_FUTURAMA_BIND_CREDENTIALS="GoodNewsEveryone"
 ```
 
 You should be able to log in with either of these logins (`username` : `password`):

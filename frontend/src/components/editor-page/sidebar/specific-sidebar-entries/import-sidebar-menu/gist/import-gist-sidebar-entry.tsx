@@ -12,7 +12,7 @@ import { fetchGist } from './fetch-gist'
 import { ImportFromRemoteModal } from '../import-from-remote-modal'
 
 const buildGithubTokenProvisioningUrl = (): string =>
-  'https://github.com/settings/personal-access-tokens/new?name=HedgeDoc+snippet+import&description=Access+token+for+importing+HedgeDoc+notes+from+GitHub+Gist&gists=write'
+  'https://github.com/settings/personal-access-tokens/new?name=mdCollab+snippet+import&description=Access+token+for+importing+mdCollab+notes+from+GitHub+Gist&gists=write'
 
 /**
  * Renders the sidebar entry for importing a GitHub Gist.

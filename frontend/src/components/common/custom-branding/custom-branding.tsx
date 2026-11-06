@@ -13,7 +13,7 @@ export interface BrandingProps {
 }
 
 /**
- * Show the branding of the HedgeDoc instance.
+ * Show the branding of the mdCollab instance.
  * This branding can either be a text, a logo or both (in that case the text is used as the title and alt of the image).
  *
  * @param inline If the logo should be using the inline-size or the regular-size css class.

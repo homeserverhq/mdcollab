@@ -32,4 +32,4 @@ export const IconMatrixOrg = React.forwardRef<SVGSVGElement, IconProps>(
   }
 )
 
-IconMatrixOrg.displayName = 'IconHedgeDoc'
+IconMatrixOrg.displayName = 'IconMatrixOrg'

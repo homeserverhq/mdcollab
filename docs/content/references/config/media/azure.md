@@ -1,6 +1,6 @@
 # Azure Blob Storage
 
-You can use [Microsoft Azure Blob Storage][azure] to handle your image uploads in HedgeDoc.
+You can use [Microsoft Azure Blob Storage][azure] to handle your image uploads in mdCollab.
 
 All you need to do is to get the [connection string][connection-string] for your storage account
 and create a storage container with public access set to 'blob'.
@@ -20,9 +20,9 @@ Then you just add the following lines to your configuration:
 (with the appropriate substitution for `<CONNECTION_STRING>` and `<NAME>` of course)
 
 ```dotenv
-HD_MEDIA_BACKEND_TYPE="azure"
-HD_MEDIA_BACKEND_AZURE_CONNECTION_STRING="<CONNECTION_STRING>"
-HD_MEDIA_BACKEND_AZURE_CONTAINER="<NAME>"
+MDCOLLAB_MEDIA_BACKEND_TYPE="azure"
+MDCOLLAB_MEDIA_BACKEND_AZURE_CONNECTION_STRING="<CONNECTION_STRING>"
+MDCOLLAB_MEDIA_BACKEND_AZURE_CONTAINER="<NAME>"
 ```
 
 [azure]: https://azure.microsoft.com/services/storage/blobs/

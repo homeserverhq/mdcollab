@@ -138,7 +138,7 @@ describe('config utils', () => {
       expect(parseOptionalBoolean('y')).toEqual(true);
       expect(parseOptionalBoolean('false')).toEqual(false);
       expect(parseOptionalBoolean('0')).toEqual(false);
-      expect(parseOptionalBoolean('HedgeDoc')).toEqual(false);
+      expect(parseOptionalBoolean('mdCollab')).toEqual(false);
     });
   });
   describe('readOptionalFileContents', () => {

@@ -97,7 +97,7 @@ export class ConsoleLoggerService implements LoggerService {
   private makeContextString(functionContext?: string, classContext?: string): string {
     let context = classContext ?? this.classContext;
     if (!context) {
-      context = 'HedgeDoc';
+      context = 'mdCollab';
     }
     if (functionContext) {
       context += '.' + functionContext + '()';

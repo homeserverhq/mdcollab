@@ -11,7 +11,7 @@ import { IconRow } from './icon-row'
 import React, { useMemo } from 'react'
 import { Pencil as IconPencil, PencilFill as IconPencilFill } from 'react-bootstrap-icons'
 
-export interface HedgeDocLogoProps {
+export interface MdCollabLogoProps {
   error: boolean
 }
 
@@ -20,7 +20,7 @@ export interface HedgeDocLogoProps {
  *
  * @param error Defines if the error animation should be shown instead
  */
-export const LoadingAnimation: React.FC<HedgeDocLogoProps> = ({ error }) => {
+export const LoadingAnimation: React.FC<MdCollabLogoProps> = ({ error }) => {
   const iconRows = useMemo(() => createNumberRangeArray(12).map((index) => <IconRow key={index} />), [])
 
   return (

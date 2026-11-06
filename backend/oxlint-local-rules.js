@@ -96,7 +96,7 @@ const correctLoggerContextRule = {
 
 const plugin = {
   meta: {
-    name: 'hedgedoc-local',
+    name: 'mdcollab-local',
     version: '1.0.0',
   },
   rules: {

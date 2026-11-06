@@ -16,8 +16,8 @@ import { GuestCard } from '../../../components/login-page/guest/guest-card'
 import { useIsLoggedIn } from '../../../hooks/common/use-is-logged-in'
 import { TwoColumnLayout } from '../../../components/layout/two-column-layout'
 import { OidcLoginErrorCard } from '../../../components/login-page/oidc/oidc-login-error-card'
-import { HedgeDocLogoVertical } from '../../../components/common/hedge-doc-logo/hedge-doc-logo-vertical'
-import { LogoSize } from '../../../components/common/hedge-doc-logo/logo-size'
+import { MdCollabLogoVertical } from '../../../components/common/mdcollab-logo/mdcollab-logo-vertical'
+import { LogoSize } from '../../../components/common/mdcollab-logo/logo-size'
 import { CustomBranding } from '../../../components/common/custom-branding/custom-branding'
 import { IntroCustomContent } from '../../../components/intro-page/intro-custom-content'
 import { EditorToRendererCommunicatorContextProvider } from '../../../components/editor-page/render-context/editor-to-renderer-communicator-context-provider'
@@ -39,7 +39,7 @@ const LoginPage: NextPage = () => {
       leftSide={
         <EditorToRendererCommunicatorContextProvider>
           <div className={'d-flex flex-column align-items-center mt-3'}>
-            <HedgeDocLogoVertical size={LogoSize.BIG} autoTextColor={true} />
+            <MdCollabLogoVertical size={LogoSize.BIG} autoTextColor={true} />
             <h5>
               <Trans i18nKey='app.slogan' />
             </h5>

@@ -18,7 +18,7 @@ export class ForkAwesomeHtmlTagAppExtension extends AppExtension {
     return [
       new SingleLineRegexLinter(
         forkAwesomeRegex,
-        t('editor.linter.fork-awesome', { link: 'https://docs.hedgedoc.dev/faq/#why-are-forkawesome-icons-deprecated' })
+        t('editor.linter.fork-awesome', { link: 'https://github.com/your-org/mdcollab' })
       )
     ]
   }

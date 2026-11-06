@@ -8,7 +8,7 @@
   ],
   "rules": {
     "no-debugger": "warn",
-    "hedgedoc-local/correct-logger-context": "error",
+    "mdcollab-local/correct-logger-context": "error",
     "typescript/no-unused-vars": ["warn", { "argsIgnorePattern": "^_+$" }],
     "typescript/return-await": ["error", "always"],
     "typescript/no-base-to-string": "error"

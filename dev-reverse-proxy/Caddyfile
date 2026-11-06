@@ -22,9 +22,9 @@
 	    format console
     }
 
-    reverse_proxy /realtime http://localhost:{$HD_BACKEND_PORT:3000}
-    reverse_proxy /api/* http://localhost:{$HD_BACKEND_PORT:3000}
-    reverse_proxy /public/* http://localhost:{$HD_BACKEND_PORT:3000}
-    reverse_proxy /media/* http://localhost:{$HD_BACKEND_PORT:3000}
-    reverse_proxy /* http://localhost:{$HD_FRONTEND_PORT:3001}
+    reverse_proxy /realtime http://localhost:{$MDCOLLAB_BACKEND_PORT:3000}
+    reverse_proxy /api/* http://localhost:{$MDCOLLAB_BACKEND_PORT:3000}
+    reverse_proxy /public/* http://localhost:{$MDCOLLAB_BACKEND_PORT:3000}
+    reverse_proxy /media/* http://localhost:{$MDCOLLAB_BACKEND_PORT:3000}
+    reverse_proxy /* http://localhost:{$MDCOLLAB_FRONTEND_PORT:3001}
 }

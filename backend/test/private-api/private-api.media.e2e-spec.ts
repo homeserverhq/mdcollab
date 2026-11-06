@@ -61,7 +61,7 @@ describe('Media', () => {
         const uploadResponse = await agentUser1
           .post(`${PRIVATE_API_PREFIX}/media`)
           .attach('file', 'test/private-api/fixtures/test.png')
-          .set('HedgeDoc-Note', noteAlias1)
+          .set('MDCOLLAB-Note', noteAlias1)
           .expect(201);
         uuid = uploadResponse.body.uuid;
         const downloadResponse = await agentUser1
@@ -79,7 +79,7 @@ describe('Media', () => {
         const uploadResponse = await agentUser1
           .post(`${PRIVATE_API_PREFIX}/media`)
           .attach('file', 'test/private-api/fixtures/test.png')
-          .set('HedgeDoc-Note', noteAlias1.toUpperCase())
+          .set('MDCOLLAB-Note', noteAlias1.toUpperCase())
           .expect(201);
         uuid = uploadResponse.body.uuid;
         const downloadResponse = await agentUser1
@@ -103,7 +103,7 @@ describe('Media', () => {
         const uploadResponse = await agentGuestUser
           .post(`${PRIVATE_API_PREFIX}/media`)
           .attach('file', 'test/private-api/fixtures/test.png')
-          .set('HedgeDoc-Note', noteDtoResponse.body.metadata.primaryAlias)
+          .set('MDCOLLAB-Note', noteDtoResponse.body.metadata.primaryAlias)
           .expect(201);
         uuid = uploadResponse.body.uuid;
         const downloadResponse = await agentGuestUser
@@ -127,7 +127,7 @@ describe('Media', () => {
         const uploadResponse = await agentGuestUser
           .post(`${PRIVATE_API_PREFIX}/media`)
           .attach('file', 'test/private-api/fixtures/test.png')
-          .set('HedgeDoc-Note', noteDtoResponse.body.metadata.primaryAlias.toUpperCase())
+          .set('MDCOLLAB-Note', noteDtoResponse.body.metadata.primaryAlias.toUpperCase())
           .expect(201);
         uuid = uploadResponse.body.uuid;
         const downloadResponse = await agentGuestUser
@@ -151,14 +151,14 @@ describe('Media', () => {
         await agentNotLoggedIn
           .post(`${PRIVATE_API_PREFIX}/media`)
           .attach('file', 'test/private-api/fixtures/test.png')
-          .set('HedgeDoc-Note', noteAlias1)
+          .set('MDCOLLAB-Note', noteAlias1)
           .expect(401);
       });
       it('MIME type not supported', async () => {
         await agentUser1
           .post(`${PRIVATE_API_PREFIX}/media`)
           .attach('file', 'test/private-api/fixtures/test.zip')
-          .set('HedgeDoc-Note', noteAlias1)
+          .set('MDCOLLAB-Note', noteAlias1)
           .expect(400);
         await expect(fs.access(uploadPath)).rejects.toBeDefined();
       });
@@ -166,7 +166,7 @@ describe('Media', () => {
         await agentUser1
           .post(`${PRIVATE_API_PREFIX}/media`)
           .attach('file', 'test/private-api/fixtures/test.zip')
-          .set('HedgeDoc-Note', 'i_dont_exist')
+          .set('MDCOLLAB-Note', 'i_dont_exist')
           .expect(404);
         await expect(fs.access(uploadPath)).rejects.toBeDefined();
       });
@@ -177,14 +177,14 @@ describe('Media', () => {
         await agentUser1
           .post(`${PRIVATE_API_PREFIX}/media`)
           .attach('file', 'test/private-api/fixtures/test.png')
-          .set('HedgeDoc-Note', noteAlias1)
+          .set('MDCOLLAB-Note', noteAlias1)
           .expect('Content-Type', /json/)
           .expect(500);
       });
       it('no media uploaded', async () => {
         await agentUser1
           .post(`${PRIVATE_API_PREFIX}/media`)
-          .set('HedgeDoc-Note', noteAlias1)
+          .set('MDCOLLAB-Note', noteAlias1)
           .expect(400);
         await expect(fs.access(uploadPath)).rejects.toBeDefined();
       });

@@ -26,7 +26,7 @@ import { buildHttpExceptionObject, HttpExceptionObject } from './http-exception-
 
 type HttpExceptionConstructor = (object: HttpExceptionObject) => HttpException;
 
-const mapOfHedgeDocErrorsToHttpErrors: Map<string, HttpExceptionConstructor> = new Map([
+const mapOfMdCollabErrorsToHttpErrors: Map<string, HttpExceptionConstructor> = new Map([
   ['NotInDBError', (object): HttpException => new NotFoundException(object)],
   ['AlreadyInDBError', (object): HttpException => new ConflictException(object)],
   ['ForbiddenIdError', (object): HttpException => new ForbiddenException(object)],
@@ -69,15 +69,15 @@ export class ErrorExceptionMapping extends BaseExceptionFilter<Error> {
   }
 
   /**
-   * Transforms an error into an HttpException if it is a HedgeDoc error.
+   * Transforms an error into an HttpException if it is a mdCollab error.
    * Logs the error message to the console if it is an ErrorWithContextDetails.
-   * If the error is not a HedgeDoc error, it returns the original error.
+   * If the error is not a mdCollab error, it returns the original error.
    *
    * @param error The error to transform
-   * @returns An HttpException if the error is a HedgeDoc error, otherwise the original error
+   * @returns An HttpException if the error is a mdCollab error, otherwise the original error
    */
   private transformError(error: Error): Error {
-    const httpExceptionConstructor = mapOfHedgeDocErrorsToHttpErrors.get(error.name);
+    const httpExceptionConstructor = mapOfMdCollabErrorsToHttpErrors.get(error.name);
     if (error instanceof ZodSerializationException) {
       const zodError = error.getZodError();
       if (zodError instanceof ZodError) {

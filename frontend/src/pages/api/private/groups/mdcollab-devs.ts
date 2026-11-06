@@ -9,8 +9,8 @@ import type { GroupInfoInterface } from '@hedgedoc/commons'
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
   respondToMatchingRequest<GroupInfoInterface>(HttpMethod.GET, req, res, {
-    name: 'hedgedoc-devs',
-    displayName: 'HedgeDoc devs',
+    name: 'mdcollab-devs',
+    displayName: 'mdCollab devs',
     isSpecial: true
   })
 }

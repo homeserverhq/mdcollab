@@ -15,7 +15,7 @@ describe('externalServices', () => {
   it('correctly parses valid config', () => {
     const restore = mockedEnv(
       {
-        HD_PLANTUML_SERVER: plantUmlServer,
+        MDCOLLAB_PLANTUML_SERVER: plantUmlServer,
       },
       {
         clear: true,
@@ -50,14 +50,14 @@ describe('externalServices', () => {
       const invalid = 'wrong!';
       const restore = mockedEnv(
         {
-          HD_PLANTUML_SERVER: invalid,
+          MDCOLLAB_PLANTUML_SERVER: invalid,
         },
         {
           clear: true,
         },
       );
       externalServicesConfig();
-      expect(spyConsoleError.mock.calls[0][0]).toContain('HD_PLANTUML_SERVER: Invalid URL');
+      expect(spyConsoleError.mock.calls[0][0]).toContain('MDCOLLAB_PLANTUML_SERVER: Invalid URL');
       expect(spyProcessExit).toHaveBeenCalledWith(1);
       restore();
     });
@@ -65,14 +65,14 @@ describe('externalServices', () => {
     it('when image proxy is configured', () => {
       const restore = mockedEnv(
         {
-          HD_IMAGE_PROXY: imageProxy,
+          MDCOLLAB_IMAGE_PROXY: imageProxy,
         },
         {
           clear: true,
         },
       );
       expect(() => externalServicesConfig()).toThrow(
-        "HD_IMAGE_PROXY is currently not yet supported. Please don't configure it",
+        "MDCOLLAB_IMAGE_PROXY is currently not yet supported. Please don't configure it",
       );
       restore();
     });

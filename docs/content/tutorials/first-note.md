@@ -5,15 +5,15 @@ substitute your actual domain anywhere you encounter <https://md.example.com>
 
 1. Go to <https://md.example.com>.
 
-2. Click on the "New Note" button in the top right. HedgeDoc will now create a new
+2. Click on the "New Note" button in the top right. mdCollab will now create a new
    note for you and redirect you to the editor of this note.
 
-   ![New Note button on the HedgeDoc start page][new-note]{ width="400" }
+   ![New Note button on the mdCollab start page][new-note]{ width="400" }
 
 3. Start typing your note. On the left (1) you find the editor to do so and
    on the right (2) you see the rendering of what you wrote. 
 
-   ![The HedgeDoc Editor][editor]
+   ![The mdCollab Editor][editor]
 
 4. Copy the following text into your editor
 
@@ -35,11 +35,11 @@ Also you can use
 - [ ] ToDo Lists
 ```
 
-![The HedgeDoc Editor with the example text][editor-filled]
+![The mdCollab Editor with the example text][editor-filled]
 
 ## Further reading
 
-- [Checkout HedgeDoc's markdown syntax reference][hfm]
+- [Checkout mdCollab's markdown syntax reference][hfm]
 - [Creating your first presentation][tutorials/first-presentation]
 - [Advanced configuration options][config]
 

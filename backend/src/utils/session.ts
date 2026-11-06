@@ -11,7 +11,7 @@ import { NestFastifyApplication } from '@nestjs/platform-fastify';
 import { AuthConfig } from '../config/auth.config';
 import { KnexSessionStore } from '../sessions/knex-session-store';
 
-export const HEDGEDOC_SESSION = 'hedgedoc-session';
+export const MDCOLLAB_SESSION = 'mdcollab-session';
 
 /**
  * Set up the session middleware via the given authConfig
@@ -29,7 +29,7 @@ export async function setupSessionMiddleware(
 
   await fastifyApp.register(fastifyCookie);
   await fastifyApp.register(fastifySession, {
-    cookieName: HEDGEDOC_SESSION,
+    cookieName: MDCOLLAB_SESSION,
     cookiePrefix: 's:',
     secret: authConfig.session.secret,
     cookie: {

@@ -88,9 +88,9 @@ describe('PutApiRequestBuilder', () => {
   it('sendRequest with other body', async () => {
     expectFetch('/api/private/test', 200, {
       method: 'PUT',
-      body: 'HedgeDoc'
+      body: 'mdCollab'
     })
-    await new PutApiRequestBuilder('test').withBody('HedgeDoc').sendRequest()
+    await new PutApiRequestBuilder('test').withBody('mdCollab').sendRequest()
   })
 
   describe('sendRequest with custom options', () => {

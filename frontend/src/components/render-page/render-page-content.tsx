@@ -170,7 +170,7 @@ export const RenderPageContent: React.FC = () => {
     if (!baseConfiguration) {
       return (
         <span>
-          This is the render endpoint. If you can read this text then please check your HedgeDoc configuration.
+          This is the render endpoint. If you can read this text then please check your mdCollab configuration.
         </span>
       )
     }

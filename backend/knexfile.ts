@@ -10,7 +10,7 @@ const config: { [key: string]: Knex.Config } = {
   development: {
     client: 'better-sqlite3',
     connection: {
-      filename: './hedgedoc.sqlite',
+      filename: './mdcollab.sqlite',
     },
     useNullAsDefault: true,
     migrations: {

@@ -26,7 +26,7 @@ backend/test_uploads
 **/coverage-e2e
 **/.nyc_output
 
-backend/hedgedoc.sqlite
+backend/mdcollab.sqlite
 
 **/.turbo
 

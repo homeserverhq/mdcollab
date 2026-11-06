@@ -22,7 +22,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
         primaryAlias: 'features',
         editedBy: [],
         title: 'New note',
-        tags: ['hedgedoc', 'demo', 'react'],
+        tags: ['mdcollab', 'demo', 'react'],
         description: 'Many features, such wow!',
         aliases: ['features'],
         permissions: {

@@ -6,7 +6,7 @@ SPDX-License-Identifier: CC0-1.0
 
 # Markdown-It plugins
 
-This repository contains plugins for [Markdown-It](https://github.com/markdown-it/markdown-it) that are used by HedgeDoc.
+This repository contains plugins for [Markdown-It](https://github.com/markdown-it/markdown-it) that are used by mdCollab.
 All these plugins are (re)created in typescript.
 
 ## License

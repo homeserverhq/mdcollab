@@ -30,7 +30,7 @@ export const BaseUrlContextProvider: React.FC<PropsWithChildren<BaseUrlContextPr
   children
 }) => {
   return baseUrls === undefined ? (
-    <span className={'text-white bg-dark'}>HedgeDoc is not configured correctly! Please check the server log.</span>
+    <span className={'text-white bg-dark'}>mdCollab is not configured correctly! Please check the server log.</span>
   ) : (
     <baseUrlContext.Provider value={baseUrls}>{children}</baseUrlContext.Provider>
   )

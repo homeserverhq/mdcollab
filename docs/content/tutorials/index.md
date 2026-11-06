@@ -1,6 +1,6 @@
 # Tutorials
 
-Tutorials are detailed step-by-step instructions. Start here if you're new to HedgeDoc,
+Tutorials are detailed step-by-step instructions. Start here if you're new to mdCollab,
 want to create your first presentation or want to build a simple API application.
 
 <!-- markdownlint-disable no-inline-html -->
@@ -8,7 +8,7 @@ want to create your first presentation or want to build a simple API application
     <a href='/tutorials/setup/'>
         <div class='topic'>
             <span>🚀</span>
-            <span>Install HedgeDoc</span>
+            <span>Install mdCollab</span>
         </div>
     </a>
     <a href='/tutorials/user/'>

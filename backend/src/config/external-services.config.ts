@@ -10,23 +10,23 @@ import { printConfigErrorAndExit } from './utils';
 import { buildErrorMessage, extractDescriptionFromZodIssue } from './zod-error-message';
 
 const schema = z.object({
-  plantumlServer: z.url().or(z.null()).describe('HD_PLANTUML_SERVER'),
-  imageProxy: z.url().or(z.null()).describe('HD_IMAGE_PROXY'),
+  plantumlServer: z.url().or(z.null()).describe('MDCOLLAB_PLANTUML_SERVER'),
+  imageProxy: z.url().or(z.null()).describe('MDCOLLAB_IMAGE_PROXY'),
 });
 
 export type ExternalServicesConfig = z.infer<typeof schema>;
 
 export default registerAs('externalServicesConfig', () => {
-  if (process.env.HD_IMAGE_PROXY !== undefined) {
-    throw new Error("HD_IMAGE_PROXY is currently not yet supported. Please don't configure it");
+  if (process.env.MDCOLLAB_IMAGE_PROXY !== undefined) {
+    throw new Error("MDCOLLAB_IMAGE_PROXY is currently not yet supported. Please don't configure it");
   }
   const externalConfig = schema.safeParse({
-    plantumlServer: process.env.HD_PLANTUML_SERVER ?? null,
-    imageProxy: process.env.HD_IMAGE_PROXY ?? null,
+    plantumlServer: process.env.MDCOLLAB_PLANTUML_SERVER ?? null,
+    imageProxy: process.env.MDCOLLAB_IMAGE_PROXY ?? null,
   });
   if (externalConfig.error) {
     const errorMessages = externalConfig.error.issues.map((issue) =>
-      extractDescriptionFromZodIssue(issue, 'HD'),
+      extractDescriptionFromZodIssue(issue, 'MDCOLLAB'),
     );
     const errorMessage = buildErrorMessage(errorMessages);
     return printConfigErrorAndExit(errorMessage);

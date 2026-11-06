@@ -6,8 +6,8 @@ The following environment variables are recognized by the frontend process.
 
 | Name                     | Possible Values                                                                                                                  | Description                                                                                                                                                                                                       |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| HD_BASE_URL              | Any URL with protocol, domain and optionally directory and port. Must end with a trailing slash. (e.g. `http://localhost:3001/`) | The URL under which the frontend is expected. Setting this is mandatory so the server side rendering can generate assets URLs. You only need to set this yourself if you use the production mode.                 |
-| HD_RENDERER_BASE_URL     | Same as `HD_BASE_URL`                                                                                                            | You can provide this variable if the renderer should use another domain than the editor. This is recommended for security reasons but not mandatory. This variable is optional and will fallback to `HD_BASE_URL` |
+| MDCOLLAB_BASE_URL              | Any URL with protocol, domain and optionally directory and port. Must end with a trailing slash. (e.g. `http://localhost:3001/`) | The URL under which the frontend is expected. Setting this is mandatory so the server side rendering can generate assets URLs. You only need to set this yourself if you use the production mode.                 |
+| MDCOLLAB_RENDERER_BASE_URL     | Same as `MDCOLLAB_BASE_URL`                                                                                                            | You can provide this variable if the renderer should use another domain than the editor. This is recommended for security reasons but not mandatory. This variable is optional and will fallback to `MDCOLLAB_BASE_URL` |
 | NEXT_PUBLIC_USE_MOCK_API | `true`, `false`                                                                                                                  | Will activate the mocked backend                                                                                                                                                                                  |
 | NEXT_PUBLIC_TEST_MODE    | `true`, `false`                                                                                                                  | Will activate additional HTML attributes that are used to identify elements for test suits.                                                                                                                       |
 
@@ -16,10 +16,7 @@ after compilation. You shouldn't need to set them yourself. Use the designated n
 
 ## UI Test
 
-Curious about the new look and feel? We provide a demo of the new UI on
-[HedgeDoc.dev][hedgedoc-dev]. This version is reset every day, so data is not persisted.
-
-Please see also our [privacy policy][privacy].
+You can run the UI test locally with the mock backend using `pnpm run start:dev:mock`.
 
 ## Running Tests
 
@@ -58,6 +55,4 @@ in the browser's console.
 window.localStorage.setItem("debugLogging", "true");
 ```
 
-[hedgedoc-dev]: https://hedgedoc.dev
-[privacy]: https://hedgedoc.org/privacy-policy
 [cypress]: https://cypress.io
