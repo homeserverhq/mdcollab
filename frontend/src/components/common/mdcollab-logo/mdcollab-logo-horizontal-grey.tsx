@@ -34,13 +34,7 @@ export const MdCollabLogoHorizontalGrey: React.FC<MdCollabLogoHorizontalGreyProp
       <rect x='4' y='8' width='64' height='64' rx='16' fill='#2563eb' />
       <path d='M20 30h32v20H32l-8 8v-8h-4z' fill='#fff' />
       {showText && (
-        <text
-          x='86'
-          y='54'
-          fill={textColor}
-          fontFamily='Arial, Helvetica, sans-serif'
-          fontSize='44'
-          fontWeight='700'>
+        <text x='86' y='54' fill={textColor} fontFamily='Arial, Helvetica, sans-serif' fontSize='44' fontWeight='700'>
           mdCollab
         </text>
       )}
